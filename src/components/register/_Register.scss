@@ -1,0 +1,15 @@
+#RegisterPage {
+    @include flexCenter();
+    height: 100vh;
+
+
+    section {
+        height: 100%;
+    }
+
+    .illus {
+        background-color: $lightMainColor3;
+        margin-left: -15px;
+        height: 100%;
+    }
+}

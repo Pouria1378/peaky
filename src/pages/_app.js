@@ -1,9 +1,12 @@
 import React from "react"
 import "../../public/style/main.css"
+import { IconlyProvider } from 'react-iconly'
 
 const App = ({ Component, pageProps }) => {
     return (
-        <Component {...pageProps} />
+        <IconlyProvider set='curved'>
+            <Component {...pageProps} />
+        </IconlyProvider>
     );
 }
 

@@ -1,0 +1,83 @@
+@font-face {
+    font-family: "Vazir";
+    src: url("../fonts/Vazir-Bold.eot");
+    src: url("../fonts/Vazir.woff") format("woff"),
+        url("../fonts/Vazir-Bold.eot") format("opentype"),
+}
+
+body * {
+    font-family: "Vazir";
+    font-size: 1rem;
+    direction: rtl;
+}
+
+//inputs 
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {   
+    border: 1px solid $mainColor1;
+    box-shadow: 0 0 7px rgba(87, 91, 235, 0.35);
+    outline: 0 none;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+    border-radius: $borderRadius !important;
+    background-color: $lightGray;
+    &:hover {
+        border: 1px solid $mainColor1;
+    }
+}
+
+//buttons 
+button {
+    border-radius: $borderRadius !important;
+}
+.mainColor1Button {
+    background-color: $mainColor1;
+    border: 1px solid $mainColor1;
+    color: $white;
+    &:hover {
+        background-color: $white;
+        border: 1px solid $mainColor1;
+        color: $mainColor1;
+    }
+}
+
+// p
+.colorMaincolor1 {
+    color: $mainColor1;
+}
+
+
+
+.cursor-pointer {
+    cursor: pointer;
+}

@@ -361,6 +361,103 @@ textarea {
   padding: 0.2em 0;
 }
 
+@font-face {
+  font-family: "Vazir";
+  src: url("../fonts/Vazir-Bold.eot");
+  src: url("../fonts/Vazir.woff") format("woff"), url("../fonts/Vazir-Bold.eot") format("opentype");
+}
+
+body * {
+  font-family: "Vazir";
+  font-size: 1rem;
+  direction: rtl;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border: 1px solid #6A6EF4;
+  -webkit-box-shadow: 0 0 7px rgba(87, 91, 235, 0.35);
+          box-shadow: 0 0 7px rgba(87, 91, 235, 0.35);
+  outline: 0 none;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  border-radius: 10px !important;
+  background-color: #F3F3F5;
+}
+
+textarea:hover,
+input[type="text"]:hover,
+input[type="password"]:hover,
+input[type="datetime"]:hover,
+input[type="datetime-local"]:hover,
+input[type="date"]:hover,
+input[type="month"]:hover,
+input[type="time"]:hover,
+input[type="week"]:hover,
+input[type="number"]:hover,
+input[type="email"]:hover,
+input[type="url"]:hover,
+input[type="search"]:hover,
+input[type="tel"]:hover,
+input[type="color"]:hover,
+.uneditable-input:hover {
+  border: 1px solid #6A6EF4;
+}
+
+button {
+  border-radius: 10px !important;
+}
+
+.mainColor1Button {
+  background-color: #6A6EF4;
+  border: 1px solid #6A6EF4;
+  color: #FFFFFF;
+}
+
+.mainColor1Button:hover {
+  background-color: #FFFFFF;
+  border: 1px solid #6A6EF4;
+  color: #6A6EF4;
+}
+
+.colorMaincolor1 {
+  color: #6A6EF4;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
 #RegisterPage {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -382,5 +479,42 @@ textarea {
   background-color: #F3F3F9;
   margin-left: -15px;
   height: 100%;
+}
+
+#RegisterPage .registerFormWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+}
+
+#RegisterPage .registerFormWrapper .registerForm {
+  -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  text-align: right;
+  max-width: 600px;
+  padding: 1rem;
+  margin: 20px;
+}
+
+#RegisterPage .registerFormWrapper .registerForm .title {
+  margin-bottom: 2rem;
+}
+
+#RegisterPage .registerFormWrapper .registerForm button {
+  width: 100%;
+  height: 40px;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+#RegisterPage .registerFormWrapper .registerForm .colorMaincolor1:hover {
+  text-decoration: underline;
 }
 /*# sourceMappingURL=main.css.map */

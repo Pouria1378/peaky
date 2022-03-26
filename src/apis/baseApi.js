@@ -19,7 +19,6 @@ instanceAxios.interceptors.request.use(
             "Content-Type": "application/json",
             // "Authorization": `Bearer ${tokenCheckExists()}`,
             "app-name": "Peaky",
-            "client-version": "1.0.0",
         }
         return config;
     },

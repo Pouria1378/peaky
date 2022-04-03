@@ -1,18 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import Layout from "../layout";
 import Image from 'next/image'
-// import { Profile } from 'react-iconly'
+import { User, Password } from 'react-iconly'
 import { apiRegister } from '../../apis/apiRegister';
-
+import { message } from 'antd'
+import { Form, Input, Button } from 'antd';
+import { statusCodeMessage } from "../../components/functions";
 
 const Register = () => {
+    const [registerLoading, setRegisterLoading] = useState(false)
 
-    useEffect(() => {
-        apiRegister()
-            .then((data) => { console.log("then register ", data); })
-            .catch((err) => { console.error("catch register ", err); });
-    }, [])
 
+    const postRegisterData = (data) => {
+        setRegisterLoading(true)
+        if (data.repeatPassword !== data.password) {
+            message.warning('رمز عبور با تکرار آن مطابقت ندارد')
+            setRegisterLoading(false)
+            return
+        }
+        console.log("data", data);
+        apiRegister(data)
+            .then((result) => {
+                const { statusCode, success } = result
+                console.log("result", result);
+                setRegisterLoading(false)
+                statusCodeMessage(statusCode)
+            })
+            .catch((err) => {
+                setRegisterLoading(false)
+                console.error(err)
+            })
+    }
 
     return (
         <Layout
@@ -21,57 +39,58 @@ const Register = () => {
             <div className="row w-100 h-100">
                 <section className="col-6">
                     <div className="registerFormWrapper">
-                        <form className="registerForm">
-                            <div className="title">
-                                به Peaky خوش آمدید
-                            </div>
-                            <div className="form-group">
-                                <label
-                                    htmlFor="userName"
-                                >
-                                    نام کاربری
-                                </label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    id="userName"
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label
-                                    htmlFor="password"
-                                >
-                                    رمز عبور
-                                </label>
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    id="password"
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label
-                                    htmlFor="repeatPassword"
-                                >
-                                    تکرار رمز عبور
-                                </label>
-                                <input
-                                    type="password"
-                                    className="form-control"
-                                    id="repeatPassword"
-                                />
-                            </div>
-                            <button
-                                type="submit"
-                                className="mainColor1Button"
+                        <Form
+                            name="registerForm"
+                            onFinish={postRegisterData}
+                            // onFinishFailed={postRegisterData}
+                            autoComplete="off"
+                            layout="vertical"
+                            className="registerForm"
+                        >
+                            <p>به Peaky خوش آمدید</p>
+                            <Form.Item
+                                label="نام کاربری"
+                                name="username"
+                                rules={[{ required: true, message: 'این فیلد الزامی است' }]}
                             >
-                                ثبت نام
-                            </button>
-                            <p>
-                                حساب کاربری دارید؟
+                                <Input
+                                    prefix={<User set="curved" />}
+                                />
+                            </Form.Item>
+
+                            <Form.Item
+                                label="رمز عبور"
+                                name="password"
+                                rules={[{ required: true, message: 'این فیلد الزامی است' }]}
+                            >
+                                <Input.Password
+                                    prefix={<Password set="curved" />}
+                                />
+                            </Form.Item>
+
+                            <Form.Item
+                                label="تکرار رمز عبور"
+                                name="repeatPassword"
+                                rules={[{ required: true, message: 'این فیلد الزامی است' }]}
+                            >
+                                <Input.Password
+                                    prefix={<Password set="curved" />}
+                                />
+                            </Form.Item>
+
+
+                            <Form.Item>
+                                <Button
+                                    className="mainColor1Button"
+                                    htmlType="submit"
+                                    disabled={registerLoading}
+                                > ثبت نام
+                                </Button>
+                            </Form.Item>
+                            <p>حساب کاربری دارید؟
                                 <span className="colorMaincolor1 cursor-pointer">وارد شوید</span>
                             </p>
-                        </form>
+                        </Form>
                     </div>
                 </section>
 

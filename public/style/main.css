@@ -373,65 +373,23 @@ body * {
   direction: rtl;
 }
 
-textarea:focus,
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="datetime"]:focus,
-input[type="datetime-local"]:focus,
-input[type="date"]:focus,
-input[type="month"]:focus,
-input[type="time"]:focus,
-input[type="week"]:focus,
-input[type="number"]:focus,
-input[type="email"]:focus,
-input[type="url"]:focus,
-input[type="search"]:focus,
-input[type="tel"]:focus,
-input[type="color"]:focus,
-.uneditable-input:focus {
-  border: 1px solid #6A6EF4;
-  -webkit-box-shadow: 0 0 7px rgba(87, 91, 235, 0.35);
-          box-shadow: 0 0 7px rgba(87, 91, 235, 0.35);
-  outline: 0 none;
-}
-
-textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
-.uneditable-input {
+.ant-input-affix-wrapper {
   border-radius: 10px !important;
-  background-color: #F3F3F5;
+  background-color: #F3F3F5 !important;
 }
 
-textarea:hover,
-input[type="text"]:hover,
-input[type="password"]:hover,
-input[type="datetime"]:hover,
-input[type="datetime-local"]:hover,
-input[type="date"]:hover,
-input[type="month"]:hover,
-input[type="time"]:hover,
-input[type="week"]:hover,
-input[type="number"]:hover,
-input[type="email"]:hover,
-input[type="url"]:hover,
-input[type="search"]:hover,
-input[type="tel"]:hover,
-input[type="color"]:hover,
-.uneditable-input:hover {
-  border: 1px solid #6A6EF4;
+.ant-input-affix-wrapper:hover {
+  border: 1px solid #6A6EF4 !important;
+  background-color: #FFFFFF !important;
+}
+
+.ant-input-affix-wrapper .ant-input-prefix svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.ant-input-affix-wrapper input {
+  background-color: transparent;
 }
 
 button {
@@ -439,15 +397,14 @@ button {
 }
 
 .mainColor1Button {
-  background-color: #6A6EF4;
-  border: 1px solid #6A6EF4;
-  color: #FFFFFF;
+  background-color: #6A6EF4 !important;
+  border: 1px solid #6A6EF4 !important;
+  color: #FFFFFF !important;
+  height: 40px !important;
 }
 
 .mainColor1Button:hover {
-  background-color: #FFFFFF;
-  border: 1px solid #6A6EF4;
-  color: #6A6EF4;
+  background-color: #575BEB !important;
 }
 
 .colorMaincolor1 {
@@ -501,20 +458,26 @@ button {
   max-width: 600px;
   padding: 1rem;
   margin: 20px;
+  text-align: right;
+  direction: rtl;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-#RegisterPage .registerFormWrapper .registerForm .title {
-  margin-bottom: 2rem;
+#RegisterPage .registerFormWrapper .registerForm .ant-form-item-label {
+  text-align: right;
 }
 
-#RegisterPage .registerFormWrapper .registerForm button {
+#RegisterPage .registerFormWrapper .registerForm .ant-form-item-label label {
+  direction: ltr;
+}
+
+#RegisterPage .registerFormWrapper .registerForm .mainColor1Button {
   width: 100%;
-  height: 40px;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-#RegisterPage .registerFormWrapper .registerForm .colorMaincolor1:hover {
-  text-decoration: underline;
 }
 /*# sourceMappingURL=main.css.map */

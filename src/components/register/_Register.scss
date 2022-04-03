@@ -23,20 +23,21 @@
             max-width: 600px;
             padding: 1rem;
             margin: 20px;
+            text-align: right;
+            direction: rtl;
+            display: flex;
+            flex-direction: column; 
 
-            .title {
-                margin-bottom: 2rem;
+            .ant-form-item-label {
+                text-align: right;
+
+                label {
+                    direction: ltr;
+                }
             }
 
-            button {
+            .mainColor1Button {
                 width: 100%;
-                height: 40px;
-                margin-top: 1rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .colorMaincolor1:hover {
-                text-decoration: underline;
             }
         }
     }

@@ -12,6 +12,11 @@ const baseApi = {
         method: 'POST',
         // headers: {"Authorization": `Bearer ${tokenCheckExists()}`},
     }),
+    createEventType: () => ({
+        url: `/createEventType`,
+        method: 'POST',
+        // headers: {"x-access-token": `Bearer ${tokenCheckExists()}`},
+    }),
 }
 
 // Request interceptor for API calls

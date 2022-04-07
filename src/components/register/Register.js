@@ -42,12 +42,11 @@ const Register = () => {
             bodyIdStyle="RegisterPage"
         >
             <div className="row w-100 h-100">
-                <section className="col-6">
+                <section className="col-12 col-md-6">
                     <div className="formWrapper">
                         <Form
                             name="registerForm"
                             onFinish={postRegisterData}
-                            // onFinishFailed={postRegisterData}
                             autoComplete="off"
                             layout="vertical"
                             className="registerForm"
@@ -84,7 +83,9 @@ const Register = () => {
                             </Form.Item>
 
 
-                            <Form.Item>
+                            <Form.Item
+                                className="mb-2"
+                            >
                                 <Button
                                     className="mainColor1Button"
                                     htmlType="submit"
@@ -102,7 +103,7 @@ const Register = () => {
                     </div>
                 </section>
 
-                <section className="col-6 h-100">
+                <section className="col-12 col-md-6 h-100 illusWrapper">
                     <div className="illus">
                         <Image
                             src="/illus/login-bro.svg"

@@ -436,6 +436,7 @@ button {
   direction: rtl;
   display: flex;
   flex-direction: column;
+  padding-bottom: 0 !important;
 }
 #RegisterPage .formWrapper .registerForm .ant-form-item-label, #LoginPage .formWrapper .registerForm .ant-form-item-label {
   text-align: right;
@@ -445,4 +446,10 @@ button {
 }
 #RegisterPage .formWrapper .registerForm .mainColor1Button, #LoginPage .formWrapper .registerForm .mainColor1Button {
   width: 100%;
+}
+
+@media (max-width: 767.98px) {
+  #RegisterPage .illusWrapper, #LoginPage .illusWrapper {
+    display: none;
+  }
 }/*# sourceMappingURL=main.css.map */

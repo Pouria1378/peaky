@@ -14,3 +14,10 @@ export const statusCodeMessage = (statusCode) => {
 
     messages[statusCode]()
 }
+
+export const tokenCheckExists = () => {
+    if (localStorage.getItem('token'))
+        return localStorage.getItem('token')
+
+    return false
+}

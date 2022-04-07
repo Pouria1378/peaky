@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { tokenCheckExists } from '../components/functions';
 
 export const instanceAxios = axios.create();
 
@@ -7,15 +8,16 @@ const baseApi = {
         url: `/register`,
         method: 'POST',
     }),
+
     login: () => ({
         url: `/login`,
         method: 'POST',
-        // headers: {"Authorization": `Bearer ${tokenCheckExists()}`},
     }),
+
     createEventType: () => ({
         url: `/createEventType`,
         method: 'POST',
-        // headers: {"x-access-token": `Bearer ${tokenCheckExists()}`},
+        headers: { "x-access-token": `Bearer ${tokenCheckExists()}` },
     }),
 }
 

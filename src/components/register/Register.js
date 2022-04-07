@@ -6,10 +6,13 @@ import { apiRegister } from '../../apis/apiRegister';
 import { message } from 'antd'
 import { Form, Input, Button } from 'antd';
 import { statusCodeMessage } from "../../components/functions";
+import { useRouter } from 'next/router'
 
 const Register = () => {
     const [registerLoading, setRegisterLoading] = useState(false)
 
+
+    const router = useRouter()
 
     const postRegisterData = (data) => {
         setRegisterLoading(true)
@@ -22,9 +25,11 @@ const Register = () => {
         apiRegister(data)
             .then((result) => {
                 const { statusCode, success } = result
-                console.log("result", result);
                 setRegisterLoading(false)
-                statusCodeMessage(statusCode)
+                if (success) {
+                    statusCodeMessage(statusCode)
+                    router.push("/login")
+                }
             })
             .catch((err) => {
                 setRegisterLoading(false)
@@ -38,7 +43,7 @@ const Register = () => {
         >
             <div className="row w-100 h-100">
                 <section className="col-6">
-                    <div className="registerFormWrapper">
+                    <div className="formWrapper">
                         <Form
                             name="registerForm"
                             onFinish={postRegisterData}
@@ -88,7 +93,10 @@ const Register = () => {
                                 </Button>
                             </Form.Item>
                             <p>حساب کاربری دارید؟
-                                <span className="colorMaincolor1 cursor-pointer">وارد شوید</span>
+                                <span
+                                    onClick={() => router.push("/login")}
+                                    className="colorMaincolor1 cursor-pointer"
+                                >وارد شوید</span>
                             </p>
                         </Form>
                     </div>

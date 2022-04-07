@@ -45,7 +45,7 @@ blockquote, q {
 
 blockquote:before, blockquote:after,
 q:before, q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -65,7 +65,6 @@ input[type=search]::-webkit-search-results-decoration {
 input[type=search] {
   -webkit-appearance: none;
   -moz-appearance: none;
-  -webkit-box-sizing: content-box;
   box-sizing: content-box;
 }
 
@@ -234,9 +233,9 @@ select {
  *    Known issue: inner spacing remains in IE 6.
  */
 button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
+html input[type=button],
+input[type=reset],
+input[type=submit] {
   -webkit-appearance: button;
   /* 2 */
   cursor: pointer;
@@ -259,10 +258,9 @@ html input[disabled] {
  * 3. Remove excess padding in IE 7.
  *    Known issue: excess padding remains in IE 6.
  */
-input[type="checkbox"],
-input[type="radio"] {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+input[type=checkbox],
+input[type=radio] {
+  box-sizing: border-box;
   /* 1 */
   padding: 0;
   /* 2 */
@@ -277,10 +275,9 @@ input[type="radio"] {
  * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
  *    (include `-moz` to future-proof).
  */
-input[type="search"] {
+input[type=search] {
   -webkit-appearance: textfield;
   /* 1 */
-  -webkit-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box;
 }
@@ -289,8 +286,8 @@ input[type="search"] {
  * Remove inner padding and search cancel button in Safari 5 and Chrome
  * on OS X.
  */
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-decoration {
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -366,28 +363,23 @@ textarea {
   src: url("../fonts/Vazir-Bold.eot");
   src: url("../fonts/Vazir.woff") format("woff"), url("../fonts/Vazir-Bold.eot") format("opentype");
 }
-
 body * {
   font-family: "Vazir";
   font-size: 1rem;
-  direction: rtl;
 }
 
 .ant-input-affix-wrapper {
   border-radius: 10px !important;
   background-color: #F3F3F5 !important;
 }
-
 .ant-input-affix-wrapper:hover {
   border: 1px solid #6A6EF4 !important;
   background-color: #FFFFFF !important;
 }
-
 .ant-input-affix-wrapper .ant-input-prefix svg {
   width: 20px !important;
   height: 20px !important;
 }
-
 .ant-input-affix-wrapper input {
   background-color: transparent;
 }
@@ -402,7 +394,6 @@ button {
   color: #FFFFFF !important;
   height: 40px !important;
 }
-
 .mainColor1Button:hover {
   background-color: #575BEB !important;
 }
@@ -415,69 +406,43 @@ button {
   cursor: pointer;
 }
 
-#RegisterPage {
-  display: -webkit-box;
-  display: -ms-flexbox;
+#RegisterPage, #LoginPage {
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
 }
-
-#RegisterPage section {
+#RegisterPage section, #LoginPage section {
   height: 100%;
 }
-
-#RegisterPage .illus {
+#RegisterPage .illus, #LoginPage .illus {
   background-color: #F3F3F9;
   margin-left: -15px;
   height: 100%;
 }
-
-#RegisterPage .registerFormWrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
+#RegisterPage .formWrapper, #LoginPage .formWrapper {
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   height: 100%;
 }
-
-#RegisterPage .registerFormWrapper .registerForm {
-  -webkit-box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+#RegisterPage .formWrapper .registerForm, #LoginPage .formWrapper .registerForm {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   text-align: right;
   max-width: 600px;
   padding: 1rem;
   margin: 20px;
   text-align: right;
   direction: rtl;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
-#RegisterPage .registerFormWrapper .registerForm .ant-form-item-label {
+#RegisterPage .formWrapper .registerForm .ant-form-item-label, #LoginPage .formWrapper .registerForm .ant-form-item-label {
   text-align: right;
 }
-
-#RegisterPage .registerFormWrapper .registerForm .ant-form-item-label label {
+#RegisterPage .formWrapper .registerForm .ant-form-item-label label, #LoginPage .formWrapper .registerForm .ant-form-item-label label {
   direction: ltr;
 }
-
-#RegisterPage .registerFormWrapper .registerForm .mainColor1Button {
+#RegisterPage .formWrapper .registerForm .mainColor1Button, #LoginPage .formWrapper .registerForm .mainColor1Button {
   width: 100%;
-}
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */

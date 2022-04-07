@@ -6,6 +6,10 @@ const baseApi = {
     register: () => ({
         url: `/register`,
         method: 'POST',
+    }),
+    login: () => ({
+        url: `/login`,
+        method: 'POST',
         // headers: {"Authorization": `Bearer ${tokenCheckExists()}`},
     }),
 }

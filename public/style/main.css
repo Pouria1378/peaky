@@ -448,6 +448,54 @@ button {
   width: 100%;
 }
 
+.sidebar {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sidebar .routes {
+  text-align: right;
+  margin-top: 3rem;
+  width: 100%;
+}
+.sidebar .routes ul {
+  display: flex;
+  flex-direction: column;
+}
+.sidebar .routes ul li {
+  padding: 1rem;
+  cursor: pointer;
+  font-size: 0.8rem !important;
+  position: relative;
+}
+.sidebar .routes ul li:hover {
+  color: #6A6EF4;
+}
+.sidebar .routes ul li svg {
+  width: 19px;
+  margin-left: 8px;
+}
+.sidebar .routes ul .active {
+  background-color: #F1F1FE;
+  color: #6A6EF4;
+}
+.sidebar .routes ul .active::after {
+  content: "";
+  display: block;
+  width: 5px;
+  height: 100%;
+  background: #6A6EF4;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
 @media (max-width: 767.98px) {
   #RegisterPage .illusWrapper, #LoginPage .illusWrapper {
     display: none;

@@ -3,7 +3,6 @@ import Layout from "../layout";
 import Image from 'next/image'
 import { User, Password } from 'react-iconly'
 import { apiLogin } from '../../apis/apiRegister';
-import { message } from 'antd'
 import { Form, Input, Button } from 'antd';
 import { statusCodeMessage } from "../../components/functions";
 import { useRouter } from 'next/router'

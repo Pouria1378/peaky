@@ -1,0 +1,59 @@
+.sidebar {
+    @include boxShadow();
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .routes {
+        text-align: right;
+        margin-top: 3rem;
+        width: 100%;
+        
+
+        ul {
+            display: flex;
+            flex-direction: column; 
+
+            li {
+                padding: 1rem;
+                cursor: pointer;
+                font-size: 0.8rem !important;
+                position: relative;
+                
+
+                &:hover {
+                    color: $mainColor1;
+                }
+
+                svg {
+                    width: 19px;
+                    margin-left: 8px;
+                }
+            }
+
+            .active {
+                background-color: $lightMainColor1;
+                color: $mainColor1;
+ 
+                &::after {
+                    content: "";
+                    display: block;
+                    width: 5px;
+                    height: 100%;
+                    background: $mainColor1;
+                    right: 0;
+                    top: 0;
+                    position: absolute;
+                }
+            }
+            
+        }
+
+
+    }
+}

@@ -1,3 +1,99 @@
 #CreateEventType {
-    
+    @include flexCenter();
+    text-align: right;
+
+    .createEventTypeWrapper {
+        @include boxShadow();
+        border-radius: $borderRadius;
+        background-color: $white;
+        width: 100%;
+        margin: 1rem;
+        max-width: 700px;
+
+        .CreateEventTypeHeader {
+            width: 100%;
+            border-bottom: 1px solid $lightGray;
+            padding: 1rem
+        }
+
+        .createEventTypeForm {
+            padding: 1rem;
+        }
+
+        .eventColors {
+            display: flex;
+            flex-direction: row;
+
+            .colorPicker input{
+                height: 100% !important;
+                width: 100% !important;
+                padding: 4px;
+                border-radius: 10px;
+            }
+
+            .eventColor {
+                width: 35px;
+                height: 35px;
+                margin: 0.5rem;
+                border-radius: $borderRadius;
+                cursor: pointer;
+
+                &:hover {
+                    outline: 2px solid $mainColor1;
+                }
+            }
+
+            .activeEventColor {
+                outline: 2px solid $mainColor1;
+            }
+
+            .eventColorDarkRed {
+                background-color: $darkRed;
+            }
+            .eventColorRed {
+                background-color: $red;
+            }
+            .eventColorDarkYellow {
+                background-color: $darkYellow;
+            }
+            .eventColorYellow {
+                background-color: $yellow;
+            }
+            .eventColorDarkGreen {
+                background-color: $darkGreen;
+            }
+            .eventColorGreen {
+                background-color: $green;
+            }
+            .eventColorDarkMainColor2 {
+                background-color: $darkMainColor2;
+            }
+            .eventColorMainColor2 {
+                background-color: $mainColor2;
+            }
+            .eventColorMainColor1 {
+                background-color: $mainColor1;
+            }
+        }
+
+        .eventLink {
+            .ant-input-group-addon {
+                color: $mainColor2;
+                background-color: $lightMainColor2;
+            }
+        }
+        
+
+        .saveEventTypeButton {
+
+            button {
+                width: 120px;
+            }
+
+            div {
+                @include flexCenter();
+            }
+        }
+        
+    }
 }

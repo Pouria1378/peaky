@@ -10,6 +10,10 @@ body * {
     font-size: 1rem;
 }
 
+body {
+    background-color: $lightGray !important;
+}
+
 //inputs 
 .ant-input-affix-wrapper {
     border-radius: $borderRadius !important;
@@ -28,6 +32,14 @@ body * {
 
     input {
         background-color: transparent;
+    }
+}
+
+.ant-form-item-label {
+    text-align: right !important;
+
+    label {
+        direction: ltr !important;
     }
 }
 
@@ -54,4 +66,10 @@ button {
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+
+//////
+.ltr {
+    direction: ltr !important;
 }

@@ -368,6 +368,10 @@ body * {
   font-size: 1rem;
 }
 
+body {
+  background-color: #F3F3F5 !important;
+}
+
 .ant-input-affix-wrapper {
   border-radius: 10px !important;
   background-color: #F3F3F5 !important;
@@ -382,6 +386,13 @@ body * {
 }
 .ant-input-affix-wrapper input {
   background-color: transparent;
+}
+
+.ant-form-item-label {
+  text-align: right !important;
+}
+.ant-form-item-label label {
+  direction: ltr !important;
 }
 
 button {
@@ -406,6 +417,15 @@ button {
   cursor: pointer;
 }
 
+.ltr {
+  direction: ltr !important;
+}
+
+@media (max-width: 767.98px) {
+  #RegisterPage .illusWrapper, #LoginPage .illusWrapper {
+    display: none;
+  }
+}
 #RegisterPage, #LoginPage {
   display: flex;
   align-items: center;
@@ -438,14 +458,93 @@ button {
   flex-direction: column;
   padding-bottom: 0 !important;
 }
-#RegisterPage .formWrapper .registerForm .ant-form-item-label, #LoginPage .formWrapper .registerForm .ant-form-item-label {
-  text-align: right;
-}
-#RegisterPage .formWrapper .registerForm .ant-form-item-label label, #LoginPage .formWrapper .registerForm .ant-form-item-label label {
-  direction: ltr;
-}
 #RegisterPage .formWrapper .registerForm .mainColor1Button, #LoginPage .formWrapper .registerForm .mainColor1Button {
   width: 100%;
+}
+
+#CreateEventType {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: right;
+}
+#CreateEventType .createEventTypeWrapper {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  width: 100%;
+  margin: 1rem;
+  max-width: 700px;
+}
+#CreateEventType .createEventTypeWrapper .CreateEventTypeHeader {
+  width: 100%;
+  border-bottom: 1px solid #F3F3F5;
+  padding: 1rem;
+}
+#CreateEventType .createEventTypeWrapper .createEventTypeForm {
+  padding: 1rem;
+}
+#CreateEventType .createEventTypeWrapper .eventColors {
+  display: flex;
+  flex-direction: row;
+}
+#CreateEventType .createEventTypeWrapper .eventColors .colorPicker input {
+  height: 100% !important;
+  width: 100% !important;
+  padding: 4px;
+  border-radius: 10px;
+}
+#CreateEventType .createEventTypeWrapper .eventColors .eventColor {
+  width: 35px;
+  height: 35px;
+  margin: 0.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#CreateEventType .createEventTypeWrapper .eventColors .eventColor:hover {
+  outline: 2px solid #6A6EF4;
+}
+#CreateEventType .createEventTypeWrapper .eventColors .activeEventColor {
+  outline: 2px solid #6A6EF4;
+}
+#CreateEventType .createEventTypeWrapper .eventColors .eventColorDarkRed {
+  background-color: #DC3545;
+}
+#CreateEventType .createEventTypeWrapper .eventColors .eventColorRed {
+  background-color: #FF7070;
+}
+#CreateEventType .createEventTypeWrapper .eventColors .eventColorDarkYellow {
+  background-color: #FFA94D;
+}
+#CreateEventType .createEventTypeWrapper .eventColors .eventColorYellow {
+  background-color: #FFC107;
+}
+#CreateEventType .createEventTypeWrapper .eventColors .eventColorDarkGreen {
+  background-color: #28A745;
+}
+#CreateEventType .createEventTypeWrapper .eventColors .eventColorGreen {
+  background-color: #11CE8C;
+}
+#CreateEventType .createEventTypeWrapper .eventColors .eventColorDarkMainColor2 {
+  background-color: #17A2B8;
+}
+#CreateEventType .createEventTypeWrapper .eventColors .eventColorMainColor2 {
+  background-color: #54C1FB;
+}
+#CreateEventType .createEventTypeWrapper .eventColors .eventColorMainColor1 {
+  background-color: #6A6EF4;
+}
+#CreateEventType .createEventTypeWrapper .eventLink .ant-input-group-addon {
+  color: #54C1FB;
+  background-color: #F1FAFE;
+}
+#CreateEventType .createEventTypeWrapper .saveEventTypeButton button {
+  width: 120px;
+}
+#CreateEventType .createEventTypeWrapper .saveEventTypeButton div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sidebar {
@@ -458,6 +557,10 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #FFFFFF;
+}
+.sidebar .logoWrapper * {
+  background-color: #FFFFFF;
 }
 .sidebar .routes {
   text-align: right;
@@ -473,6 +576,7 @@ button {
   cursor: pointer;
   font-size: 0.8rem !important;
   position: relative;
+  background-color: #FFFFFF;
 }
 .sidebar .routes ul li:hover {
   color: #6A6EF4;
@@ -494,10 +598,4 @@ button {
   right: 0;
   top: 0;
   position: absolute;
-}
-
-@media (max-width: 767.98px) {
-  #RegisterPage .illusWrapper, #LoginPage .illusWrapper {
-    display: none;
-  }
 }/*# sourceMappingURL=main.css.map */

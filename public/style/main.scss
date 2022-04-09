@@ -1,0 +1,13 @@
+@import "./ResetCss";
+@import "./Variables";
+@import "./SassFunctions";
+@import "./app";
+
+
+@import "../../src/components/register/Register";
+@import "../../src/components/login/Login";
+@import "../../src/components/createEventType/CreateEventType";
+@import "../../src/components/sidebar/Sidebar";
+@import "./responsive";
+
+

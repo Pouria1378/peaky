@@ -1,0 +1,45 @@
+#RegisterPage {
+    @include flexCenter();
+    height: 100vh;
+
+
+    section {
+        height: 100%;
+    }
+
+    .illus {
+        background-color: $lightMainColor3;
+        margin-left: -15px;
+        height: 100%;
+    }
+
+    .formWrapper {
+        @include flexCenter();
+        height: 100%;
+
+        .registerForm {
+            @include boxShadow();
+            text-align: right;
+            max-width: 600px;
+            padding: 1rem;
+            margin: 20px;
+            text-align: right;
+            direction: rtl;
+            display: flex;
+            flex-direction: column; 
+            padding-bottom: 0 !important;
+
+            .ant-form-item-label {
+                text-align: right;
+
+                label {
+                    direction: ltr;
+                }
+            }
+
+            .mainColor1Button {
+                width: 100%;
+            }
+        }
+    }
+}

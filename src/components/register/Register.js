@@ -7,10 +7,11 @@ import { message } from 'antd'
 import { Form, Input, Button } from 'antd';
 import { statusCodeMessage } from "../../components/functions";
 import { useRouter } from 'next/router'
+import useIsMounted from "../useIsMounted"
 
 const Register = () => {
+    const isMounted = useIsMounted();
     const [registerLoading, setRegisterLoading] = useState(false)
-
 
     const router = useRouter()
 
@@ -21,17 +22,20 @@ const Register = () => {
             setRegisterLoading(false)
             return
         }
-        console.log("data", data);
         apiRegister(data)
             .then((result) => {
+                if (!isMounted()) return;
                 const { statusCode, success } = result
                 setRegisterLoading(false)
                 if (success) {
                     statusCodeMessage(statusCode)
                     router.push("/login")
                 }
+                statusCodeMessage(600)
             })
             .catch((err) => {
+                if (!isMounted()) return;
+                statusCodeMessage(600)
                 setRegisterLoading(false)
                 console.error(err)
             })

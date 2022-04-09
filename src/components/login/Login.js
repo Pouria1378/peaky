@@ -6,8 +6,10 @@ import { apiLogin } from '../../apis/apiRegister';
 import { Form, Input, Button } from 'antd';
 import { statusCodeMessage } from "../../components/functions";
 import { useRouter } from 'next/router'
+import useIsMounted from "../useIsMounted"
 
 const Register = () => {
+    const isMounted = useIsMounted();
     const [registerLoading, setRegisterLoading] = useState(false)
 
 
@@ -17,14 +19,18 @@ const Register = () => {
         setRegisterLoading(true)
         apiLogin(data)
             .then((result) => {
+                if (!isMounted()) return;
                 const { statusCode, success } = result
                 setRegisterLoading(false)
                 if (success) {
                     statusCodeMessage(statusCode)
                     router.push("/login")
                 }
+                statusCodeMessage(600)
             })
             .catch((err) => {
+                if (!isMounted()) return;
+                statusCodeMessage(600)
                 setRegisterLoading(false)
                 console.error(err)
             })

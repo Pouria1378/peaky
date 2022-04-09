@@ -9,6 +9,9 @@ export const statusCodeMessage = (statusCode) => {
         409: () => {
             message.warning("قبلا ثبت نام کرده اید لطفا وارد شوید")
         },
+        600: () => {
+            message.error("ارتباط با سرور با مشکل مواجه شد")
+        }
 
     }
 

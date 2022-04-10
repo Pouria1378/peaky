@@ -1,16 +1,134 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../layout";
 import { apiCreateEventType } from '../../apis/apiCreateEventType';
 import { Form, Input, Button, Select } from 'antd';
+import { Delete, Plus, TickSquare } from "react-iconly";
 
 
 const CreateEventType = () => {
     const { Option } = Select;
     const { TextArea } = Input;
     const [eventColor, setEventColor] = useState('');
+    const [userFreeTime, setUserFreeTime] = useState({
+        saturday: [{ from: "09:00", to: "17:00" }],
+        sunday: [{ from: "09:00", to: "17:00" }],
+        monday: [{ from: "09:00", to: "17:00" }],
+        tuesday: [{ from: "09:00", to: "17:00" }],
+        wednesday: [{ from: "09:00", to: "17:00" }],
+        thursday: [{ from: "09:00", to: "17:00" }],
+        friday: [{ from: "09:00", to: "17:00" }]
+    });
 
+    const weekDays = [
+        { faLabel: "شنبه", label: "saturday" },
+        { faLabel: "یک شنبه", label: "sunday" },
+        { faLabel: "دو شنبه", label: "monday" },
+        { faLabel: "سه شنبه", label: "tuesday" },
+        { faLabel: "چهار شنبه", label: "wednesday" },
+        { faLabel: "پنج شنبه", label: "thursday" },
+        { faLabel: "جمعه", label: "friday" },
+    ]
+
+    const eventColors = [
+        { className: "eventColorMainColor1", color: "#6A6EF4" },   
+        { className: "eventColorMainColor2", color: "#54C1FB" },   
+        { className: "eventColorDarkMainColor2", color: "#17A2B8" },   
+        { className: "eventColorGreen", color: "#11CE8C" },   
+        { className: "eventColorDarkGreen", color: "#28A745" },   
+        { className: "eventColorYellow", color: "#FFC107" },   
+        { className: "eventColorDarkYellow", color: "#FFA94D" },   
+        { className: "eventColorRed", color: "#FF7070" },   
+        { className: "eventColorDarkRed", color: "#DC3545" },   
+    ]
     const postEventTypeForm = (data) => {
-        console.log("bbb", data);
+
+    }
+
+
+    const options = () => {
+        return (
+            <React.Fragment>
+                <Option value="08:00">08:00</Option>
+                <Option value="08:30">08:30</Option>
+                <Option value="09:00">09:00</Option>
+                <Option value="09:30">09:30</Option>
+                <Option value="10:00">10:00</Option>
+                <Option value="10:30">10:30</Option>
+                <Option value="11:00">11:00</Option>
+                <Option value="11:30">11:30</Option>
+                <Option value="12:00">12:00</Option>
+                <Option value="12:30">12:30</Option>
+                <Option value="13:00">13:00</Option>
+                <Option value="13:30">13:30</Option>
+                <Option value="14:00">14:00</Option>
+                <Option value="14:30">14:30</Option>
+                <Option value="15:00">15:00</Option>
+                <Option value="15:30">15:30</Option>
+                <Option value="16:00">16:00</Option>
+                <Option value="16:30">16:30</Option>
+                <Option value="17:00">17:00</Option>
+                <Option value="17:30">17:30</Option>
+                <Option value="18:00">18:00</Option>
+                <Option value="18:30">18:30</Option>
+                <Option value="19:00">19:00</Option>
+                <Option value="19:30">19:30</Option>
+                <Option value="20:00">20:00</Option>
+                <Option value="20:30">20:30</Option>
+                <Option value="21:00">21:00</Option>
+                <Option value="21:30">21:30</Option>
+            </React.Fragment>
+        )
+    }
+    const freeTimeSelect = (dayLabel) => {
+        if (!userFreeTime[dayLabel].length) {
+            return (
+                <div>خارج از دسترس</div>
+            )
+        }
+        return (
+            <div className="selectTime">
+                {
+                    userFreeTime[dayLabel].map((time, index) => (
+                        <div className="mb-3" key={index}>
+                            <Select
+                                value={time.from}
+                                onChange={(e) => {
+                                    setUserFreeTime((prevState) => {
+                                        prevState[dayLabel][index].from = e
+                                        return { ...prevState }
+                                    })
+                                }}
+                            >
+                                {options()}
+                            </Select>
+                            <span className="m-2">-</span>
+                            <Select
+                                value={time.to}
+                                onChange={(e) => {
+                                    setUserFreeTime((prevState) => {
+                                        prevState[dayLabel][index].to = e
+                                        return { ...prevState }
+                                    })
+                                }}
+                            >
+                                {options()}
+                            </Select>
+                            <Delete
+                                set="curved"
+                                className="cursor-pointer mr-2"
+                                primaryColor="#FF7070"
+                                onClick={() => {
+                                    setUserFreeTime((prevState) => {
+                                        prevState[dayLabel].splice(index, 1)
+                                        return { ...prevState }
+                                    })
+                                }}
+                            />
+                        </div>
+                    ))
+                }
+            </div>
+        )
     }
 
     return (
@@ -49,7 +167,6 @@ const CreateEventType = () => {
                         >
                             <Input
                                 addonBefore="MM"
-                                defaultValue="00"
                                 className="ltr"
                             />
                         </Form.Item>
@@ -62,7 +179,6 @@ const CreateEventType = () => {
                         >
                             <Input
                                 addonBefore="HH"
-                                defaultValue="01"
                                 className="ltr"
                             />
                         </Form.Item>
@@ -93,51 +209,20 @@ const CreateEventType = () => {
                                 />
                             </div>
 
-                            <div
-                                className={`eventColor eventColorMainColor1 
-                                ${eventColor === "#6A6EF4" ? "activeEventColor" : ""}`}
-                                onClick={() => setEventColor("#6A6EF4")}
-                            />
-                            <div
-                                className={`eventColor eventColorMainColor2 
-                                ${eventColor === "#54C1FB" ? "activeEventColor" : ""}`}
-                                onClick={() => setEventColor("#54C1FB")}
-                            />
-                            <div
-                                className={`eventColor eventColorDarkMainColor2 
-                                ${eventColor === "#17A2B8" ? "activeEventColor" : ""}`}
-                                onClick={() => setEventColor("#17A2B8")}
-                            />
-                            <div
-                                className={`eventColor eventColorGreen 
-                                ${eventColor === "#11CE8C" ? "activeEventColor" : ""}`}
-                                onClick={() => setEventColor("#11CE8C")}
-                            />
-                            <div
-                                className={`eventColor eventColorDarkGreen 
-                                ${eventColor === "#28A745" ? "activeEventColor" : ""}`}
-                                onClick={() => setEventColor("#28A745")}
-                            />
-                            <div
-                                className={`eventColor eventColorYellow 
-                                ${eventColor === "#FFC107" ? "activeEventColor" : ""}`}
-                                onClick={() => setEventColor("#FFC107")}
-                            />
-                            <div
-                                className={`eventColor eventColorDarkYellow 
-                                ${eventColor === "#FFA94D" ? "activeEventColor" : ""}`}
-                                onClick={() => setEventColor("#FFA94D")}
-                            />
-                            <div
-                                className={`eventColor eventColorRed 
-                                ${eventColor === "#FF7070" ? "activeEventColor" : ""}`}
-                                onClick={() => setEventColor("#FF7070")}
-                            />
-                            <div
-                                className={`eventColor eventColorDarkRed 
-                                ${eventColor === "#DC3545" ? "activeEventColor" : ""}`}
-                                onClick={() => setEventColor("#DC3545")}
-                            />
+                            {
+                                eventColors.map(({className, color}) =>
+                                    <div
+                                        className={`eventColor ${className} 
+                                            ${eventColor === `${color}` ? "activeEventColor" : ""}`}
+                                        onClick={() => setEventColor(color)}
+                                    >
+                                        <TickSquare
+                                            className="h-100 m-auto"
+                                            set="curved"
+                                            primaryColor="white"
+                                        />
+                                    </div>)
+                            }
 
                         </div>
                     </Form.Item>
@@ -164,6 +249,121 @@ const CreateEventType = () => {
                             className="ltr"
                         />
                     </Form.Item>
+
+                    <div>
+                        <label>تعیین زمان های آزاد</label>
+                        <div className="freeTime">
+                            {
+                                weekDays.map(day => (
+                                    <div className="days">
+                                        <div className="dayLabel">
+                                            <label>{day.faLabel}</label>
+                                            <Plus
+                                                set="curved"
+                                                className="cursor-pointer"
+                                                onClick={() => {
+                                                    setUserFreeTime((prevState) => {
+                                                        prevState[day.label].push({ from: "09:00", to: "17:00" })
+                                                        return { ...prevState }
+                                                    })
+                                                }}
+                                            />
+                                        </div>
+
+                                        {
+                                            freeTimeSelect(day.label)
+                                        }
+                                    </div>
+                                ))
+                            }
+
+                            {/* <div className="days">
+                                <div className="dayLabel">
+                                    <label>یک شنبه</label>
+                                    <Plus
+                                        set="curved"
+                                        onClick={() => { }}
+                                    />
+                                </div>
+
+                                {
+                                    freeTimeSelect("sunday")
+                                }
+                            </div>
+
+                            <div className="days">
+                                <div className="dayLabel">
+                                    <label>دو شنبه</label>
+                                    <Plus
+                                        set="curved"
+                                        onClick={() => { }}
+                                    />
+                                </div>
+
+                                {
+                                    freeTimeSelect("monday")
+                                }
+                            </div>
+
+                            <div className="days">
+                                <div className="dayLabel">
+                                    <label>سه شنبه</label>
+                                    <Plus
+                                        set="curved"
+                                        onClick={() => { }}
+                                    />
+                                </div>
+
+                                {
+                                    freeTimeSelect("tuesday")
+                                }
+                            </div>
+
+                            <div className="days">
+                                <div className="dayLabel">
+                                    <label>چهار شنبه</label>
+                                    <Plus
+                                        set="curved"
+                                        onClick={() => { }}
+                                    />
+                                </div>
+
+                                {
+                                    freeTimeSelect("wednesday")
+                                }
+                            </div>
+
+                            <div className="days">
+                                <div className="dayLabel">
+                                    <label>پنج شنبه</label>
+                                    <Plus
+                                        set="curved"
+                                        onClick={() => { }}
+                                    />
+                                </div>
+
+                                {
+                                    freeTimeSelect("thursday")
+                                }
+                            </div>
+
+                            <div className="days">
+                                <div className="dayLabel">
+                                    <label>جمعه</label>
+                                    <Plus
+                                        set="curved"
+                                        onClick={() => { }}
+                                    />
+                                </div>
+
+                                {
+                                    freeTimeSelect("friday")
+                                }
+                            </div> */}
+
+
+                        </div>
+                    </div>
 
                     <Form.Item
                         className="saveEventTypeButton"

@@ -37,6 +37,9 @@
                 margin: 0.5rem;
                 border-radius: $borderRadius;
                 cursor: pointer;
+                svg {
+                    display: none;
+                }
 
                 &:hover {
                     outline: 2px solid $mainColor1;
@@ -45,6 +48,10 @@
 
             .activeEventColor {
                 outline: 2px solid $mainColor1;
+
+                svg {
+                    display: flex;
+                }
             }
 
             .eventColorDarkRed {
@@ -80,6 +87,38 @@
             .ant-input-group-addon {
                 color: $mainColor2;
                 background-color: $lightMainColor2;
+            }
+        }
+
+        .freeTime {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            border: 1px solid $lightGray;
+            margin-bottom: 1rem;
+            border-radius: $borderRadius;
+            
+            .days {
+                display: flex;
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid $lightGray;
+
+                label {
+                    min-width: 65px;
+                }
+
+                .dayLabel svg {
+                    width: 19px;
+                    height: 19px;
+                    color: $green;
+                }
+            
+            }
+
+            .selectTime {
+                display: flex;
+                flex-direction: column;
             }
         }
         

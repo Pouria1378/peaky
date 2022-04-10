@@ -501,11 +501,17 @@ button {
   border-radius: 10px;
   cursor: pointer;
 }
+#CreateEventType .createEventTypeWrapper .eventColors .eventColor svg {
+  display: none;
+}
 #CreateEventType .createEventTypeWrapper .eventColors .eventColor:hover {
   outline: 2px solid #6A6EF4;
 }
 #CreateEventType .createEventTypeWrapper .eventColors .activeEventColor {
   outline: 2px solid #6A6EF4;
+}
+#CreateEventType .createEventTypeWrapper .eventColors .activeEventColor svg {
+  display: flex;
 }
 #CreateEventType .createEventTypeWrapper .eventColors .eventColorDarkRed {
   background-color: #DC3545;
@@ -538,6 +544,32 @@ button {
   color: #54C1FB;
   background-color: #F1FAFE;
 }
+#CreateEventType .createEventTypeWrapper .freeTime {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 1px solid #F3F3F5;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+}
+#CreateEventType .createEventTypeWrapper .freeTime .days {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-bottom: 1px solid #F3F3F5;
+}
+#CreateEventType .createEventTypeWrapper .freeTime .days label {
+  min-width: 65px;
+}
+#CreateEventType .createEventTypeWrapper .freeTime .days .dayLabel svg {
+  width: 19px;
+  height: 19px;
+  color: #11CE8C;
+}
+#CreateEventType .createEventTypeWrapper .freeTime .selectTime {
+  display: flex;
+  flex-direction: column;
+}
 #CreateEventType .createEventTypeWrapper .saveEventTypeButton button {
   width: 120px;
 }
@@ -557,10 +589,6 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #FFFFFF;
-}
-.sidebar .logoWrapper * {
-  background-color: #FFFFFF;
 }
 .sidebar .routes {
   text-align: right;
@@ -576,7 +604,6 @@ button {
   cursor: pointer;
   font-size: 0.8rem !important;
   position: relative;
-  background-color: #FFFFFF;
 }
 .sidebar .routes ul li:hover {
   color: #6A6EF4;

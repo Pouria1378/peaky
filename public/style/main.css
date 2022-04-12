@@ -552,6 +552,9 @@ button {
   margin-bottom: 1rem;
   border-radius: 10px;
 }
+#CreateEventType .createEventTypeWrapper .freeTime .days:last-child {
+  border-bottom: none !important;
+}
 #CreateEventType .createEventTypeWrapper .freeTime .days {
   display: flex;
   flex-direction: column;

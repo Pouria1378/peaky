@@ -97,6 +97,10 @@
             border: 1px solid $lightGray;
             margin-bottom: 1rem;
             border-radius: $borderRadius;
+
+            .days:last-child {
+                border-bottom: none !important;
+            }
             
             .days {
                 display: flex;

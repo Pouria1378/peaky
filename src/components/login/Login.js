@@ -10,28 +10,30 @@ import useIsMounted from "../useIsMounted"
 
 const Register = () => {
     const isMounted = useIsMounted();
-    const [registerLoading, setRegisterLoading] = useState(false)
+    const [loginLoading, setLoginLoading] = useState(false)
 
 
     const router = useRouter()
 
     const postLoginData = (data) => {
-        setRegisterLoading(true)
+        setLoginLoading(true)
         apiLogin(data)
             .then((result) => {
                 if (!isMounted()) return;
-                const { statusCode, success } = result
-                setRegisterLoading(false)
+                const { statusCode, success, token } = result
+                setLoginLoading(false)
                 if (success) {
                     statusCodeMessage(statusCode)
-                    router.push("/login")
+                    localStorage.setItem("token", token)
+                    router.push("/createEventType")
+                    return
                 }
                 statusCodeMessage(600)
             })
             .catch((err) => {
                 if (!isMounted()) return;
                 statusCodeMessage(600)
-                setRegisterLoading(false)
+                setLoginLoading(false)
                 console.error(err)
             })
     }
@@ -77,7 +79,7 @@ const Register = () => {
                                 <Button
                                     className="mainColor1Button"
                                     htmlType="submit"
-                                    disabled={registerLoading}
+                                    disabled={loginLoading}
                                 >ورود
                                 </Button>
                             </Form.Item>

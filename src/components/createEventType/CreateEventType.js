@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Layout from "../layout";
 import { apiCreateEventType } from '../../apis/apiCreateEventType';
 import { Form, Input, Button, Select } from 'antd';
 import { Delete, Plus, TickSquare } from "react-iconly";
+import { statusCodeMessage } from "../functions";
+import useIsMounted from "../useIsMounted";
 
 
 const CreateEventType = () => {
+    const isMounted = useIsMounted();
     const { Option } = Select;
     const { TextArea } = Input;
+    const [postEventTypeLoading, setPostEventTypeLoading] = useState(false);
     const [eventColor, setEventColor] = useState('');
     const [userFreeTime, setUserFreeTime] = useState({
         saturday: [{ from: "09:00", to: "17:00" }],
@@ -30,18 +34,50 @@ const CreateEventType = () => {
     ]
 
     const eventColors = [
-        { className: "eventColorMainColor1", color: "#6A6EF4" },   
-        { className: "eventColorMainColor2", color: "#54C1FB" },   
-        { className: "eventColorDarkMainColor2", color: "#17A2B8" },   
-        { className: "eventColorGreen", color: "#11CE8C" },   
-        { className: "eventColorDarkGreen", color: "#28A745" },   
-        { className: "eventColorYellow", color: "#FFC107" },   
-        { className: "eventColorDarkYellow", color: "#FFA94D" },   
-        { className: "eventColorRed", color: "#FF7070" },   
-        { className: "eventColorDarkRed", color: "#DC3545" },   
+        { className: "eventColorMainColor1", color: "#6A6EF4" },
+        { className: "eventColorMainColor2", color: "#54C1FB" },
+        { className: "eventColorDarkMainColor2", color: "#17A2B8" },
+        { className: "eventColorGreen", color: "#11CE8C" },
+        { className: "eventColorDarkGreen", color: "#28A745" },
+        { className: "eventColorYellow", color: "#FFC107" },
+        { className: "eventColorDarkYellow", color: "#FFA94D" },
+        { className: "eventColorRed", color: "#FF7070" },
+        { className: "eventColorDarkRed", color: "#DC3545" },
     ]
-    const postEventTypeForm = (data) => {
+    const postEventTypeForm = (formData) => {
+        setPostEventTypeLoading(true)
+        const eventData = {
+            title: formData.title,
+            duration: formData.hour + ':' + formData.minute,
+            type: formData.eventType,
+            color: eventColor,
+            description: formData.description,
+            link: formData.eventLink,
+            freeTimes: JSON.stringify(userFreeTime)
+        }
 
+        apiCreateEventType(eventData)
+            .then(result => {
+                if (!isMounted()) return;
+                setPostEventTypeLoading(false)
+                const { statusCode, success } = result
+                if (statusCode === 409) {
+                    statusCodeMessage(602)
+                    return
+                }
+                if (success) {
+                    statusCodeMessage(statusCode)
+                    return
+                }
+
+                statusCodeMessage(601)
+            })
+            .catch(err => {
+                if (!isMounted()) return;
+                setPostEventTypeLoading(false)
+                statusCodeMessage(600)
+                console.error(err)
+            });
     }
 
 
@@ -210,8 +246,9 @@ const CreateEventType = () => {
                             </div>
 
                             {
-                                eventColors.map(({className, color}) =>
+                                eventColors.map(({ className, color }) =>
                                     <div
+                                        key={color}
                                         className={`eventColor ${className} 
                                             ${eventColor === `${color}` ? "activeEventColor" : ""}`}
                                         onClick={() => setEventColor(color)}
@@ -255,7 +292,10 @@ const CreateEventType = () => {
                         <div className="freeTime">
                             {
                                 weekDays.map(day => (
-                                    <div className="days">
+                                    <div
+                                        key={day.faLabel}
+                                        className="days"
+                                    >
                                         <div className="dayLabel">
                                             <label>{day.faLabel}</label>
                                             <Plus
@@ -277,91 +317,6 @@ const CreateEventType = () => {
                                 ))
                             }
 
-                            {/* <div className="days">
-                                <div className="dayLabel">
-                                    <label>یک شنبه</label>
-                                    <Plus
-                                        set="curved"
-                                        onClick={() => { }}
-                                    />
-                                </div>
-
-                                {
-                                    freeTimeSelect("sunday")
-                                }
-                            </div>
-
-                            <div className="days">
-                                <div className="dayLabel">
-                                    <label>دو شنبه</label>
-                                    <Plus
-                                        set="curved"
-                                        onClick={() => { }}
-                                    />
-                                </div>
-
-                                {
-                                    freeTimeSelect("monday")
-                                }
-                            </div>
-
-                            <div className="days">
-                                <div className="dayLabel">
-                                    <label>سه شنبه</label>
-                                    <Plus
-                                        set="curved"
-                                        onClick={() => { }}
-                                    />
-                                </div>
-
-                                {
-                                    freeTimeSelect("tuesday")
-                                }
-                            </div>
-
-                            <div className="days">
-                                <div className="dayLabel">
-                                    <label>چهار شنبه</label>
-                                    <Plus
-                                        set="curved"
-                                        onClick={() => { }}
-                                    />
-                                </div>
-
-                                {
-                                    freeTimeSelect("wednesday")
-                                }
-                            </div>
-
-                            <div className="days">
-                                <div className="dayLabel">
-                                    <label>پنج شنبه</label>
-                                    <Plus
-                                        set="curved"
-                                        onClick={() => { }}
-                                    />
-                                </div>
-
-                                {
-                                    freeTimeSelect("thursday")
-                                }
-                            </div>
-
-                            <div className="days">
-                                <div className="dayLabel">
-                                    <label>جمعه</label>
-                                    <Plus
-                                        set="curved"
-                                        onClick={() => { }}
-                                    />
-                                </div>
-
-                                {
-                                    freeTimeSelect("friday")
-                                }
-                            </div> */}
-
-
                         </div>
                     </div>
 
@@ -371,7 +326,7 @@ const CreateEventType = () => {
                         <Button
                             className="mainColor1Button m-auto"
                             htmlType="submit"
-                        // disabled={registerLoading}
+                            disabled={postEventTypeLoading}
                         >ذخیره
                         </Button>
                     </Form.Item>

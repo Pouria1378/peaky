@@ -28,7 +28,7 @@ instanceAxios.interceptors.request.use(
         config.headers = {
             "Accept": "application/json",
             "Content-Type": "application/json",
-            // "Authorization": `Bearer ${tokenCheckExists()}`,
+            "Authorization": `${tokenCheckExists()}`,
             "app-name": "Peaky",
         }
         return config;

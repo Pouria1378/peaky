@@ -421,6 +421,10 @@ button {
   direction: ltr !important;
 }
 
+.ant-popover-inner {
+  border-radius: 10px !important;
+}
+
 @media (max-width: 767.98px) {
   #RegisterPage .illusWrapper, #LoginPage .illusWrapper {
     display: none;
@@ -582,7 +586,11 @@ button {
   justify-content: center;
 }
 
-.sidebar {
+#Sidebar {
+  width: 190px;
+  height: 100%;
+}
+#Sidebar .sidebar {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   position: fixed;
   top: 0;
@@ -593,33 +601,33 @@ button {
   flex-direction: column;
   align-items: center;
 }
-.sidebar .routes {
+#Sidebar .sidebar .routes {
   text-align: right;
   margin-top: 3rem;
   width: 100%;
 }
-.sidebar .routes ul {
+#Sidebar .sidebar .routes ul {
   display: flex;
   flex-direction: column;
 }
-.sidebar .routes ul li {
+#Sidebar .sidebar .routes ul li {
   padding: 1rem;
   cursor: pointer;
   font-size: 0.8rem !important;
   position: relative;
 }
-.sidebar .routes ul li:hover {
+#Sidebar .sidebar .routes ul li:hover {
   color: #6A6EF4;
 }
-.sidebar .routes ul li svg {
+#Sidebar .sidebar .routes ul li svg {
   width: 19px;
   margin-left: 8px;
 }
-.sidebar .routes ul .active {
+#Sidebar .sidebar .routes ul .active {
   background-color: #F1F1FE;
   color: #6A6EF4;
 }
-.sidebar .routes ul .active::after {
+#Sidebar .sidebar .routes ul .active::after {
   content: "";
   display: block;
   width: 5px;
@@ -628,4 +636,147 @@ button {
   right: 0;
   top: 0;
   position: absolute;
+}
+
+#EventTypes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: right;
+}
+#EventTypes .eventTypes {
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 1rem;
+  max-width: 1000px;
+  display: flex;
+}
+#EventTypes .eventTypes .eventType {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  width: 300px;
+  position: relative;
+  overflow: hidden;
+}
+#EventTypes .eventTypes .eventType .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#EventTypes .eventTypes .eventType .header .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+#EventTypes .eventTypes .eventType .header svg {
+  transform: rotateZ(90deg);
+}
+#EventTypes .eventTypes .eventType .body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #F3F3F5;
+  padding: 1rem 0;
+}
+#EventTypes .eventTypes .eventType .body::before {
+  content: "";
+  display: block;
+  width: 5.5px;
+  height: 100%;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+#EventTypes .eventTypes .eventType .body .duration {
+  border: 1.4px solid #6C757D;
+  border-radius: 10px;
+  padding: 0.1rem 0.5rem;
+  color: #6C757D;
+  height: 30px;
+}
+#EventTypes .eventTypes .eventType .body .duration svg {
+  color: #6C757D;
+  width: 19px;
+  height: 19px;
+  margin-left: 5px;
+}
+#EventTypes .eventTypes .eventType .body .type {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.4px solid #6C757D;
+  border-radius: 10px;
+  padding: 0.1rem 0.5rem;
+  color: #6C757D;
+  height: 30px;
+}
+#EventTypes .eventTypes .eventType .body .type svg {
+  width: 17px;
+  height: 17px;
+  margin-right: 6px;
+}
+#EventTypes .eventTypes .eventType .eventColorMainColor1::before {
+  background: #6A6EF4;
+}
+#EventTypes .eventTypes .eventType .eventColorMainColor2::before {
+  background: #54C1FB;
+}
+#EventTypes .eventTypes .eventType .eventColorDarkMainColor2::before {
+  background: #17A2B8;
+}
+#EventTypes .eventTypes .eventType .eventColorGreen::before {
+  background: #11CE8C;
+}
+#EventTypes .eventTypes .eventType .eventColorDarkGreen::before {
+  background: #28A745;
+}
+#EventTypes .eventTypes .eventType .eventColorYellow::before {
+  background: #FFC107;
+}
+#EventTypes .eventTypes .eventType .eventColorDarkYellow::before {
+  background: #FFA94D;
+}
+#EventTypes .eventTypes .eventType .eventColorRed::before {
+  background: #FF7070;
+}
+#EventTypes .eventTypes .eventType .eventColorDarkRed::before {
+  background: #DC3545;
+}
+#EventTypes .eventTypes .eventType .footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+}
+#EventTypes .eventTypes .eventType .footer .link {
+  direction: ltr;
+  color: #54C1FB;
+  text-decoration: underline;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  margin-left: 20px;
+}
+#EventTypes .eventTypes .eventType .footer .link a {
+  color: #54C1FB;
+}
+#EventTypes .eventTypes .eventType .footer .mainColor1Button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px !important;
+  min-width: 100px;
+}
+#EventTypes .eventTypes .eventType .footer .mainColor1Button svg {
+  width: 17px;
+  height: 17px;
+  margin-left: 6px;
 }/*# sourceMappingURL=main.css.map */

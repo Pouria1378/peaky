@@ -34,15 +34,15 @@ const CreateEventType = () => {
     ]
 
     const eventColors = [
-        { className: "eventColorMainColor1", color: "#6A6EF4" },
-        { className: "eventColorMainColor2", color: "#54C1FB" },
-        { className: "eventColorDarkMainColor2", color: "#17A2B8" },
-        { className: "eventColorGreen", color: "#11CE8C" },
-        { className: "eventColorDarkGreen", color: "#28A745" },
-        { className: "eventColorYellow", color: "#FFC107" },
-        { className: "eventColorDarkYellow", color: "#FFA94D" },
-        { className: "eventColorRed", color: "#FF7070" },
-        { className: "eventColorDarkRed", color: "#DC3545" },
+        "eventColorMainColor1",
+        "eventColorMainColor2",
+        "eventColorDarkMainColor2",
+        "eventColorGreen",
+        "eventColorDarkGreen",
+        "eventColorYellow",
+        "eventColorDarkYellow",
+        "eventColorRed",
+        "eventColorDarkRed",
     ]
     const postEventTypeForm = (formData) => {
         setPostEventTypeLoading(true)
@@ -238,20 +238,20 @@ const CreateEventType = () => {
                         name="eventColor"
                     >
                         <div className="eventColors">
-                            <div className="eventColor colorPicker">
+                            {/* <div className="eventColor colorPicker">
                                 <Input
                                     type={"color"}
                                     onChange={(e) => setEventColor(e.target.value)}
                                 />
-                            </div>
+                            </div> */}
 
                             {
-                                eventColors.map(({ className, color }) =>
+                                eventColors.map((className) =>
                                     <div
-                                        key={color}
+                                        key={className}
                                         className={`eventColor ${className} 
-                                            ${eventColor === `${color}` ? "activeEventColor" : ""}`}
-                                        onClick={() => setEventColor(color)}
+                                            ${eventColor === `${className}` ? "activeEventColor" : ""}`}
+                                        onClick={() => setEventColor(className)}
                                     >
                                         <TickSquare
                                             className="h-100 m-auto"
@@ -267,7 +267,6 @@ const CreateEventType = () => {
                     <Form.Item
                         label="توضیحات"
                         name="description"
-                        rules={[{ required: true, message: 'این فیلد الزامی است' }]}
                     >
                         <TextArea
                             rows={4}

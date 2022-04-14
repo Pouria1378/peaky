@@ -73,3 +73,8 @@ button {
 .ltr {
     direction: ltr !important;
 }
+
+//antd overrides
+.ant-popover-inner {
+    border-radius: $borderRadius !important;
+}

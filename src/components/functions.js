@@ -33,3 +33,25 @@ export const tokenCheckExists = () => {
 
     return false
 }
+
+export const toFarsiNumber = (number) => {
+    const farsiDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+
+    return number
+        .toString()
+        .split('')
+        .map(x => {
+            //for clock times
+            if (x === ":") return ":"
+
+            return farsiDigits[x]
+        })
+        .join('');
+}
+
+export const copyToClipboard = (text, messageText = "متن کپی شد") => {
+    navigator.clipboard.writeText(text)
+        .then(() => message.success(messageText))
+        .catch(() => message.error("کپی متن با مشکل مواجه شد"))
+
+}

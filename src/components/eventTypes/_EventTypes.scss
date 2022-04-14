@@ -1,0 +1,176 @@
+#EventTypes {
+    @include flexCenter();
+    text-align: right;
+    
+
+    .eventTypes {
+        flex-wrap: wrap;
+        width: 100%;
+        margin: 1rem;
+        max-width: 1000px;
+        display: flex;
+
+        .eventType {
+            @include boxShadow();
+            margin: 1rem;
+            padding: 1rem;
+            border-radius: $borderRadius;
+            background-color: $white;
+            width: 300px;
+            position: relative;
+            overflow: hidden;
+
+
+            .header {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+
+                .title {
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    width: 100%;
+                }
+
+                svg {
+                    transform: rotateZ(90deg);
+                }
+            }
+
+            .body {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid $lightGray;
+                padding: 1rem 0;
+
+                &::before {
+                    content: "";
+                    display: block;
+                    width: 5.5px;
+                    height: 100%;
+                    right: 0;
+                    top: 0;
+                    position: absolute;
+                }
+
+                .duration {
+                    border: 1.4px solid $gray;
+                    border-radius: $borderRadius;
+                    padding: 0.1rem 0.5rem;
+                    color: $gray;
+                    height: 30px;
+
+
+                    svg {
+                        color: $gray;
+                        width: 19px;
+                        height: 19px;
+                        margin-left: 5px;
+                    }
+                }
+
+                .type {
+                    @include flexCenter();
+                    border: 1.4px solid $gray;
+                    border-radius: $borderRadius;
+                    padding: 0.1rem 0.5rem;
+                    color: $gray;
+                    height: 30px;
+
+                    svg {
+                        width: 17px;
+                        height: 17px;
+                        margin-right: 6px;
+                    }
+                }
+            }
+
+            .eventColorMainColor1{
+                &::before {
+                    background: #6A6EF4;
+                }
+            }
+            .eventColorMainColor2{
+                &::before {
+                    background: #54C1FB;
+                }
+            }
+            .eventColorDarkMainColor2{
+                &::before {
+                    background: #17A2B8;
+                }
+            }
+            .eventColorGreen{
+                &::before {
+                    background: #11CE8C;
+                }
+            }
+            .eventColorDarkGreen{
+                &::before {
+                    background: #28A745;
+                }
+            }
+            .eventColorYellow{
+                &::before {
+                    background: #FFC107;
+                }
+            }
+            .eventColorDarkYellow{
+                &::before {
+                    background: #FFA94D;
+                }
+            }
+            .eventColorRed{
+                &::before {
+                    background: #FF7070;
+                }
+            }
+            .eventColorDarkRed{
+                &::before {
+                    background: #DC3545;
+                }
+            }
+
+            .footer {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding-top: 1rem;
+
+                .link {
+                    direction: ltr;
+                    color: $mainColor2;
+                    text-decoration: underline;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    width: 100%;
+                    margin-left: 20px;
+
+                    a {
+                        color: $mainColor2;
+                    }
+                }
+
+                .mainColor1Button {
+                    @include flexCenter();
+                    height: 30px !important;
+                    min-width: 100px;
+
+                    svg {
+                        width: 17px;
+                        height: 17px;
+                        margin-left: 6px;
+                    }
+                }
+            }
+        }
+    }
+
+    
+}

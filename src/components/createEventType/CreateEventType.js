@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout from "../layout";
+import Layout from "../../layout/Layout";
 import { apiCreateEventType } from '../../apis/apiCreateEventType';
 import { Form, Input, Button, Select } from 'antd';
 import { Delete, Plus, TickSquare } from "react-iconly";

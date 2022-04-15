@@ -781,6 +781,21 @@ button {
   margin-left: 6px;
 }
 
+.dropdownMenuEventTypes div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dropdownMenuEventTypes div svg {
+  width: 17px;
+}
+.dropdownMenuEventTypes .ant-switch {
+  margin-right: 5px;
+}
+.dropdownMenuEventTypes .ant-switch-inner span {
+  font-size: 0.8rem !important;
+}
+
 #Loading {
   position: fixed;
   top: 0;

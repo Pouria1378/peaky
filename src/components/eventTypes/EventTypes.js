@@ -34,17 +34,9 @@ const CreateEventType = () => {
             })
     }
 
-
     useEffect(() => {
         getEventTypes()
     }, [])
-
-    useEffect(() => {
-        console.log('====================================');
-        console.log("eventTypes", eventTypes);
-        console.log('====================================');
-    }, [eventTypes])
-
 
     return (
         <Layout

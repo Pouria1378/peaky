@@ -25,6 +25,12 @@ const baseApi = {
         method: 'GET',
         headers: { "x-access-token": `Bearer ${tokenCheckExists()}` },
     }),
+
+    deleteEventType: () => ({
+        url: `/deleteEventType`,
+        method: 'DELETE',
+        headers: { "x-access-token": `Bearer ${tokenCheckExists()}` },
+    }),
 }
 
 // Request interceptor for API calls

@@ -37,6 +37,8 @@
                 svg {
                     transform: rotateZ(90deg);
                 }
+
+                
             }
 
             .body {
@@ -173,4 +175,25 @@
     }
 
     
+}
+
+.dropdownMenuEventTypes {
+    div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        svg {
+            width: 17px;
+        }
+    }
+
+    .ant-switch {
+        margin-right: 5px;
+    }
+    .ant-switch-inner  {
+        span {
+            font-size: 0.8rem !important;      
+        }
+    }
 }

@@ -6,19 +6,19 @@ import { Popover } from 'antd';
 import Link from "next/link";
 
 const CreateEventType = ({ data }) => {
-    const { title, duration, type, color, description, link, freeTimes } = data
+    const { title, duration, type, color, link } = data
 
     const typeTypes = {
         "byPerson":
             <React.Fragment>
                 حضوری
-                <User set="curved" />
+                <User />
             </React.Fragment>,
 
         "phone":
             <React.Fragment>
                 تلفنی
-                <Call set="curved" />
+                <Call />
             </React.Fragment>,
 
         "skype":
@@ -57,12 +57,12 @@ const CreateEventType = ({ data }) => {
                     </Popover>
                 </span>
 
-                <MoreSquare set="curved" />
+                <MoreSquare />
             </div>
 
             <div className={`body ${color}`}>
                 <div className="duration">
-                    <TimeCircle set="curved" />
+                    <TimeCircle />
                     <span>
                         {toFarsiNumber(duration)}
                     </span>
@@ -84,7 +84,7 @@ const CreateEventType = ({ data }) => {
                     onClick={() => copyToClipboard(link, "لینک رویداد کپی شد")}
                     className="mainColor1Button"
                 >
-                    <PaperPlus set="curved" />
+                    <PaperPlus />
                     کپی لینک
                 </button>
             </div>

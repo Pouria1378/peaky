@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout from "../layout";
+import Layout from "../../layout/Layout";
 import Image from 'next/image'
 import { User, Password } from 'react-iconly'
 import { apiRegister } from '../../apis/apiRegister';
@@ -62,7 +62,7 @@ const Register = () => {
                                 rules={[{ required: true, message: 'این فیلد الزامی است' }]}
                             >
                                 <Input
-                                    prefix={<User set="curved" />}
+                                    prefix={<User />}
                                 />
                             </Form.Item>
 
@@ -72,7 +72,7 @@ const Register = () => {
                                 rules={[{ required: true, message: 'این فیلد الزامی است' }]}
                             >
                                 <Input.Password
-                                    prefix={<Password set="curved" />}
+                                    prefix={<Password />}
                                 />
                             </Form.Item>
 
@@ -82,7 +82,7 @@ const Register = () => {
                                 rules={[{ required: true, message: 'این فیلد الزامی است' }]}
                             >
                                 <Input.Password
-                                    prefix={<Password set="curved" />}
+                                    prefix={<Password />}
                                 />
                             </Form.Item>
 

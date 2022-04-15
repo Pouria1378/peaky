@@ -150,7 +150,6 @@ const CreateEventType = () => {
                                 {options()}
                             </Select>
                             <Delete
-                                set="curved"
                                 className="cursor-pointer mr-2"
                                 primaryColor="#FF7070"
                                 onClick={() => {
@@ -255,7 +254,6 @@ const CreateEventType = () => {
                                     >
                                         <TickSquare
                                             className="h-100 m-auto"
-                                            set="curved"
                                             primaryColor="white"
                                         />
                                     </div>)
@@ -298,7 +296,6 @@ const CreateEventType = () => {
                                         <div className="dayLabel">
                                             <label>{day.faLabel}</label>
                                             <Plus
-                                                set="curved"
                                                 className="cursor-pointer"
                                                 onClick={() => {
                                                     setUserFreeTime((prevState) => {

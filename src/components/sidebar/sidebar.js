@@ -27,28 +27,28 @@ const Sidebar = () => {
                             className={`${router.pathname === "/" ? "active" : ""}`}
                             onClick={() => router.push("/reservedEvents")}
                         >
-                            <Calendar set="curved" />رویداد های هماهنگ شده
+                            <Calendar />رویداد های هماهنگ شده
                         </li>
 
                         <li
                             className={`${router.pathname === "/eventTypes" ? "active" : ""}`}
                             onClick={() => router.push("/eventTypes")}
                         >
-                            <TimeSquare set="curved" />رویداد های شما
+                            <TimeSquare />رویداد های شما
                         </li>
 
                         <li
                             className={`${router.pathname === "/createEventType" ? "active" : ""}`}
                             onClick={() => router.push("/createEventType")}
                         >
-                            <Plus set="curved" />ایجاد نوع رویداد جدید
+                            <Plus />ایجاد نوع رویداد جدید
                         </li>
 
                         <li
                             className={`${router.pathname === "/" ? "active" : ""}`}
                             onClick={() => router.push("/")}
                         >
-                            <ArrowRightSquare set="curved" />خروج
+                            <ArrowRightSquare />خروج
                         </li>
                     </ul>
                 </div>

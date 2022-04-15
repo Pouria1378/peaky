@@ -7,6 +7,7 @@ import { Form, Input, Button } from 'antd';
 import { statusCodeMessage } from "../../components/functions";
 import { useRouter } from 'next/router'
 import useIsMounted from "../useIsMounted"
+import Loading from "../loading/Loading";
 
 const Register = () => {
     const isMounted = useIsMounted();
@@ -42,6 +43,9 @@ const Register = () => {
         <Layout
             bodyIdStyle="LoginPage"
         >
+            {
+                loginLoading && <Loading />
+            }
             <div className="row w-100 h-100">
                 <section className="col-12 col-md-6">
                     <div className="formWrapper">

@@ -10,6 +10,10 @@
         max-width: 1000px;
         display: flex;
 
+        .inactive {
+            background-color: $lightGray !important;
+        }
+
         .eventType {
             @include boxShadow();
             margin: 1rem;
@@ -163,6 +167,25 @@
                     @include flexCenter();
                     height: 30px !important;
                     min-width: 100px;
+
+                    svg {
+                        width: 17px;
+                        height: 17px;
+                        margin-left: 6px;
+                    }
+                }
+
+                .activeEvent {
+                    @include flexCenter();
+                    height: 30px;
+                    min-width: 110px;
+                    background-color: $green;
+                    color: $white;
+                    border: 1px solid $green;
+
+                    &:hover {
+                        background-color: $darkGreen;
+                    }
 
                     svg {
                         width: 17px;

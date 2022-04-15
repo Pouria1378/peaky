@@ -6,6 +6,7 @@ import { Delete, Plus, TickSquare } from "react-iconly";
 import { statusCodeMessage } from "../functions";
 import useIsMounted from "../useIsMounted";
 import { useRouter } from 'next/router'
+import Loading from "../loading/Loading";
 
 const CreateEventType = () => {
     const isMounted = useIsMounted();
@@ -175,6 +176,9 @@ const CreateEventType = () => {
             bodyIdStyle="CreateEventType"
             sideBar={true}
         >
+            {
+                postEventTypeLoading && <Loading />
+            }
             <div className="createEventTypeWrapper">
 
                 <div className="CreateEventTypeHeader">

@@ -369,12 +369,12 @@ body * {
 }
 
 body {
-  background-color: #F3F3F5 !important;
+  background-color: #F3F3F9 !important;
 }
 
 .ant-input-affix-wrapper {
   border-radius: 10px !important;
-  background-color: #F3F3F5 !important;
+  background-color: #F3F3F9 !important;
 }
 .ant-input-affix-wrapper:hover {
   border: 1px solid #6A6EF4 !important;
@@ -482,7 +482,7 @@ button {
 }
 #CreateEventType .createEventTypeWrapper .CreateEventTypeHeader {
   width: 100%;
-  border-bottom: 1px solid #F3F3F5;
+  border-bottom: 1px solid #C8CADB;
   padding: 1rem;
 }
 #CreateEventType .createEventTypeWrapper .createEventTypeForm {
@@ -552,7 +552,7 @@ button {
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  border: 1px solid #F3F3F5;
+  border: 1px solid #C8CADB;
   margin-bottom: 1rem;
   border-radius: 10px;
 }
@@ -563,7 +563,7 @@ button {
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  border-bottom: 1px solid #F3F3F5;
+  border-bottom: 1px solid #C8CADB;
 }
 #CreateEventType .createEventTypeWrapper .freeTime .days label {
   min-width: 65px;
@@ -589,6 +589,7 @@ button {
 #Sidebar {
   width: 190px;
   height: 100%;
+  z-index: 10;
 }
 #Sidebar .sidebar {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -651,6 +652,9 @@ button {
   max-width: 1000px;
   display: flex;
 }
+#EventTypes .eventTypes .inactive {
+  background-color: #C8CADB !important;
+}
 #EventTypes .eventTypes .eventType {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   margin: 1rem;
@@ -681,7 +685,7 @@ button {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #F3F3F5;
+  border-bottom: 1px solid #C8CADB;
   padding: 1rem 0;
 }
 #EventTypes .eventTypes .eventType .body::before {
@@ -780,6 +784,24 @@ button {
   height: 17px;
   margin-left: 6px;
 }
+#EventTypes .eventTypes .eventType .footer .activeEvent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  min-width: 110px;
+  background-color: #11CE8C;
+  color: #FFFFFF;
+  border: 1px solid #11CE8C;
+}
+#EventTypes .eventTypes .eventType .footer .activeEvent:hover {
+  background-color: #28A745;
+}
+#EventTypes .eventTypes .eventType .footer .activeEvent svg {
+  width: 17px;
+  height: 17px;
+  margin-left: 6px;
+}
 
 .dropdownMenuEventTypes div {
   display: flex;
@@ -808,4 +830,5 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9;
 }/*# sourceMappingURL=main.css.map */

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Call, Delete, Edit, MoreSquare, PaperPlus, TimeCircle, User } from "react-iconly";
+import { Call, Delete, Edit, MoreSquare, PaperPlus, Show, TimeCircle, User } from "react-iconly";
 import { copyToClipboard, statusCodeMessage, toFarsiNumber } from "../functions";
 import Image from 'next/image';
 import { Popover } from 'antd';
@@ -42,8 +42,9 @@ const EventType = ({ data, setEventTypes }) => {
             })
     }
 
-    const editEventType = () => {
-        data.status = !status
+    const editEventType = (editKey, editValue) => {
+        setLoading(true)
+        data[editKey] = editValue
 
         apiEditEventType(data)
             .then((result) => {
@@ -78,7 +79,7 @@ const EventType = ({ data, setEventTypes }) => {
                 }
 
                 if (key === "status") {
-                    editEventType()
+                    editEventType("status", !status)
                     return
                 }
             }}
@@ -148,56 +149,58 @@ const EventType = ({ data, setEventTypes }) => {
     return (
         <React.Fragment>
             {
-                loading ?
-                    <Loading />
-                    :
-                    <div className="eventType">
-                        <div className="header">
-                            <span className="title">
-                                <Popover
-                                    placement="bottomRight"
-                                    content={title}
-                                    trigger="hover"
-                                >
-                                    {title}
-                                </Popover>
-                            </span>
+                loading && <Loading />
 
-                            <Dropdown
-                                overlay={menu}
-                                trigger={['click']}
-                                overlayClassName="dropdownMenuEventTypes"
-                            >
-                                <span
-                                    className="cursor-pointer"
-                                >
-                                    <MoreSquare />
-                                </span>
-                            </Dropdown>
+            }
+            <div className={`eventType ${!status && "inactive"}`}>
+                <div className="header">
+                    <span className="title">
+                        <Popover
+                            placement="bottomRight"
+                            content={title}
+                            trigger="hover"
+                        >
+                            {title}
+                        </Popover>
+                    </span>
+
+                    <Dropdown
+                        overlay={menu}
+                        trigger={['click']}
+                        overlayClassName="dropdownMenuEventTypes"
+                    >
+                        <span
+                            className="cursor-pointer"
+                        >
+                            <MoreSquare />
+                        </span>
+                    </Dropdown>
 
 
-                        </div>
+                </div>
 
-                        <div className={`body ${color}`}>
-                            <div className="duration">
-                                <TimeCircle />
-                                <span>
-                                    {toFarsiNumber(duration)}
-                                </span>
-                            </div>
+                <div className={`body ${color}`}>
+                    <div className="duration">
+                        <TimeCircle />
+                        <span>
+                            {toFarsiNumber(duration)}
+                        </span>
+                    </div>
 
-                            <span className="type">
-                                {typeTypes[type]}
-                            </span>
-                        </div>
+                    <span className="type">
+                        {typeTypes[type]}
+                    </span>
+                </div>
 
-                        <div className="footer">
-                            <span className="link">
-                                <Link href={"event/" + link}>
-                                    {"/" + link}
-                                </Link>
-                            </span>
+                <div className="footer">
+                    <span className="link">
+                        <Link href={"event/" + link}>
+                            {"/" + link}
+                        </Link>
+                    </span>
 
+                    {
+                        status ?
                             <button
                                 onClick={() => copyToClipboard(link, "لینک رویداد کپی شد")}
                                 className="mainColor1Button"
@@ -205,9 +208,18 @@ const EventType = ({ data, setEventTypes }) => {
                                 <PaperPlus />
                                 کپی لینک
                             </button>
-                        </div>
-                    </div>
-            }
+                            :
+                            <button
+                                onClick={() => editEventType("status", true)}
+                                className="activeEvent"
+                            >
+                                <Show />
+                                فعال کردن
+                            </button>
+                    }
+
+                </div>
+            </div>
         </React.Fragment>
 
     );

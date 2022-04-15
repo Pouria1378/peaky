@@ -11,13 +11,13 @@ body * {
 }
 
 body {
-    background-color: $lightGray !important;
+    background-color: $lightMainColor3 !important;
 }
 
 //inputs 
 .ant-input-affix-wrapper {
     border-radius: $borderRadius !important;
-    background-color: $lightGray !important;
+    background-color: $lightMainColor3 !important;
     &:hover {
         border: 1px solid $mainColor1 !important;
         background-color: $white !important;

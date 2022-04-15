@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Layout from "../../layout/Layout";
-import { apiCreateEventType } from '../../apis/apiCreateEventType';
+import { apiCreateEventType } from '../../apis/apiEventType';
 import { Form, Input, Button, Select } from 'antd';
 import { Delete, Plus, TickSquare } from "react-iconly";
 import { statusCodeMessage } from "../functions";
 import useIsMounted from "../useIsMounted";
-
+import { useRouter } from 'next/router'
 
 const CreateEventType = () => {
     const isMounted = useIsMounted();
@@ -13,6 +13,8 @@ const CreateEventType = () => {
     const { TextArea } = Input;
     const [postEventTypeLoading, setPostEventTypeLoading] = useState(false);
     const [eventColor, setEventColor] = useState('');
+    const router = useRouter()
+
     const [userFreeTime, setUserFreeTime] = useState({
         saturday: [{ from: "09:00", to: "17:00" }],
         sunday: [{ from: "09:00", to: "17:00" }],
@@ -44,6 +46,7 @@ const CreateEventType = () => {
         "eventColorRed",
         "eventColorDarkRed",
     ]
+
     const postEventTypeForm = (formData) => {
         setPostEventTypeLoading(true)
         const eventData = {
@@ -67,6 +70,7 @@ const CreateEventType = () => {
                 }
                 if (success) {
                     statusCodeMessage(statusCode)
+                    router.push("/eventTypes")
                     return
                 }
 

@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../layout/Layout";
-import { apiGetAllEventTypes } from '../../apis/apiGetAllEventTypes';
-import { Form, Input, Button, Select } from 'antd';
-import { Delete, Plus, TickSquare } from "react-iconly";
+import { apiGetAllEventTypes } from '../../apis/apiEventType';
 import { statusCodeMessage } from "../functions";
 import useIsMounted from "../useIsMounted";
 import EventType from "./EventType"
 import Loading from "../loading/Loading";
 
-const CreateEventType = () => {
+const EventTypes = () => {
     const isMounted = useIsMounted();
     const [eventTypes, setEventTypes] = useState([]);
     const [eventTypesLoading, setEventTypesLoading] = useState(false);
@@ -49,7 +47,11 @@ const CreateEventType = () => {
                     : <div className="eventTypes">
                         {
                             eventTypes.map(eventType => (
-                                <EventType data={eventType} />
+                                <EventType
+                                    key={eventType._id}
+                                    data={eventType}
+                                    setEventTypes={setEventTypes}
+                                />
                             ))
                         }
                     </div>
@@ -58,4 +60,4 @@ const CreateEventType = () => {
     );
 }
 
-export default CreateEventType;
+export default EventTypes;

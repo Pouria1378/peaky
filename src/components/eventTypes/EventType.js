@@ -5,32 +5,58 @@ import Image from 'next/image';
 import { Popover } from 'antd';
 import Link from "next/link";
 import { Menu, Dropdown, Switch } from 'antd';
-import { apiDeleteEventType } from "../../apis/apiDeleteEventType";
+import { apiDeleteEventType, apiEditEventType } from "../../apis/apiEventType";
 import useIsMounted from "../useIsMounted";
-import { useRouter } from 'next/router'
 import Loading from "../loading/Loading";
 
-const CreateEventType = ({ data }) => {
-    const { _id, title, duration, type, color, link } = data
+const EventType = ({ data, setEventTypes }) => {
+    const { _id, title, duration, type, color, link, status } = data
     const [loading, setLoading] = useState(false)
 
     const isMounted = useIsMounted();
-    const router = useRouter()
 
-    const deletEventType = (id) => {
+    const deleteEventType = () => {
         setLoading(true)
-        if (!id) return;
-        const data = {
-            id: id
+        if (!_id) return;
+        const _data = {
+            id: _id
         }
-        apiDeleteEventType(data)
+        apiDeleteEventType(_data)
             .then((result) => {
+                if (!isMounted()) return;
                 setLoading(false)
                 const { success, statusCode } = result
 
                 if (success) {
                     statusCodeMessage(statusCode)
-                    router.reload(window.location.pathname)
+                    setEventTypes(oldValue => oldValue.filter(eventType => eventType._id !== _id))
+                    return
+                }
+                statusCodeMessage(601)
+            })
+            .catch((err) => {
+                if (!isMounted()) return;
+                setLoading(false)
+                statusCodeMessage(600)
+                console.error(err)
+            })
+    }
+
+    const editEventType = () => {
+        data.status = !status
+
+        apiEditEventType(data)
+            .then((result) => {
+                if (!isMounted()) return;
+                setLoading(false)
+                const { success, statusCode } = result
+
+                if (success) {
+                    statusCodeMessage(statusCode)
+                    setEventTypes(oldValue => oldValue.filter(eventType => {
+                        if (eventType._id !== _id) return eventType
+                        return data
+                    }))
                     return
                 }
                 statusCodeMessage(601)
@@ -47,7 +73,13 @@ const CreateEventType = ({ data }) => {
         <Menu
             onClick={({ key }) => {
                 if (key === "delete") {
-                    deletEventType(_id)
+                    deleteEventType()
+                    return
+                }
+
+                if (key === "status") {
+                    editEventType()
+                    return
                 }
             }}
         >
@@ -64,13 +96,13 @@ const CreateEventType = ({ data }) => {
                 </div>
             </Menu.Item>
             <Menu.Divider />
-            <Menu.Item key="3">
+            <Menu.Item key="status">
                 <div>
                     وضعیت
                     <Switch
                         checkedChildren={<span>فعال</span>}
                         unCheckedChildren={<span>غیر فعال</span>}
-                        checked={data.status}
+                        checked={status}
                     />
                 </div>
             </Menu.Item>
@@ -181,4 +213,4 @@ const CreateEventType = ({ data }) => {
     );
 }
 
-export default CreateEventType;
+export default EventType;

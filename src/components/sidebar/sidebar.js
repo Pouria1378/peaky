@@ -2,6 +2,7 @@ import React from "react";
 import { ArrowRightSquare, Calendar, Plus, TimeSquare } from "react-iconly";
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import { message } from 'antd'
 
 const Sidebar = () => {
 
@@ -44,11 +45,13 @@ const Sidebar = () => {
                             <Plus />ایجاد نوع رویداد جدید
                         </li>
 
-                        <li
-                            className={`${router.pathname === "/" ? "active" : ""}`}
-                            onClick={() => router.push("/")}
-                        >
-                            <ArrowRightSquare />خروج
+                        <li onClick={() => {
+                            message.success("خارج شدید")
+                            localStorage.removeItem("token");
+                            router.push("/login")
+                        }}>
+                            <ArrowRightSquare />
+                            خروج
                         </li>
                     </ul>
                 </div>

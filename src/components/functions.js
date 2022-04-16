@@ -9,6 +9,10 @@ export const statusCodeMessage = (statusCode) => {
             message.success("ثبت نام با موفقیت انجام شد لطفا وارد شوید")
         },
         // 400: 'Bad Request',
+        401: () => {
+            message.warning("لطفا ابتدا وارد شوید")
+            window.location.href = "/login"
+        },
         409: () => {
             message.warning("قبلا ثبت نام کرده اید لطفا وارد شوید")
         },

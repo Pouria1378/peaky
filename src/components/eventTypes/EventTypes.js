@@ -5,6 +5,7 @@ import { statusCodeMessage } from "../functions";
 import useIsMounted from "../useIsMounted";
 import EventType from "./EventType"
 import Loading from "../loading/Loading";
+import Empty from "../empty/Empty";
 
 const EventTypes = () => {
     const isMounted = useIsMounted();
@@ -16,9 +17,10 @@ const EventTypes = () => {
         apiGetAllEventTypes()
             .then((result) => {
                 if (!isMounted()) return;
-                const { success, eventTypes } = result
+                const { success, eventTypes, statusCode } = result
                 setEventTypesLoading(false);
                 if (success) {
+                    if (statusCode !== 200) statusCodeMessage(statusCode)
                     setEventTypes(eventTypes)
                     return
                 }
@@ -42,20 +44,21 @@ const EventTypes = () => {
             sideBar={true}
         >
             {
-                eventTypesLoading ?
-                    <Loading />
-                    : <div className="eventTypes">
-                        {
-                            eventTypes.map(eventType => (
-                                <EventType
-                                    key={eventType._id}
-                                    data={eventType}
-                                    setEventTypes={setEventTypes}
-                                />
-                            ))
-                        }
-                    </div>
+                eventTypesLoading && <Loading />
             }
+            <div className="eventTypes">
+                {
+                    eventTypes?.length ?
+                        eventTypes.map(eventType => (
+                            <EventType
+                                key={eventType._id}
+                                data={eventType}
+                                setEventTypes={setEventTypes}
+                            />
+                        ))
+                        : <Empty />
+                }
+            </div>
         </Layout>
     );
 }

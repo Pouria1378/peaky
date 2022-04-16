@@ -52,10 +52,10 @@ const CreateEventType = () => {
         setPostEventTypeLoading(true)
         const eventData = {
             title: formData.title,
-            duration: formData.hour + ':' + formData.minute,
+            duration: (formData.hour || "00") + ':' + formData.minute,
             type: formData.eventType,
-            color: eventColor,
-            description: formData.description,
+            color: eventColor || "eventColorMainColor1",
+            description: formData.description || "",
             link: formData.eventLink,
             freeTimes: JSON.stringify(userFreeTime)
         }
@@ -206,7 +206,11 @@ const CreateEventType = () => {
                             className="col-6"
                             label="مدت زمان"
                             name="minute"
-                            rules={[{ required: true, message: 'این فیلد الزامی است' }]}
+                            rules={[
+                                { required: true, message: 'این فیلد الزامی است' },
+                                { pattern: /\d+/g, message: 'لطفا عدد وارد کنید' },
+                                { max: 2, message: 'فرمت وارد شده اشتباه است' },
+                            ]}
                         >
                             <Input
                                 addonBefore="MM"
@@ -218,7 +222,10 @@ const CreateEventType = () => {
                             className="col-6"
                             label=" "
                             name="hour"
-                        // rules={[{ required: true, message: 'این فیلد الزامی است' }]}
+                            rules={[
+                                { pattern: /\d+/g, message: 'لطفا عدد وارد کنید' },
+                                { max: 2, message: 'فرمت وارد شده اشتباه است' },
+                            ]}
                         >
                             <Input
                                 addonBefore="HH"
@@ -283,7 +290,10 @@ const CreateEventType = () => {
                     <Form.Item
                         label="لینک رویداد"
                         name="eventLink"
-                        rules={[{ required: true, message: 'این فیلد الزامی است' }]}
+                        rules={[
+                            { required: true, message: 'این فیلد الزامی است' },
+                            { pattern: /^\S+$/, message: 'فرمت وارد شده اشتباه است' },
+                        ]}
                         className="eventLink"
                     >
                         <Input

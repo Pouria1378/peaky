@@ -26,7 +26,7 @@ const Register = () => {
                 if (success) {
                     statusCodeMessage(statusCode)
                     localStorage.setItem("token", token)
-                    router.push("/createEventType")
+                    router.push("/eventTypes")
                     return
                 }
                 statusCodeMessage(600)

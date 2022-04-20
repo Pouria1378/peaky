@@ -9,9 +9,10 @@ import { apiDeleteEventType, apiEditEventType } from "../../apis/apiEventType";
 import useIsMounted from "../useIsMounted";
 import Loading from "../loading/Loading";
 
-const EventType = ({ data, setEventTypes }) => {
+const EventType = ({ data, setEventTypes, setEditEventType }) => {
     const { _id, title, duration, type, color, link, status } = data
     const [loading, setLoading] = useState(false)
+
 
     const isMounted = useIsMounted();
 
@@ -42,7 +43,7 @@ const EventType = ({ data, setEventTypes }) => {
             })
     }
 
-    const editEventType = (editKey, editValue) => {
+    const editEventType = (editKey = "", editValue = "") => {
         setLoading(true)
         data[editKey] = editValue
 
@@ -70,18 +71,17 @@ const EventType = ({ data, setEventTypes }) => {
             })
     }
 
+
     const menu = (
         <Menu
             onClick={({ key }) => {
-                if (key === "delete") {
-                    deleteEventType()
-                    return
+                const keys = {
+                    "edit": () => setEditEventType(data),
+                    "delete": () => deleteEventType(),
+                    "status": () => editEventType("status", !status),
                 }
 
-                if (key === "status") {
-                    editEventType("status", !status)
-                    return
-                }
+                keys[key]()
             }}
         >
             <Menu.Item key="edit">
@@ -152,6 +152,7 @@ const EventType = ({ data, setEventTypes }) => {
                 loading && <Loading />
 
             }
+
             <div className={`eventType ${!status && "inactive"}`}>
                 <div className="header">
                     <span className="title">

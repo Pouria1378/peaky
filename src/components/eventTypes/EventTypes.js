@@ -6,11 +6,13 @@ import useIsMounted from "../useIsMounted";
 import EventType from "./EventType"
 import Loading from "../loading/Loading";
 import Empty from "../empty/Empty";
+import CreateEditEventType from "../createEventType/CreateEventType";
 
 const EventTypes = () => {
     const isMounted = useIsMounted();
     const [eventTypes, setEventTypes] = useState([]);
     const [eventTypesLoading, setEventTypesLoading] = useState(false);
+    const [EditEventType, setEditEventType] = useState(false)
 
     const getEventTypes = () => {
         setEventTypesLoading(true);
@@ -38,6 +40,11 @@ const EventTypes = () => {
         getEventTypes()
     }, [])
 
+    useEffect(() => {
+        console.log('====================================');
+        console.log("EditEventType change", EditEventType);
+        console.log('====================================');
+    }, [EditEventType])
     return (
         <Layout
             bodyIdStyle="EventTypes"
@@ -46,7 +53,18 @@ const EventTypes = () => {
             {
                 eventTypesLoading && <Loading />
             }
-            <div className="eventTypes">
+
+            {
+                EditEventType &&
+                <CreateEditEventType
+                    title='ویرایش نوع رویداد'
+                    backButton={() => setEditEventType(null)}
+                    EditEventType={EditEventType}
+                />
+            }
+            <div
+                className={`eventTypes ${Object.keys(EditEventType || []).length ? "d-none" : ""}`}
+            >
                 {
                     eventTypes?.length ?
                         eventTypes.map(eventType => (
@@ -54,6 +72,7 @@ const EventTypes = () => {
                                 key={eventType._id}
                                 data={eventType}
                                 setEventTypes={setEventTypes}
+                                setEditEventType={setEditEventType}
                             />
                         ))
                         : <Empty />

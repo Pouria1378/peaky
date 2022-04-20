@@ -2,19 +2,23 @@ import React, { useState } from "react";
 import Layout from "../../layout/Layout";
 import { apiCreateEventType } from '../../apis/apiEventType';
 import { Form, Input, Button, Select } from 'antd';
-import { Delete, Plus, TickSquare } from "react-iconly";
+import { ArrowLeft, Delete, Plus, TickSquare } from "react-iconly";
 import { statusCodeMessage } from "../functions";
 import useIsMounted from "../useIsMounted";
 import { useRouter } from 'next/router'
 import Loading from "../loading/Loading";
 
-const CreateEventType = () => {
+const CreateEditEventType = ({ title, backButton, EditEventType }) => {
     const isMounted = useIsMounted();
     const { Option } = Select;
     const { TextArea } = Input;
     const [postEventTypeLoading, setPostEventTypeLoading] = useState(false);
     const [eventColor, setEventColor] = useState('');
     const router = useRouter()
+
+    console.log('====================================');
+    console.log("EditEventType", EditEventType);
+    console.log('====================================');
 
     const [userFreeTime, setUserFreeTime] = useState({
         saturday: [{ from: "09:00", to: "17:00" }],
@@ -172,17 +176,21 @@ const CreateEventType = () => {
     }
 
     return (
-        <Layout
-            bodyIdStyle="CreateEventType"
-            sideBar={true}
-        >
+        <div id="CreateEventType">
             {
                 postEventTypeLoading && <Loading />
             }
             <div className="createEventTypeWrapper">
 
                 <div className="CreateEventTypeHeader">
-                    <span>ایجاد نوع رویداد جدید</span>
+                    <span>{title}</span>
+                    {
+                        backButton &&
+                        <span onClick={backButton}>
+                            <ArrowLeft />
+                        </span>
+                    }
+
                 </div>
 
                 <Form
@@ -191,6 +199,7 @@ const CreateEventType = () => {
                     autoComplete="off"
                     layout="vertical"
                     className="createEventTypeForm"
+                    initialValues={EditEventType}
                 >
 
                     <Form.Item
@@ -346,8 +355,8 @@ const CreateEventType = () => {
                     </Form.Item>
                 </Form>
             </div>
-        </Layout>
+        </div>
     );
 }
 
-export default CreateEventType;
+export default CreateEditEventType;

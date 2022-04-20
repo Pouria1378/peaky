@@ -484,6 +484,12 @@ button {
   width: 100%;
   border-bottom: 1px solid #C8CADB;
   padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#CreateEventType .createEventTypeWrapper .CreateEventTypeHeader svg {
+  cursor: pointer;
 }
 #CreateEventType .createEventTypeWrapper .createEventTypeForm {
   padding: 1rem;
@@ -605,6 +611,12 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+#Sidebar .sidebar .logoWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 #Sidebar .sidebar .routes {
   text-align: right;

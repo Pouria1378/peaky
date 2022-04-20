@@ -11,13 +11,13 @@ const Sidebar = () => {
     return (
         <div id="Sidebar">
             <div className="sidebar">
-                <div>
+                <div className="logoWrapper">
                     <Image
-                        src="/images/logo2.png"
+                        src="/images/logo.png"
                         alt="logo"
-                        layout="responsive"
-                        width={"100%"}
-                        height={190}
+                        layout="fixed"
+                        width={110}
+                        height={110}
                     />
                     <h5>Peaky</h5>
                 </div>

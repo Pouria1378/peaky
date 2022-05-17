@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Layout from "../../layout/Layout";
 import { apiCreateEventType } from '../../apis/apiEventType';
 import { Form, Input, Button, Select } from 'antd';
 import { ArrowLeft, Delete, Plus, TickSquare } from "react-iconly";
@@ -16,9 +15,6 @@ const CreateEditEventType = ({ title, backButton, EditEventType }) => {
     const [eventColor, setEventColor] = useState('');
     const router = useRouter()
 
-    console.log('====================================');
-    console.log("EditEventType", EditEventType);
-    console.log('====================================');
 
     const [userFreeTime, setUserFreeTime] = useState({
         saturday: [{ from: "09:00", to: "17:00" }],

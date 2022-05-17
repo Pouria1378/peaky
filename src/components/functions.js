@@ -32,8 +32,11 @@ export const statusCodeMessage = (statusCode) => {
 }
 
 export const tokenCheckExists = () => {
-    if (localStorage.getItem('token'))
-        return localStorage.getItem('token')
+    if (localStorage) {
+        if (localStorage.getItem('token'))
+            return localStorage.getItem('token')
+    }
+
 
     return false
 }

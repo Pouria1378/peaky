@@ -40,11 +40,6 @@ const EventTypes = () => {
         getEventTypes()
     }, [])
 
-    useEffect(() => {
-        console.log('====================================');
-        console.log("EditEventType change", EditEventType);
-        console.log('====================================');
-    }, [EditEventType])
     return (
         <Layout
             bodyIdStyle="EventTypes"

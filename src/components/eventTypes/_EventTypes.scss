@@ -63,36 +63,6 @@
                     position: absolute;
                 }
 
-                .duration {
-                    border: 1.4px solid $gray;
-                    border-radius: $borderRadius;
-                    padding: 0.1rem 0.5rem;
-                    color: $gray;
-                    height: 30px;
-
-
-                    svg {
-                        color: $gray;
-                        width: 19px;
-                        height: 19px;
-                        margin-left: 5px;
-                    }
-                }
-
-                .type {
-                    @include flexCenter();
-                    border: 1.4px solid $gray;
-                    border-radius: $borderRadius;
-                    padding: 0.1rem 0.5rem;
-                    color: $gray;
-                    height: 30px;
-
-                    svg {
-                        width: 17px;
-                        height: 17px;
-                        margin-right: 6px;
-                    }
-                }
             }
 
             .eventColorMainColor1{

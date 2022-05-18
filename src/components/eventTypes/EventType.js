@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Call, Delete, Edit, MoreSquare, PaperPlus, Show, TimeCircle, User } from "react-iconly";
-import { copyToClipboard, statusCodeMessage, toFarsiNumber } from "../functions";
-import Image from 'next/image';
+import { Delete, Edit, MoreSquare, PaperPlus, Show, TimeCircle } from "react-iconly";
+import { copyToClipboard, statusCodeMessage, toFarsiNumber, typeOfEvent } from "../functions";
 import { Popover } from 'antd';
 import Link from "next/link";
 import { Menu, Dropdown, Switch } from 'antd';
@@ -12,7 +11,6 @@ import Loading from "../loading/Loading";
 const EventType = ({ data, setEventTypes, setEditEventType }) => {
     const { _id, title, duration, type, color, link, status } = data
     const [loading, setLoading] = useState(false)
-
 
     const isMounted = useIsMounted();
 
@@ -110,41 +108,7 @@ const EventType = ({ data, setEventTypes, setEditEventType }) => {
         </Menu>
     );
 
-    const typeTypes = {
-        "byPerson":
-            <React.Fragment>
-                حضوری
-                <User />
-            </React.Fragment>,
 
-        "phone":
-            <React.Fragment>
-                تلفنی
-                <Call />
-            </React.Fragment>,
-
-        "skype":
-            <React.Fragment>
-                <Image
-                    src="/images/skype.png"
-                    alt="skype"
-                    layout='fixed'
-                    width={50}
-                    height={20}
-                />
-            </React.Fragment>,
-
-        "googleMeet":
-            <React.Fragment>
-                <Image
-                    src="/images/meet.png"
-                    alt="google meet"
-                    layout='fixed'
-                    width={80}
-                    height={20}
-                />
-            </React.Fragment>,
-    }
 
     return (
         <React.Fragment>
@@ -189,13 +153,13 @@ const EventType = ({ data, setEventTypes, setEditEventType }) => {
                     </div>
 
                     <span className="type">
-                        {typeTypes[type]}
+                        {typeOfEvent(type)}
                     </span>
                 </div>
 
                 <div className="footer">
                     <span className="link">
-                        <Link href={"event/" + link}>
+                        <Link href={"reserve/" + link} target="_blank">
                             {"/" + link}
                         </Link>
                     </span>

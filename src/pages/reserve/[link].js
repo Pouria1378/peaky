@@ -1,33 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { apiGetReserveEventData } from "../../apis/apiReserveEvent";
 import Reserve from "../../components/reserveEvent/Reserve";
+import { useRouter } from "next/router";
+import { statusCodeMessage } from "../../components/functions";
 
-
-const ReserveEvent = ({ eventData }) => {
+const ReserveEvent = () => {
+    const router = useRouter()
+    const [eventData, setEventData] = useState({})
 
     console.log('====================================');
-    console.log("propsprops", eventData);
+    console.log("router.query", router.query);
     console.log('====================================');
+
+    useEffect(() => {
+        if (!router.query.link) return
+        apiGetReserveEventData(router.query)
+            .then(result => {
+                const { statusCode, success, data } = result
+                if (statusCode === 200 || success) setEventData(data)
+                else statusCodeMessage(601)
+            })
+            .catch(err => {
+                console.error("error", err)
+                statusCodeMessage(600)
+            })
+    }, [router])
+
     return (
         <Reserve
             eventData={eventData}
         />
     );
-}
-
-
-export async function getServerSideProps(context) {
-    let eventData = null
-    const { link } = context.params;
-    await apiGetReserveEventData({ link })
-        .then(result => {
-            const { statusCode, success, data } = result
-            if (statusCode === 200 || success) eventData = data
-            else eventData = {}
-        })
-        .catch(err => console.log("error", err))
-
-    return { props: { eventData } }
 }
 
 export default ReserveEvent;

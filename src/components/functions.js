@@ -1,4 +1,7 @@
 import { message } from 'antd'
+import React from 'react'
+import { Call, User } from 'react-iconly'
+import Image from "next/image"
 
 export const statusCodeMessage = (statusCode) => {
     const messages = {
@@ -61,4 +64,44 @@ export const copyToClipboard = (text, messageText = "متن کپی شد") => {
         .then(() => message.success(messageText))
         .catch(() => message.error("کپی متن با مشکل مواجه شد"))
 
+}
+
+export const typeOfEvent = (type) => {
+    const typesOfEvent = {
+        "byPerson":
+            <React.Fragment>
+                حضوری
+                <User />
+            </React.Fragment>,
+
+        "phone":
+            <React.Fragment>
+                تلفنی
+                <Call />
+            </React.Fragment>,
+
+        "skype":
+            <React.Fragment>
+                <Image
+                    src="/images/skype.png"
+                    alt="skype"
+                    layout='fixed'
+                    width={50}
+                    height={20}
+                />
+            </React.Fragment>,
+
+        "googleMeet":
+            <React.Fragment>
+                <Image
+                    src="/images/meet.png"
+                    alt="google meet"
+                    layout='fixed'
+                    width={80}
+                    height={20}
+                />
+            </React.Fragment>,
+    }
+
+    return typesOfEvent[type]
 }

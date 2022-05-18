@@ -13,7 +13,7 @@ const App = ({ Component, pageProps }) => {
                     href="/images/logo.png"
                 />
             </Head>
-            
+
             <Component {...pageProps} />
         </IconlyProvider>
     );

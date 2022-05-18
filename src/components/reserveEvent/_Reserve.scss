@@ -1,0 +1,22 @@
+#Reserve {
+    background-color:$lightMainColor3;
+    width: 100%;
+    height: 100vh;
+
+    .wrpapper {
+        border: 1px solid $mainColor1;
+        background-color: $white;
+        margin: 2rem;
+        padding: 1rem;
+        border-radius: $borderRadius;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}
+
+.Calendar  {
+    width: 500px !important;
+    min-height: 200px !important;
+}

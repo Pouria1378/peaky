@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { apiGetReserveEventData } from "../../apis/apiReserveEvent";
-import Reserve from "../../components/reserveEvent/Reserve";
+import { apiGetReserveEventData } from "../../../apis/apiReserveEvent";
+import Reserve from "../../../components/reserveEvent/Reserve";
 import { useRouter } from "next/router";
-import { statusCodeMessage } from "../../components/functions";
+import { statusCodeMessage } from "../../../components/functions";
 
 const ReserveEvent = () => {
     const router = useRouter()
     const [eventData, setEventData] = useState({})
 
-    console.log('====================================');
-    console.log("router.query", router.query);
-    console.log('====================================');
-
     useEffect(() => {
-        if (!router.query.link) return
+        if (!router.query.link || !router.query.username) return
         apiGetReserveEventData(router.query)
             .then(result => {
                 const { statusCode, success, data } = result

@@ -8,11 +8,7 @@ import { toFarsiNumber, typeOfEvent } from "../functions";
 const Reserve = ({ eventData }) => {
     const [selectedDay, setSelectedDay] = useState(null);
 
-    console.log('====================================');
-    console.log("eventData", eventData);
-    console.log('====================================');
-
-    const { title, duration, type, description } = eventData
+    const { title, duration, type, description } = eventData || {}
 
 
     return (
@@ -22,21 +18,28 @@ const Reserve = ({ eventData }) => {
         >
             <div className="wrpapper">
                 <div>
-                    {title}
-                    <div className="duration">
-                        <TimeCircle />
-                        <span>
-                            {toFarsiNumber(duration || "-")}
+                    <div>
+                        <h4>
+                            {title}
+                        </h4>
+                    </div>
+
+                    <div className="body">
+                        <div className="duration">
+                            <TimeCircle />
+                            <span>
+                                {toFarsiNumber(duration || "-")}
+                            </span>
+                        </div>
+
+                        <span className="type">
+                            {typeOfEvent(type)}
                         </span>
                     </div>
 
-                    <span className="type">
-                        {typeOfEvent(type)}
-                    </span>
-
-                    <span>
+                    <div>
                         {description}
-                    </span>
+                    </div>
                 </div>
                 <div>
                     <Calendar

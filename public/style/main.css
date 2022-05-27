@@ -866,6 +866,18 @@ button {
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
+  text-align: right;
+}
+#Reserve .wrpapper .body {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  direction: rtl;
+  margin: 1rem 0;
+}
+#Reserve .wrpapper .type, #Reserve .wrpapper .duration {
+  width: 90px;
 }
 
 .Calendar {

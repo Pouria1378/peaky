@@ -13,6 +13,22 @@
         flex-direction: row;
         justify-content: space-between;
         flex-wrap: wrap;
+        text-align: right;
+
+        
+
+        .body {
+            width: 300px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            direction: rtl;
+            margin: 1rem 0;
+        }
+
+        .type , .duration {
+            width: 90px;
+        }
     }
 }
 

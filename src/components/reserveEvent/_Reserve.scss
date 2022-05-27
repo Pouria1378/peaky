@@ -1,12 +1,9 @@
 #Reserve {
-    background-color:$lightMainColor3;
     width: 100%;
-    height: 100vh;
-
-    .wrpapper {
-        border: 1px solid $mainColor1;
+    padding: 2rem;
+    
+    .wrapper {  
         background-color: $white;
-        margin: 2rem;
         padding: 1rem;
         border-radius: $borderRadius;
         display: flex;
@@ -14,8 +11,6 @@
         justify-content: space-between;
         flex-wrap: wrap;
         text-align: right;
-
-        
 
         .body {
             width: 300px;
@@ -28,6 +23,92 @@
 
         .type , .duration {
             width: 90px;
+        }
+
+        .description {
+            max-width: 400px;
+        }
+    }
+
+    .eventColorDarkRed {
+        background-color: $lightRed;
+        .-selected {
+            background-color: $darkRed;
+        }
+        .wrapper {
+            border: 1px solid $darkRed;
+        }
+    }
+    .eventColorRed {
+        background-color: $lightRed;
+        .-selected {
+            background-color: $red;
+        }
+        .wrapper {
+            border: 1px solid $red;
+        }
+    }
+    .eventColorDarkYellow {
+        background-color: $lightYellow;
+        .-selected {
+            background-color: $darkYellow;
+        }
+        .wrapper {
+            border: 1px solid $darkYellow;
+        }
+    }
+    .eventColorYellow {
+        background-color: $lightYellow;
+        .-selected {
+            background-color: $yellow;
+        }
+        .wrapper {
+            border: 1px solid $yellow;
+        }
+    }
+    .eventColorDarkGreen {
+        background-color: $lightGreen;
+        .-selected {
+            background-color: $darkGreen;
+        }
+        .wrapper {
+            border: 1px solid $darkGreen;
+        }
+    }
+    .eventColorGreen {
+        background-color: $lightGreen;
+        .-selected {
+            background-color: $green;
+        }
+        .wrapper {
+            border: 1px solid $green;
+        }
+    }
+    .eventColorDarkMainColor2 {
+        background-color: $lightMainColor2;
+        .-selected {
+            background-color: $darkMainColor2;
+        }
+        .wrapper {
+            border: 1px solid $darkMainColor2;
+        }
+    }
+    .eventColorMainColor2 {
+        background-color: $lightMainColor2;
+        .-selected {
+            background-color: $mainColor2;
+        }
+        .wrapper {
+            border: 1px solid $mainColor2;
+        }
+    }
+    .eventColorMainColor1 {
+        background-color: $lightMainColor1;
+        .-selected {
+            background-color: $mainColor1;
+        }
+        .wrapper {
+            border: 1px solid $mainColor1;
         }
     }
 }

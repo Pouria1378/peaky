@@ -59,6 +59,21 @@ export const toFarsiNumber = (number) => {
         .join('');
 }
 
+export const toEnglishNumber = (number) => {
+    const englishDigits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+    return number
+        .toString()
+        .split('')
+        .map(x => {
+            //for clock times
+            if (x === ":") return ":"
+
+            return englishDigits['۰۱۲۳۴۵۶۷۸۹'.indexOf(x)]
+        })
+        .join('');
+}
+
 export const copyToClipboard = (text, messageText = "متن کپی شد") => {
     navigator.clipboard.writeText(text)
         .then(() => message.success(messageText))

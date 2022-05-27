@@ -8,7 +8,9 @@ const Layout = ({ children, bodyIdStyle, sideBar }) => {
 
     return (
         <React.Fragment>
-            <main id={bodyIdStyle}>
+            <main
+                id={bodyIdStyle}
+            >
                 {
                     sideBar && <Sidebar />
                 }

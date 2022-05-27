@@ -852,14 +852,11 @@ button {
 }
 
 #Reserve {
-  background-color: #F3F3F9;
   width: 100%;
-  height: 100vh;
+  padding: 2rem;
 }
-#Reserve .wrpapper {
-  border: 1px solid #6A6EF4;
+#Reserve .wrapper {
   background-color: #FFFFFF;
-  margin: 2rem;
   padding: 1rem;
   border-radius: 10px;
   display: flex;
@@ -868,7 +865,7 @@ button {
   flex-wrap: wrap;
   text-align: right;
 }
-#Reserve .wrpapper .body {
+#Reserve .wrapper .body {
   width: 300px;
   display: flex;
   flex-direction: row;
@@ -876,8 +873,92 @@ button {
   direction: rtl;
   margin: 1rem 0;
 }
-#Reserve .wrpapper .type, #Reserve .wrpapper .duration {
+#Reserve .wrapper .type, #Reserve .wrapper .duration {
   width: 90px;
+}
+#Reserve .wrapper .description {
+  max-width: 400px;
+}
+#Reserve .eventColorDarkRed {
+  background-color: #FDF3F3;
+}
+#Reserve .eventColorDarkRed .-selected {
+  background-color: #DC3545;
+}
+#Reserve .eventColorDarkRed .wrapper {
+  border: 1px solid #DC3545;
+}
+#Reserve .eventColorRed {
+  background-color: #FDF3F3;
+}
+#Reserve .eventColorRed .-selected {
+  background-color: #FF7070;
+}
+#Reserve .eventColorRed .wrapper {
+  border: 1px solid #FF7070;
+}
+#Reserve .eventColorDarkYellow {
+  background-color: #FFFAF4;
+}
+#Reserve .eventColorDarkYellow .-selected {
+  background-color: #FFA94D;
+}
+#Reserve .eventColorDarkYellow .wrapper {
+  border: 1px solid #FFA94D;
+}
+#Reserve .eventColorYellow {
+  background-color: #FFFAF4;
+}
+#Reserve .eventColorYellow .-selected {
+  background-color: #FFC107;
+}
+#Reserve .eventColorYellow .wrapper {
+  border: 1px solid #FFC107;
+}
+#Reserve .eventColorDarkGreen {
+  background-color: #F3FCF9;
+}
+#Reserve .eventColorDarkGreen .-selected {
+  background-color: #28A745;
+}
+#Reserve .eventColorDarkGreen .wrapper {
+  border: 1px solid #28A745;
+}
+#Reserve .eventColorGreen {
+  background-color: #F3FCF9;
+}
+#Reserve .eventColorGreen .-selected {
+  background-color: #11CE8C;
+}
+#Reserve .eventColorGreen .wrapper {
+  border: 1px solid #11CE8C;
+}
+#Reserve .eventColorDarkMainColor2 {
+  background-color: #F1FAFE;
+}
+#Reserve .eventColorDarkMainColor2 .-selected {
+  background-color: #17A2B8;
+}
+#Reserve .eventColorDarkMainColor2 .wrapper {
+  border: 1px solid #17A2B8;
+}
+#Reserve .eventColorMainColor2 {
+  background-color: #F1FAFE;
+}
+#Reserve .eventColorMainColor2 .-selected {
+  background-color: #54C1FB;
+}
+#Reserve .eventColorMainColor2 .wrapper {
+  border: 1px solid #54C1FB;
+}
+#Reserve .eventColorMainColor1 {
+  background-color: #F1F1FE;
+}
+#Reserve .eventColorMainColor1 .-selected {
+  background-color: #6A6EF4;
+}
+#Reserve .eventColorMainColor1 .wrapper {
+  border: 1px solid #6A6EF4;
 }
 
 .Calendar {

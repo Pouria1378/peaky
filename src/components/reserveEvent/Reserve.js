@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../../layout/Layout";
 import { Calendar } from "react-modern-calendar-datepicker";
 import "react-modern-calendar-datepicker/lib/DatePicker.css";
 import { TimeCircle } from "react-iconly";
 import { toEnglishNumber, toFarsiNumber, typeOfEvent } from "../functions";
+import ReserveHourModal from "./ReserveHourModal";
 
 const Reserve = ({ eventData = {} }) => {
     const [selectedDay, setSelectedDay] = useState(null);
+    const [showReserveHourModal, setShowReserveHourModal] = useState(false);
 
     const {
         title = "",
         duration = "",
         type = "",
         description = "",
-        className = ""
+        className = "",
+        freeTimes = ""
     } = eventData
 
     const date = new Date()
@@ -23,6 +26,7 @@ const Reserve = ({ eventData = {} }) => {
         month: +toEnglishNumber(jalaliDate[1]),
         day: +toEnglishNumber(jalaliDate[2])
     };
+
 
     return (
         <Layout
@@ -58,9 +62,11 @@ const Reserve = ({ eventData = {} }) => {
                     <div>
                         <Calendar
                             value={selectedDay}
-                            onChange={setSelectedDay}
+                            onChange={e => {
+                                setSelectedDay(e)
+                                setShowReserveHourModal(o => !o)
+                            }}
                             minimumDate={minimumDate}
-                            // maximumDate={selectedDayRange.to}
                             // calendarClassName="responsive-calendar startCalender" 
                             locale="fa"
                             calendarClassName="custom-calendar"
@@ -70,6 +76,12 @@ const Reserve = ({ eventData = {} }) => {
                     </div>
                 </div>
             </div>
+            <ReserveHourModal
+                show={showReserveHourModal}
+                setShow={setShowReserveHourModal}
+                freeTimes={freeTimes}
+                selectedDay={selectedDay}
+            />
         </Layout>
     )
 }

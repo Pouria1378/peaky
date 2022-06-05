@@ -964,4 +964,12 @@ button {
 .Calendar {
   width: 500px !important;
   min-height: 200px !important;
+}
+
+.ReserveHourModal .hour {
+  border: 1px solid red;
+  padding: 1rem;
+  margin: 1rem 0;
+  text-align: center;
+  border-radius: 10px;
 }/*# sourceMappingURL=main.css.map */

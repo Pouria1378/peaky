@@ -54,7 +54,7 @@ const CreateEditEventType = ({ title, backButton, EditEventType }) => {
             title: formData.title,
             duration: (formData.hour || "00") + ':' + formData.minute,
             type: formData.eventType,
-            color: eventColor || "eventColorMainColor1",
+            className: eventColor || "eventColorMainColor1",
             description: formData.description || "",
             link: formData.eventLink,
             freeTimes: JSON.stringify(userFreeTime)

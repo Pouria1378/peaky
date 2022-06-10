@@ -2,58 +2,60 @@ import React, { useEffect, useState } from 'react';
 import { Modal } from 'antd';
 import moment from "jalali-moment"
 
-function ReserveHourModal({ show, setShow, freeTimes, selectedDay }) {
-    const [selectedHour, setSelectedHour] = useState(null);
+function ReserveHourModal({
+    show,
+    setShow,
+    freeTimes,
+    selectedDay,
+    className,
+    setShowCalendar,
+    selectedHour,
+    setSelectedHour
+}) {
     const [dayFreeTime, setDayFreeTime] = useState([]);
-    const [freeHours, setHreeHours] = useState([]);
 
     useEffect(() => {
-        if (!selectedDay) return
-        const dayname = moment.from(selectedDay.year + "/" + selectedDay.month + "/" + selectedDay.day, 'fa', 'YYYY/MM/DD').format('dddd').toLowerCase()
-        const parsedFreeTimes = JSON.parse(freeTimes)
-        setDayFreeTime(parsedFreeTimes[dayname])
-    }, [freeTimes, selectedDay])
+        if (!selectedDay || !freeTimes) return
+        const dayName = moment.from(selectedDay.year + "/" + selectedDay.month + "/" + selectedDay.day, 'fa', 'YYYY/MM/DD').format('dddd').toLowerCase()
+        setDayFreeTime(freeTimes[dayName])
+    }, [selectedDay])
 
     useEffect(() => {
-        showFreeDayTimes()
-    }, [dayFreeTime])
-
-    const showFreeDayTimes = () => {
-        const fromHour = []
-        for (let freeTime of dayFreeTime) {
-            let from = freeTime.from.split(":")
-            let to = freeTime.to.split(":")
-            while (+from[0] <= +to[0]) {
-                fromHour.push(from.join(":"))
-                if (+from[0] === +to[0] && +from[1] === +to[1]) break
-                if (+from[1] === 0) from[1] = "30"
-                else {
-                    from[0] = +from[0] + 1
-                    from[1] = "00"
-                }
-            }
-        }
-        setHreeHours(fromHour)
-    }
+        if (!selectedHour) return
+        setShow(false)
+        setShowCalendar(false)
+    }, [selectedHour])
 
     return (
         <Modal
-            title="Basic Modal"
+            title={
+                <span>
+                    انتخاب زمان رویداد
+                </span>
+            }
             className='ReserveHourModal'
             visible={show}
             onCancel={() => setShow(o => !o)}
             footer={null}
         >
-            {
-                freeHours.map(hour => {
-                    return <div
-                        className='hour'
-                        key={hour}
-                    >
-                        {hour}
-                    </div>
-                })
-            }
+            <div className={`${className} reserveHours`}>
+                {
+                    dayFreeTime.length ?
+                        (dayFreeTime || []).map(hour => {
+                            return <button
+                                className='hour'
+                                value={hour}
+                                onClick={e => setSelectedHour(e.target.value)}
+                            >
+                                {hour}
+                            </button>
+                        })
+                        :
+                        <h5>
+                            ساعتی برای برگزاری جلسه یافت نشد
+                        </h5>
+                }
+            </div>
         </Modal >
     );
 }

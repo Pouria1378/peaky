@@ -5,3 +5,9 @@ export const apiGetReserveEventData = (data) => {
         .then(({ data }) => data)
         .catch(err => Promise.reject(err))
 };
+
+export const apiPostReserveEventData = (data) => {
+    return instanceAxios({ ...baseApi.postReserveEventData(), data })
+        .then(({ data }) => data)
+        .catch(err => Promise.reject(err))
+};

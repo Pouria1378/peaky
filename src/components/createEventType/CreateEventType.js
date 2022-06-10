@@ -71,7 +71,7 @@ const CreateEditEventType = ({ title, backButton, EditEventType }) => {
                 }
                 if (success) {
                     statusCodeMessage(statusCode)
-                    router.push("/eventTypes")
+                    // router.push("/eventTypes")
                     return
                 }
 

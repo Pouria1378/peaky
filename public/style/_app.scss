@@ -75,6 +75,11 @@ button {
 }
 
 //antd overrides
+.ant-modal-content {
+    border-radius: $borderRadius !important;
+    overflow: hidden !important;
+}
+
 .ant-popover-inner {
     border-radius: $borderRadius !important;
 }

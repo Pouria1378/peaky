@@ -421,6 +421,11 @@ button {
   direction: ltr !important;
 }
 
+.ant-modal-content {
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
 .ant-popover-inner {
   border-radius: 10px !important;
 }
@@ -966,10 +971,79 @@ button {
   min-height: 200px !important;
 }
 
+.ReserveHourModal .reserveHours {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .ReserveHourModal .hour {
-  border: 1px solid red;
+  border: 1px solid;
   padding: 1rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   text-align: center;
   border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+}
+.ReserveHourModal .eventColorYellow .hour {
+  color: #FFA94D;
+  border-color: #FFA94D;
+  background-color: #FFFAF4;
+}
+.ReserveHourModal .eventColorDarkRed .hour {
+  color: #DC3545;
+  border-color: #DC3545;
+  background-color: #FDF3F3;
+}
+.ReserveHourModal .eventColorRed .hour {
+  color: #FF7070;
+  border-color: #FF7070;
+  background-color: #FDF3F3;
+}
+.ReserveHourModal .eventColorDarkYellow .hour {
+  color: #FFA94D;
+  border-color: #FFA94D;
+  background-color: #FFFAF4;
+}
+.ReserveHourModal .eventColorYellow .hour {
+  color: #FFC107;
+  border-color: #FFC107;
+  background-color: #FFFAF4;
+}
+.ReserveHourModal .eventColorDarkGreen .hour {
+  color: #28A745;
+  border-color: #28A745;
+  background-color: #F3FCF9;
+}
+.ReserveHourModal .eventColorGreen .hour {
+  color: #11CE8C;
+  border-color: #11CE8C;
+  background-color: #F3FCF9;
+}
+.ReserveHourModal .eventColorDarkMainColor2 .hour {
+  color: #17A2B8;
+  border-color: #17A2B8;
+  background-color: #F1FAFE;
+}
+.ReserveHourModal .eventColorMainColor2 .hour {
+  color: #54C1FB;
+  border-color: #54C1FB;
+  background-color: #F1FAFE;
+}
+.ReserveHourModal .eventColorMainColor1 .hour {
+  color: #6A6EF4;
+  border-color: #6A6EF4;
+  background-color: #F1F1FE;
+}
+
+.userInformationForm {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  margin: 0 4rem 9rem 4rem;
+  border-radius: 10px;
+  width: 300px;
 }/*# sourceMappingURL=main.css.map */

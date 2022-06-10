@@ -35,6 +35,11 @@ const baseApi = {
     }),
 
     getReserveEventData: () => ({
+        url: `/getReserveEventData`,
+        method: 'POST',
+    }),
+
+    postReserveEventData: () => ({
         url: `/reserveEvent`,
         method: 'POST',
     }),

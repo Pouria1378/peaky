@@ -2,6 +2,20 @@
     width: 100%;
     padding: 2rem;
     
+    .unactiveEvent {
+        background-color: $lightRed;
+        border: 1px solid $red;
+        border-radius: $borderRadius;
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h3 {
+            color: $red;
+        }
+    }
+
     .wrapper {  
         background-color: $white;
         padding: 1rem;
@@ -219,4 +233,22 @@
     margin: 0 4rem 9rem 4rem;
     border-radius: $borderRadius;
     width: 300px;
+}
+
+#succesfullyReservedEvent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .wrapper {
+        padding: 1rem;
+        border: 1px solid $green;
+        background-color: $lightGreen;
+        border-radius: $borderRadius;
+
+        h3 {
+            color: $green;
+        }
+    }
 }

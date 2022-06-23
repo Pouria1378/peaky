@@ -1,23 +1,44 @@
 import { Button, Form, Input } from 'antd';
-import React from 'react'
+import { useRouter } from 'next/router';
+import React, { useState } from 'react'
 import { apiPostReserveEventData } from '../../apis/apiReserveEvent';
+import { statusCodeMessage } from '../functions';
+import useIsMounted from '../useIsMounted';
 
 const UserInformation = ({ selectedDay, selectedHour }) => {
+    const router = useRouter()
+    const isMounted = useIsMounted();
+    const [loading, setLoading] = useState(false)
 
-    const onFinish = () => {
-        console.log('====================================');
-        console.log("onFinish");
-        console.log('====================================');
+    const onFinish = (formData) => {
+        const { selectedHour, selectedDay, link } = router.query
 
         const data = {
-            username: "pouria",
-            userEmail: "email@test.com",
-            date: "1401/3/12",
-            hour: "09:00",
-            eventDataTitle: "",
-            eventDataType: ""
+            username: formData.username,
+            userEmail: formData.userEmail,
+            date: selectedDay.year + "/" + selectedDay.month + "/" + selectedDay.day,
+            hour: selectedHour,
+            link: link
         }
+
         apiPostReserveEventData(data)
+            .then((result) => {
+                if (!isMounted()) return;
+                const { statusCode, success } = result
+                setLoading(false)
+                if (success) {
+                    statusCodeMessage(statusCode)
+                    router.push("/succesfullyReservedEvent")
+                    return
+                }
+                statusCodeMessage(600)
+            })
+            .catch((err) => {
+                if (!isMounted()) return;
+                statusCodeMessage(600)
+                setLoading(false)
+                console.error(err)
+            })
     }
 
     return (
@@ -54,7 +75,7 @@ const UserInformation = ({ selectedDay, selectedHour }) => {
                     <Input />
                 </Form.Item>
 
-                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                <Form.Item>
                     <Button
                         className="mainColor1Button"
                         htmlType="submit"

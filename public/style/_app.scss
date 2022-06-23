@@ -15,6 +15,10 @@ body {
 }
 
 //inputs 
+input {
+    border-radius: $borderRadius !important;
+}
+
 .ant-input-affix-wrapper {
     border-radius: $borderRadius !important;
     background-color: $lightMainColor3 !important;

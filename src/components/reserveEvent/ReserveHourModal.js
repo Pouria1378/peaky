@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Modal } from 'antd';
 import moment from "jalali-moment"
+import { useRouter } from 'next/router';
 
 function ReserveHourModal({
     show,
@@ -12,6 +13,7 @@ function ReserveHourModal({
     selectedHour,
     setSelectedHour
 }) {
+    const router = useRouter()
     const [dayFreeTime, setDayFreeTime] = useState([]);
 
     useEffect(() => {
@@ -45,7 +47,10 @@ function ReserveHourModal({
                             return <button
                                 className='hour'
                                 value={hour}
-                                onClick={e => setSelectedHour(e.target.value)}
+                                onClick={e => {
+                                    setSelectedHour(e.target.value)
+                                    router.query.selectedHour = e.target.value
+                                }}
                             >
                                 {hour}
                             </button>

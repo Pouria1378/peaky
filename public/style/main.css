@@ -372,6 +372,10 @@ body {
   background-color: #F3F3F9 !important;
 }
 
+input {
+  border-radius: 10px !important;
+}
+
 .ant-input-affix-wrapper {
   border-radius: 10px !important;
   background-color: #F3F3F9 !important;
@@ -860,6 +864,18 @@ button {
   width: 100%;
   padding: 2rem;
 }
+#Reserve .unactiveEvent {
+  background-color: #FDF3F3;
+  border: 1px solid #FF7070;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#Reserve .unactiveEvent h3 {
+  color: #FF7070;
+}
 #Reserve .wrapper {
   background-color: #FFFFFF;
   padding: 1rem;
@@ -1046,4 +1062,20 @@ button {
   margin: 0 4rem 9rem 4rem;
   border-radius: 10px;
   width: 300px;
+}
+
+#succesfullyReservedEvent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+#succesfullyReservedEvent .wrapper {
+  padding: 1rem;
+  border: 1px solid #11CE8C;
+  background-color: #F3FCF9;
+  border-radius: 10px;
+}
+#succesfullyReservedEvent .wrapper h3 {
+  color: #11CE8C;
 }/*# sourceMappingURL=main.css.map */

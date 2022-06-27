@@ -5,15 +5,16 @@ import { apiPostReserveEventData } from '../../apis/apiReserveEvent';
 import { statusCodeMessage } from '../functions';
 import useIsMounted from '../useIsMounted';
 
-const UserInformation = ({ selectedDay, selectedHour }) => {
+const UserInformation = () => {
     const router = useRouter()
     const isMounted = useIsMounted();
     const [loading, setLoading] = useState(false)
 
     const onFinish = (formData) => {
-        const { selectedHour, selectedDay, link } = router.query
+        const { selectedHour, selectedDay, link, username } = router.query
 
         const data = {
+            adminUsername: username,
             username: formData.username,
             userEmail: formData.userEmail,
             date: selectedDay.year + "/" + selectedDay.month + "/" + selectedDay.day,
@@ -28,7 +29,7 @@ const UserInformation = ({ selectedDay, selectedHour }) => {
                 setLoading(false)
                 if (success) {
                     statusCodeMessage(statusCode)
-                    router.push("/succesfullyReservedEvent")
+                    // router.push("/succesfullyReservedEvent")
                     return
                 }
                 statusCodeMessage(600)

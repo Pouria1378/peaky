@@ -4,8 +4,6 @@ import Sidebar from "../components/sidebar/sidebar";
 
 const Layout = ({ children, bodyIdStyle, sideBar }) => {
 
-
-
     return (
         <React.Fragment>
             <main

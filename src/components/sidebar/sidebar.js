@@ -25,7 +25,7 @@ const Sidebar = () => {
                 <div className="routes">
                     <ul>
                         <li
-                            className={`${router.pathname === "/" ? "active" : ""}`}
+                            className={`${router.pathname === "/reservedEvents" ? "active" : ""}`}
                             onClick={() => router.push("/reservedEvents")}
                         >
                             <Calendar />رویداد های هماهنگ شده

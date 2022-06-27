@@ -42,7 +42,7 @@ function ReserveHourModal({
         >
             <div className={`${className} reserveHours`}>
                 {
-                    dayFreeTime.length ?
+                    (dayFreeTime || []).length ?
                         (dayFreeTime || []).map(hour => {
                             return <button
                                 className='hour'

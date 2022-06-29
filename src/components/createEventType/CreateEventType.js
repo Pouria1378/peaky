@@ -17,23 +17,23 @@ const CreateEditEventType = ({ title, backButton, EditEventType }) => {
 
 
     const [userFreeTime, setUserFreeTime] = useState({
-        saturday: [{ from: "09:00", to: "17:00" }],
-        sunday: [{ from: "09:00", to: "17:00" }],
-        monday: [{ from: "09:00", to: "17:00" }],
-        tuesday: [{ from: "09:00", to: "17:00" }],
-        wednesday: [{ from: "09:00", to: "17:00" }],
-        thursday: [{ from: "09:00", to: "17:00" }],
-        friday: [{ from: "09:00", to: "17:00" }]
+        sat: [{ from: "09:00", to: "17:00" }],
+        sun: [{ from: "09:00", to: "17:00" }],
+        mon: [{ from: "09:00", to: "17:00" }],
+        tue: [{ from: "09:00", to: "17:00" }],
+        wed: [{ from: "09:00", to: "17:00" }],
+        thu: [{ from: "09:00", to: "17:00" }],
+        fri: [{ from: "09:00", to: "17:00" }]
     });
 
     const weekDays = [
-        { faLabel: "شنبه", label: "saturday" },
-        { faLabel: "یک شنبه", label: "sunday" },
-        { faLabel: "دو شنبه", label: "monday" },
-        { faLabel: "سه شنبه", label: "tuesday" },
-        { faLabel: "چهار شنبه", label: "wednesday" },
-        { faLabel: "پنج شنبه", label: "thursday" },
-        { faLabel: "جمعه", label: "friday" },
+        { faLabel: "شنبه", label: "sat" },
+        { faLabel: "یک شنبه", label: "sun" },
+        { faLabel: "دو شنبه", label: "mon" },
+        { faLabel: "سه شنبه", label: "tue" },
+        { faLabel: "چهار شنبه", label: "wed" },
+        { faLabel: "پنج شنبه", label: "thu" },
+        { faLabel: "جمعه", label: "fri" },
     ]
 
     const eventColors = [
@@ -52,7 +52,7 @@ const CreateEditEventType = ({ title, backButton, EditEventType }) => {
         setPostEventTypeLoading(true)
         const eventData = {
             title: formData.title,
-            duration: (formData.hour || "00") + ':' + formData.minute,
+            duration: formData.hour,
             type: formData.eventType,
             className: eventColor || "eventColorMainColor1",
             description: formData.description || "",
@@ -89,34 +89,42 @@ const CreateEditEventType = ({ title, backButton, EditEventType }) => {
     const options = () => {
         return (
             <React.Fragment>
+                <Option value="07:00">07:00</Option>
+
                 <Option value="08:00">08:00</Option>
-                <Option value="08:30">08:30</Option>
+
                 <Option value="09:00">09:00</Option>
-                <Option value="09:30">09:30</Option>
+
                 <Option value="10:00">10:00</Option>
-                <Option value="10:30">10:30</Option>
+
                 <Option value="11:00">11:00</Option>
-                <Option value="11:30">11:30</Option>
+
                 <Option value="12:00">12:00</Option>
-                <Option value="12:30">12:30</Option>
+
                 <Option value="13:00">13:00</Option>
-                <Option value="13:30">13:30</Option>
+
                 <Option value="14:00">14:00</Option>
-                <Option value="14:30">14:30</Option>
+
                 <Option value="15:00">15:00</Option>
-                <Option value="15:30">15:30</Option>
+
                 <Option value="16:00">16:00</Option>
-                <Option value="16:30">16:30</Option>
+
                 <Option value="17:00">17:00</Option>
-                <Option value="17:30">17:30</Option>
+
                 <Option value="18:00">18:00</Option>
-                <Option value="18:30">18:30</Option>
+
                 <Option value="19:00">19:00</Option>
-                <Option value="19:30">19:30</Option>
+
                 <Option value="20:00">20:00</Option>
-                <Option value="20:30">20:30</Option>
+
                 <Option value="21:00">21:00</Option>
-                <Option value="21:30">21:30</Option>
+
+                <Option value="22:00">22:00</Option>
+
+                <Option value="23:00">23:00</Option>
+
+                <Option value="24:00">24:00</Option>
+
             </React.Fragment>
         )
     }
@@ -206,38 +214,20 @@ const CreateEditEventType = ({ title, backButton, EditEventType }) => {
                         <Input />
                     </Form.Item>
 
-                    <div className="row">
-                        <Form.Item
-                            className="col-6"
-                            label="مدت زمان"
-                            name="minute"
-                            rules={[
-                                { required: true, message: 'این فیلد الزامی است' },
-                                { pattern: /\d+/g, message: 'لطفا عدد وارد کنید' },
-                                { max: 2, message: 'فرمت وارد شده اشتباه است' },
-                            ]}
-                        >
-                            <Input
-                                addonBefore="MM"
-                                className="ltr"
-                            />
-                        </Form.Item>
-
-                        <Form.Item
-                            className="col-6"
-                            label=" "
-                            name="hour"
-                            rules={[
-                                { pattern: /\d+/g, message: 'لطفا عدد وارد کنید' },
-                                { max: 2, message: 'فرمت وارد شده اشتباه است' },
-                            ]}
-                        >
-                            <Input
-                                addonBefore="HH"
-                                className="ltr"
-                            />
-                        </Form.Item>
-                    </div>
+                    <Form.Item
+                        label="مدت زمان"
+                        name="hour"
+                        rules={[
+                            { required: true, message: 'این فیلد الزامی است' },
+                            { pattern: /\d+/g, message: 'لطفا عدد وارد کنید' },
+                            { max: 2, message: 'فرمت وارد شده اشتباه است' },
+                        ]}
+                    >
+                        <Input
+                            addonBefore="HH"
+                            className="ltr"
+                        />
+                    </Form.Item>
 
                     <Form.Item
                         label="روش برگزاری"

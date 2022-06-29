@@ -9,7 +9,7 @@ import useIsMounted from "../useIsMounted";
 import Loading from "../loading/Loading";
 
 const EventType = ({ data, setEventTypes, setEditEventType }) => {
-    const { _id, title, duration, type, color, link, status } = data
+    const { _id, title, duration, type, color, link, status, username } = data
     const [loading, setLoading] = useState(false)
 
     const isMounted = useIsMounted();
@@ -159,7 +159,7 @@ const EventType = ({ data, setEventTypes, setEditEventType }) => {
 
                 <div className="footer">
                     <span className="link">
-                        <Link href={"reserve/" + link} target="_blank">
+                        <Link href={"reserve/" + username + "/" + link}>
                             {"/" + link}
                         </Link>
                     </span>
@@ -167,7 +167,9 @@ const EventType = ({ data, setEventTypes, setEditEventType }) => {
                     {
                         status ?
                             <button
-                                onClick={() => copyToClipboard(link, "لینک رویداد کپی شد")}
+                                onClick={() =>
+                                    copyToClipboard("http://localhost:3000/" + "reserve/" + username + "/" + link, "لینک رویداد کپی شد")
+                                }
                                 className="mainColor1Button"
                             >
                                 <PaperPlus />

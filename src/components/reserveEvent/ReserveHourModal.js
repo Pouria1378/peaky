@@ -18,7 +18,12 @@ function ReserveHourModal({
 
     useEffect(() => {
         if (!selectedDay || !freeTimes) return
-        const dayName = moment.from(selectedDay.year + "/" + selectedDay.month + "/" + selectedDay.day, 'fa', 'YYYY/MM/DD').format('dddd').toLowerCase()
+        const dayName = moment
+            .from(selectedDay.year + "/" + selectedDay.month + "/" + selectedDay.day, 'fa', 'YYYY/MM/DD')
+            .format('dddd')
+            .slice(0, 3)
+            .toLowerCase()
+
         setDayFreeTime(freeTimes[dayName])
     }, [selectedDay])
 

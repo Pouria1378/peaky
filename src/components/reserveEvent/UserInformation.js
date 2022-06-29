@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { apiPostReserveEventData } from '../../apis/apiReserveEvent';
 import { statusCodeMessage } from '../functions';
 import useIsMounted from '../useIsMounted';
+import moment from "jalali-moment"
 
 const UserInformation = () => {
     const router = useRouter()
@@ -13,11 +14,23 @@ const UserInformation = () => {
     const onFinish = (formData) => {
         const { selectedHour, selectedDay, link, username } = router.query
 
+        const weekDayName = moment.from(
+            selectedDay.year + "/" + selectedDay.month + "/" + selectedDay.day,
+            'fa',
+            'YYYY/MM/DD'
+        )
+            ._d
+            .toString()
+            .slice(0, 3)
+            .toLowerCase()
+
+
         const data = {
             adminUsername: username,
             username: formData.username,
             userEmail: formData.userEmail,
             date: selectedDay.year + "/" + selectedDay.month + "/" + selectedDay.day,
+            weekDayName: weekDayName,
             hour: selectedHour,
             link: link
         }

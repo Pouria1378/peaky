@@ -650,6 +650,7 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: white;
 }
 #Sidebar .sidebar .logoWrapper {
   display: flex;

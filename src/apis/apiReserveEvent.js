@@ -11,3 +11,9 @@ export const apiPostReserveEventData = (data) => {
         .then(({ data }) => data)
         .catch(err => Promise.reject(err))
 };
+
+export const apiGetReservedEvents = () => {
+    return instanceAxios({ ...baseApi.getReservedEvents()})
+        .then(({ data }) => data)
+        .catch(err => Promise.reject(err))
+};

@@ -43,6 +43,11 @@ const baseApi = {
         url: `/reserveEvent`,
         method: 'POST',
     }),
+
+    getReservedEvents: () => ({
+        url: `/getReservedEvents`,
+        method: 'GET',
+    }),
 }
 
 // Request interceptor for API calls

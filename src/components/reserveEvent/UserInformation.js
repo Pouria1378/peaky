@@ -42,7 +42,7 @@ const UserInformation = () => {
                 setLoading(false)
                 if (success) {
                     statusCodeMessage(statusCode)
-                    // router.push("/succesfullyReservedEvent")
+                    router.push("/succesfullyReservedEvent")
                     return
                 }
                 statusCodeMessage(600)

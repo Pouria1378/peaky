@@ -1,0 +1,27 @@
+#ReservedEvents {
+    @include flexCenter();
+    margin-top: 3rem;
+
+    .reservedEventsTable {
+        @include boxShadow();
+        width: 70%;
+        border-radius: $borderRadius;
+        overflow: hidden;
+
+        .ant-table-thead .ant-table-cell{
+            background-color: $lightMainColor1 !important;
+        }
+
+        .ant-table-cell {
+            text-align: right;
+            padding: 1rem;
+
+            &:last-child {
+                text-align: left;
+                color: $mainColor1;
+                text-decoration: underline;
+            }
+        }
+        
+    }
+}

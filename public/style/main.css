@@ -457,6 +457,7 @@ button {
   padding: 0.1rem 0.5rem;
   color: #6C757D;
   height: 30px;
+  max-width: 120px;
 }
 .type svg {
   width: 17px;
@@ -1079,4 +1080,29 @@ button {
 }
 #succesfullyReservedEvent .wrapper h3 {
   color: #11CE8C;
+}
+
+#ReservedEvents {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3rem;
+}
+#ReservedEvents .reservedEventsTable {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width: 70%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+#ReservedEvents .reservedEventsTable .ant-table-thead .ant-table-cell {
+  background-color: #F1F1FE !important;
+}
+#ReservedEvents .reservedEventsTable .ant-table-cell {
+  text-align: right;
+  padding: 1rem;
+}
+#ReservedEvents .reservedEventsTable .ant-table-cell:last-child {
+  text-align: left;
+  color: #6A6EF4;
+  text-decoration: underline;
 }/*# sourceMappingURL=main.css.map */

@@ -4,11 +4,13 @@ import { apiGetReservedEvents } from '../../apis/apiReserveEvent';
 import Layout from '../../layout/Layout'
 import { statusCodeMessage, typeOfEvent } from '../functions';
 import useIsMounted from '../useIsMounted';
+import MoreDetailsModal from './MoreDetailsModal';
 
 const ReservedEvents = () => {
     const isMounted = useIsMounted();
     const [loading, setLoading] = useState(false)
     const [reservedEvents, setReservedEvents] = useState([])
+    const [moreDetailsModal, setMoreDetailsModal] = useState({ show: false })
 
 
     const getReservedEvents = () => {
@@ -24,9 +26,11 @@ const ReservedEvents = () => {
                         return {
                             _id,
                             title,
-                            "date": hour + " " + date,
+                            "date": hour + " - " + date,
                             username,
-                            "type": typeOfEvent(type)
+                            "type": <span id={type} className="type">
+                                {typeOfEvent(type)}
+                            </span>
                         }
                     })
                     setReservedEvents(tableData)
@@ -86,12 +90,38 @@ const ReservedEvents = () => {
     return (
         <Layout
             sideBar={true}
+            bodyIdStyle="ReservedEvents"
         >
             <Table
                 columns={columns}
                 dataSource={reservedEvents}
                 pagination={false}
+                className="reservedEventsTable"
                 size="middle"
+                onRow={(record, rowIndex) => {
+                    return {
+                        onClick: event => {
+                            setMoreDetailsModal({
+                                ...record,
+                                show: !moreDetailsModal.show
+                            })
+                            // console.log('====================================');
+                            // console.log(record.type.props.id);
+                            // console.log(record);
+                            // console.log('====================================');
+                        }
+                    };
+                }}
+            />
+
+            <MoreDetailsModal
+                data={moreDetailsModal}
+                handleCancel={() => setMoreDetailsModal(oldValue => {
+                    return {
+                        ...oldValue,
+                        show: !oldValue.show
+                    }
+                })}
             />
         </Layout>
     )

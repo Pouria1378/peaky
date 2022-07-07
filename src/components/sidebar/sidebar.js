@@ -48,7 +48,7 @@ const Sidebar = () => {
                         <li onClick={() => {
                             message.success("خارج شدید")
                             localStorage.removeItem("token");
-                            router.push("/login")
+                            router.push("/")
                         }}>
                             <ArrowRightSquare />
                             خروج

@@ -103,7 +103,7 @@ const Register = () => {
                             </Form.Item>
                             <p>حساب کاربری دارید؟
                                 <span
-                                    onClick={() => router.push("/login")}
+                                    onClick={() => router.push("/")}
                                     className="colorMaincolor1 cursor-pointer"
                                 >وارد شوید</span>
                             </p>

@@ -30,7 +30,7 @@ const Register = () => {
                 setRegisterLoading(false)
                 if (success) {
                     statusCodeMessage(statusCode)
-                    router.push("/login")
+                    router.push("/")
                 }
                 statusCodeMessage(600)
             })

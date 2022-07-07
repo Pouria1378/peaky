@@ -10,10 +10,18 @@ body * {
     font-size: 1rem;
 }
 
+body {
+    background-color: $lightMainColor3 !important;
+}
+
 //inputs 
+input {
+    border-radius: $borderRadius !important;
+}
+
 .ant-input-affix-wrapper {
     border-radius: $borderRadius !important;
-    background-color: $lightGray !important;
+    background-color: $lightMainColor3 !important;
     &:hover {
         border: 1px solid $mainColor1 !important;
         background-color: $white !important;
@@ -28,6 +36,14 @@ body * {
 
     input {
         background-color: transparent;
+    }
+}
+
+.ant-form-item-label {
+    text-align: right !important;
+
+    label {
+        direction: ltr !important;
     }
 }
 
@@ -54,4 +70,52 @@ button {
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+
+//////
+.ltr {
+    direction: ltr !important;
+}
+
+//antd overrides
+.ant-modal-content {
+    border-radius: $borderRadius !important;
+    overflow: hidden !important;
+}
+
+.ant-popover-inner {
+    border-radius: $borderRadius !important;
+}
+
+.duration {
+    border: 1.4px solid $gray;
+    border-radius: $borderRadius;
+    padding: 0.1rem 0.5rem;
+    color: $gray;
+    height: 30px;
+
+
+    svg {
+        color: $gray;
+        width: 19px;
+        height: 19px;
+        margin-left: 5px;
+    }
+}
+
+.type {
+    @include flexCenter();
+    border: 1.4px solid $gray;
+    border-radius: $borderRadius;
+    padding: 0.1rem 0.5rem;
+    color: $gray;
+    height: 30px;
+    max-width: 120px;
+
+    svg {
+        width: 17px;
+        height: 17px;
+        margin-right: 6px;
+    }
 }

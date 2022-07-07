@@ -2,56 +2,61 @@ import React from "react";
 import { ArrowRightSquare, Calendar, Plus, TimeSquare } from "react-iconly";
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import { message } from 'antd'
 
 const Sidebar = () => {
 
     const router = useRouter()
 
     return (
-        <div className="sidebar">
-            <div>
-                <Image
-                    src="/images/logo2.png"
-                    alt="logo"
-                    layout="responsive"
-                    width={"100%"}
-                    height={190}
-                />
-                <h5>Peaky</h5>
+        <div id="Sidebar">
+            <div className="sidebar">
+                <div className="logoWrapper">
+                    <Image
+                        src="/images/logo.png"
+                        alt="logo"
+                        layout="fixed"
+                        width={110}
+                        height={110}
+                    />
+                    <h5>Peaky</h5>
+                </div>
+
+                <div className="routes">
+                    <ul>
+                        <li
+                            className={`${router.pathname === "/reservedEvents" ? "active" : ""}`}
+                            onClick={() => router.push("/reservedEvents")}
+                        >
+                            <Calendar />رویداد های هماهنگ شده
+                        </li>
+
+                        <li
+                            className={`${router.pathname === "/eventTypes" ? "active" : ""}`}
+                            onClick={() => router.push("/eventTypes")}
+                        >
+                            <TimeSquare />رویداد های شما
+                        </li>
+
+                        <li
+                            className={`${router.pathname === "/createEventType" ? "active" : ""}`}
+                            onClick={() => router.push("/createEventType")}
+                        >
+                            <Plus />ایجاد نوع رویداد جدید
+                        </li>
+
+                        <li onClick={() => {
+                            message.success("خارج شدید")
+                            localStorage.removeItem("token");
+                            router.push("/login")
+                        }}>
+                            <ArrowRightSquare />
+                            خروج
+                        </li>
+                    </ul>
+                </div>
+
             </div>
-
-            <div className="routes">
-                <ul>
-                    <li
-                        className={`${router.pathname === "/" ? "active" : ""}`}
-                        onClick={() => router.push("/reservedEvents")}
-                    >
-                        <Calendar set="curved" />رویداد های هماهنگ شده
-                    </li>
-
-                    <li
-                        className={`${router.pathname === "/" ? "active" : ""}`}
-                        onClick={() => router.push("/yourEvents")}
-                    >
-                        <TimeSquare set="curved" />رویداد های شما
-                    </li>
-
-                    <li
-                        className={`${router.pathname === "/createEventType" ? "active" : ""}`}
-                        onClick={() => router.push("/createEventType")}
-                    >
-                        <Plus set="curved" />ایجاد نوع رویداد جدید
-                    </li>
-
-                    <li
-                        className={`${router.pathname === "/" ? "active" : ""}`}
-                        onClick={() => router.push("/")}
-                    >
-                        <ArrowRightSquare set="curved" />خروج
-                    </li>
-                </ul>
-            </div>
-
         </div>
     )
 }

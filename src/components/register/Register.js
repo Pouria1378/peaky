@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout from "../layout";
+import Layout from "../../layout/Layout";
 import Image from 'next/image'
 import { User, Password } from 'react-iconly'
 import { apiRegister } from '../../apis/apiRegister';
@@ -7,10 +7,12 @@ import { message } from 'antd'
 import { Form, Input, Button } from 'antd';
 import { statusCodeMessage } from "../../components/functions";
 import { useRouter } from 'next/router'
+import useIsMounted from "../useIsMounted"
+import Loading from "../loading/Loading";
 
 const Register = () => {
+    const isMounted = useIsMounted();
     const [registerLoading, setRegisterLoading] = useState(false)
-
 
     const router = useRouter()
 
@@ -21,17 +23,20 @@ const Register = () => {
             setRegisterLoading(false)
             return
         }
-        console.log("data", data);
         apiRegister(data)
             .then((result) => {
+                if (!isMounted()) return;
                 const { statusCode, success } = result
                 setRegisterLoading(false)
                 if (success) {
                     statusCodeMessage(statusCode)
                     router.push("/login")
                 }
+                statusCodeMessage(600)
             })
             .catch((err) => {
+                if (!isMounted()) return;
+                statusCodeMessage(600)
                 setRegisterLoading(false)
                 console.error(err)
             })
@@ -41,6 +46,9 @@ const Register = () => {
         <Layout
             bodyIdStyle="RegisterPage"
         >
+            {
+                registerLoading && <Loading />
+            }
             <div className="row w-100 h-100">
                 <section className="col-12 col-md-6">
                     <div className="formWrapper">
@@ -58,7 +66,7 @@ const Register = () => {
                                 rules={[{ required: true, message: 'این فیلد الزامی است' }]}
                             >
                                 <Input
-                                    prefix={<User set="curved" />}
+                                    prefix={<User />}
                                 />
                             </Form.Item>
 
@@ -68,7 +76,7 @@ const Register = () => {
                                 rules={[{ required: true, message: 'این فیلد الزامی است' }]}
                             >
                                 <Input.Password
-                                    prefix={<Password set="curved" />}
+                                    prefix={<Password />}
                                 />
                             </Form.Item>
 
@@ -78,7 +86,7 @@ const Register = () => {
                                 rules={[{ required: true, message: 'این فیلد الزامی است' }]}
                             >
                                 <Input.Password
-                                    prefix={<Password set="curved" />}
+                                    prefix={<Password />}
                                 />
                             </Form.Item>
 

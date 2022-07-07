@@ -1,0 +1,254 @@
+#Reserve {
+    width: 100%;
+    padding: 2rem;
+    
+    .unactiveEvent {
+        background-color: $lightRed;
+        border: 1px solid $red;
+        border-radius: $borderRadius;
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h3 {
+            color: $red;
+        }
+    }
+
+    .wrapper {  
+        background-color: $white;
+        padding: 1rem;
+        border-radius: $borderRadius;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        text-align: right;
+
+        .body {
+            width: 300px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            direction: rtl;
+            margin: 1rem 0;
+        }
+
+        .type , .duration {
+            width: 90px;
+        }
+
+        .description {
+            max-width: 400px;
+        }
+    }
+
+    .eventColorDarkRed {
+        background-color: $lightRed;
+        .-selected {
+            background-color: $darkRed;
+        }
+        .wrapper {
+            border: 1px solid $darkRed;
+        }
+    }
+    .eventColorRed {
+        background-color: $lightRed;
+        .-selected {
+            background-color: $red;
+        }
+        .wrapper {
+            border: 1px solid $red;
+        }
+    }
+    .eventColorDarkYellow {
+        background-color: $lightYellow;
+        .-selected {
+            background-color: $darkYellow;
+        }
+        .wrapper {
+            border: 1px solid $darkYellow;
+        }
+    }
+    .eventColorYellow {
+        background-color: $lightYellow;
+        .-selected {
+            background-color: $yellow;
+        }
+        .wrapper {
+            border: 1px solid $yellow;
+        }
+    }
+    .eventColorDarkGreen {
+        background-color: $lightGreen;
+        .-selected {
+            background-color: $darkGreen;
+        }
+        .wrapper {
+            border: 1px solid $darkGreen;
+        }
+    }
+    .eventColorGreen {
+        background-color: $lightGreen;
+        .-selected {
+            background-color: $green;
+        }
+        .wrapper {
+            border: 1px solid $green;
+        }
+    }
+    .eventColorDarkMainColor2 {
+        background-color: $lightMainColor2;
+        .-selected {
+            background-color: $darkMainColor2;
+        }
+        .wrapper {
+            border: 1px solid $darkMainColor2;
+        }
+    }
+    .eventColorMainColor2 {
+        background-color: $lightMainColor2;
+        .-selected {
+            background-color: $mainColor2;
+        }
+        .wrapper {
+            border: 1px solid $mainColor2;
+        }
+    }
+    .eventColorMainColor1 {
+        background-color: $lightMainColor1;
+        .-selected {
+            background-color: $mainColor1;
+        }
+        .wrapper {
+            border: 1px solid $mainColor1;
+        }
+    }
+}
+
+.Calendar  {
+    width: 500px !important;
+    min-height: 200px !important;
+}
+
+.ReserveHourModal {
+
+    .reserveHours {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .hour {
+        border: 1px solid;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        text-align: center;
+        border-radius: $borderRadius;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .eventColorYellow {
+        .hour {
+            color: $darkYellow;
+            border-color: $darkYellow;
+            background-color: $lightYellow;
+        }
+    }
+
+    .eventColorDarkRed {
+        .hour {
+            color: $darkRed;
+            border-color: $darkRed;
+            background-color: $lightRed;
+        }
+    }
+    .eventColorRed {
+        .hour {
+            color: $red;
+            border-color: $red;
+            background-color: $lightRed;
+        }
+    }
+    .eventColorDarkYellow {
+        .hour {
+            color: $darkYellow;
+            border-color: $darkYellow;
+            background-color: $lightYellow;
+        }
+    }
+    .eventColorYellow {
+        .hour {
+            color: $yellow;
+            border-color: $yellow;
+            background-color: $lightYellow;
+        }
+    }
+    .eventColorDarkGreen {
+        .hour {
+            color: $darkGreen;
+            border-color: $darkGreen;
+            background-color: $lightGreen;
+        }
+    }
+    .eventColorGreen {
+        .hour {
+            color: $green;
+            border-color: $green;
+            background-color: $lightGreen;
+        }
+    }
+    .eventColorDarkMainColor2 {
+        .hour {
+            color: $darkMainColor2;
+            border-color: $darkMainColor2;
+            background-color: $lightMainColor2;
+        }
+    }
+    .eventColorMainColor2 {
+        .hour {
+            color: $mainColor2;
+            border-color: $mainColor2;
+            background-color: $lightMainColor2;
+        }
+    }
+    .eventColorMainColor1 {
+        .hour {
+            color: $mainColor1;
+            border-color: $mainColor1;
+            background-color: $lightMainColor1;
+        }
+    }
+
+   
+}
+
+.userInformationForm {
+    // box-shadow: $shadow;
+    @include boxShadow();
+    @include flexCenter();
+    padding: 1rem;
+    margin: 0 4rem 9rem 4rem;
+    border-radius: $borderRadius;
+    width: 300px;
+}
+
+#succesfullyReservedEvent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .wrapper {
+        padding: 1rem;
+        border: 1px solid $green;
+        background-color: $lightGreen;
+        border-radius: $borderRadius;
+
+        h3 {
+            color: $green;
+        }
+    }
+}

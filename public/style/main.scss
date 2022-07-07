@@ -2,12 +2,16 @@
 @import "./Variables";
 @import "./SassFunctions";
 @import "./app";
+@import "./responsive";
 
 
 @import "../../src/components/register/Register";
 @import "../../src/components/login/Login";
 @import "../../src/components/createEventType/CreateEventType";
 @import "../../src/components/sidebar/Sidebar";
-@import "./responsive";
+@import "../../src/components/eventTypes/EventTypes";
+@import "../../src/components/loading/Loading";
+@import "../../src/components/reserveEvent/Reserve";
+@import "../../src/components/reservedEvents/ReservedEvents";
 
 

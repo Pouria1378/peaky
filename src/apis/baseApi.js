@@ -17,7 +17,36 @@ const baseApi = {
     createEventType: () => ({
         url: `/createEventType`,
         method: 'POST',
-        headers: { "x-access-token": `Bearer ${tokenCheckExists()}` },
+    }),
+
+    getAllEventTypes: () => ({
+        url: `/getAllEventTypes`,
+        method: 'GET',
+    }),
+
+    deleteEventType: () => ({
+        url: `/deleteEventType`,
+        method: 'DELETE',
+    }),
+
+    editEventType: () => ({
+        url: `/editEventType`,
+        method: 'PUT',
+    }),
+
+    getReserveEventData: () => ({
+        url: `/getReserveEventData`,
+        method: 'POST',
+    }),
+
+    postReserveEventData: () => ({
+        url: `/reserveEvent`,
+        method: 'POST',
+    }),
+
+    getReservedEvents: () => ({
+        url: `/getReservedEvents`,
+        method: 'GET',
     }),
 }
 
@@ -28,7 +57,7 @@ instanceAxios.interceptors.request.use(
         config.headers = {
             "Accept": "application/json",
             "Content-Type": "application/json",
-            // "Authorization": `Bearer ${tokenCheckExists()}`,
+            "Authorization": `${tokenCheckExists()}`,
             "app-name": "Peaky",
         }
         return config;

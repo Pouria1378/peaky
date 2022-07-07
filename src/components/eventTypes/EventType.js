@@ -9,7 +9,7 @@ import useIsMounted from "../useIsMounted";
 import Loading from "../loading/Loading";
 
 const EventType = ({ data, setEventTypes, setEditEventType }) => {
-    const { _id, title, duration, type, color, link, status, username } = data
+    const { _id, title, duration, type, className, link, status, username } = data
     const [loading, setLoading] = useState(false)
 
     const isMounted = useIsMounted();
@@ -144,7 +144,7 @@ const EventType = ({ data, setEventTypes, setEditEventType }) => {
 
                 </div>
 
-                <div className={`body ${color}`}>
+                <div className={`body ${className}`}>
                     <div className="duration">
                         <TimeCircle />
                         <span>

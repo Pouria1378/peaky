@@ -1,15 +1,11 @@
 import React from "react";
-import Layout from "../layout/Layout";
+import Login from "../components/login/Login";
 
 
-const Register = () => {
+const LoginPage = () => {
     return (
-        <Layout>
-            <div>
-                <h1>index page</h1>
-            </div>
-        </Layout>
+        <Login />
     );
 }
 
-export default Register;
+export default LoginPage

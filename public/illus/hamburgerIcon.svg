@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="184" height="140" viewBox="0 0 184 140">
+  <defs>
+    <clipPath id="clip-icons_1">
+      <rect width="184" height="140"/>
+    </clipPath>
+  </defs>
+  <g id="icons_1" data-name="icons – 1" clip-path="url(#clip-icons_1)">
+    <rect width="184" height="140" fill="#fff"/>
+    <line id="Line_39" data-name="Line 39" x2="122.871" transform="translate(30.198 26.516)" fill="none" stroke="#6c757d" stroke-linecap="round" stroke-width="11"/>
+    <line id="Line_40" data-name="Line 40" x2="122.871" transform="translate(30.198 70)" fill="none" stroke="#6c757d" stroke-linecap="round" stroke-width="11"/>
+    <line id="Line_41" data-name="Line 41" x2="122.871" transform="translate(30.932 113.484)" fill="none" stroke="#6c757d" stroke-linecap="round" stroke-width="11"/>
+  </g>
+</svg>

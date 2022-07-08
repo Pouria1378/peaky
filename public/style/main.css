@@ -469,6 +469,18 @@ button {
   #RegisterPage .illusWrapper, #LoginPage .illusWrapper {
     display: none;
   }
+
+  #LaptopSidebar {
+    display: none;
+  }
+
+  body {
+    padding-top: 3rem;
+  }
+
+  .mobileHeader {
+    display: block !important;
+  }
 }
 #RegisterPage, #LoginPage {
   display: flex;
@@ -636,12 +648,12 @@ button {
   text-align: right;
 }
 
-#Sidebar {
+#Sidebar #LaptopSidebar {
   width: 190px;
   height: 100%;
   z-index: 10;
 }
-#Sidebar .sidebar {
+#Sidebar #LaptopSidebar .sidebar {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   position: fixed;
   top: 0;
@@ -653,39 +665,68 @@ button {
   align-items: center;
   background-color: white;
 }
-#Sidebar .sidebar .logoWrapper {
+#Sidebar #LaptopSidebar .sidebar .logoWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
-#Sidebar .sidebar .routes {
+#Sidebar .mobileHeader {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3rem;
+  background-color: #FFFFFF;
+  z-index: 10;
+}
+#Sidebar .mobileHeader .wrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+#Sidebar .mobileHeader .logoWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-direction: row-reverse;
+  margin-top: -4px;
+}
+#Sidebar .mobileHeader .logoWrapper h5 {
+  margin: 0.5rem 1rem 0 1rem;
+}
+
+.routes {
   text-align: right;
   margin-top: 3rem;
   width: 100%;
 }
-#Sidebar .sidebar .routes ul {
+.routes ul {
   display: flex;
   flex-direction: column;
 }
-#Sidebar .sidebar .routes ul li {
+.routes ul li {
   padding: 1rem;
   cursor: pointer;
   font-size: 0.8rem !important;
   position: relative;
 }
-#Sidebar .sidebar .routes ul li:hover {
+.routes ul li:hover {
   color: #6A6EF4;
 }
-#Sidebar .sidebar .routes ul li svg {
+.routes ul li svg {
   width: 19px;
   margin-left: 8px;
 }
-#Sidebar .sidebar .routes ul .active {
+.routes ul .active {
   background-color: #F1F1FE;
   color: #6A6EF4;
 }
-#Sidebar .sidebar .routes ul .active::after {
+.routes ul .active::after {
   content: "";
   display: block;
   width: 5px;
@@ -694,6 +735,20 @@ button {
   right: 0;
   top: 0;
   position: absolute;
+}
+
+.mobileSidebarDrawer .ant-drawer-header {
+  padding: 1rem;
+}
+.mobileSidebarDrawer .ant-drawer-header .ant-drawer-header-title {
+  flex-direction: row-reverse;
+}
+.mobileSidebarDrawer .ant-drawer-header .ant-drawer-header-title .ant-drawer-title {
+  text-align: right;
+  height: 16px;
+}
+.mobileSidebarDrawer .ant-drawer-body {
+  padding: 0;
 }
 
 #EventTypes {

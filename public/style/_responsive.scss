@@ -4,4 +4,16 @@
             display: none;
         }
     }
+
+    #LaptopSidebar {
+        display: none;
+    }
+
+    body {
+        padding-top: 3rem;
+    }
+
+    .mobileHeader {
+        display: block !important;
+    }
 }

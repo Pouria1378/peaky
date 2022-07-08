@@ -1,6 +1,6 @@
 import Layout from "../layout/Layout";
 import React from "react";
-import CreateEventType from "../components/createEventType/CreateEventType";
+import CreateEventType from "../components/createEventType/CreateEditEventType";
 
 
 const CreateEventTypePage = () => {

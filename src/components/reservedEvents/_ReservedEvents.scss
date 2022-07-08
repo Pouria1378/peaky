@@ -24,7 +24,7 @@
     }
 
     .reservedEventsMobile {
-        box-shadow: rgb(180 187 193 / 74%) 0px 0px 24px;
+        @include boxShadow();
         display: flex;
         flex-direction: column;
         padding: 1rem;

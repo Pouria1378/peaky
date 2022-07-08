@@ -473,9 +473,30 @@ textarea {
   margin-right: 6px;
 }
 
+#byPerson {
+  border: 1px solid #BB73F3;
+  color: #BB73F3;
+}
+
+#phone {
+  border: 1px solid #FFC107;
+  color: #FFC107;
+}
+
+#skype {
+  border: 1px solid #54C1FB;
+}
+
+#googleMeet {
+  border: 1px solid #11CE8C;
+}
+
 @media (max-width: 767.98px) {
   #RegisterPage .illusWrapper, #LoginPage .illusWrapper {
     display: none;
+  }
+  #RegisterPage .formWrapper, #LoginPage .formWrapper {
+    height: unset !important;
   }
 
   #LaptopSidebar {
@@ -547,7 +568,7 @@ textarea {
   height: 100%;
 }
 #RegisterPage .formWrapper .registerForm, #LoginPage .formWrapper .registerForm {
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(180, 187, 193, 0.74) 0px 0px 24px;
   text-align: right;
   max-width: 600px;
   padding: 1rem;
@@ -557,6 +578,7 @@ textarea {
   display: flex;
   flex-direction: column;
   padding-bottom: 0 !important;
+  border-radius: 10px;
 }
 #RegisterPage .formWrapper .registerForm .mainColor1Button, #LoginPage .formWrapper .registerForm .mainColor1Button {
   width: 100%;
@@ -569,7 +591,7 @@ textarea {
   text-align: right;
 }
 #CreateEventType .createEventTypeWrapper {
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(180, 187, 193, 0.74) 0px 0px 24px;
   border-radius: 10px;
   background-color: #FFFFFF;
   width: 100%;
@@ -708,7 +730,7 @@ textarea {
   z-index: 10;
 }
 #Sidebar #LaptopSidebar .sidebar {
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(180, 187, 193, 0.74) 0px 0px 24px;
   position: fixed;
   top: 0;
   right: 0;
@@ -822,7 +844,7 @@ textarea {
   background-color: #C8CADB !important;
 }
 #EventTypes .eventTypes .eventType {
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(180, 187, 193, 0.74) 0px 0px 24px;
   margin: 1rem;
   padding: 1rem;
   border-radius: 10px;
@@ -1167,7 +1189,7 @@ textarea {
 }
 
 .userInformationForm {
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(180, 187, 193, 0.74) 0px 0px 24px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1202,7 +1224,7 @@ textarea {
   margin-top: 3rem;
 }
 #ReservedEvents .reservedEventsTable {
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(180, 187, 193, 0.74) 0px 0px 24px;
   width: 70%;
   border-radius: 10px;
   overflow: hidden;

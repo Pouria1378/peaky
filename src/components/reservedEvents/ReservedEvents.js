@@ -80,10 +80,6 @@ const ReservedEvents = () => {
         },
     ];
 
-    console.log('====================================');
-    console.log(reservedEvents);
-    console.log('====================================');
-
     return (
         <Layout
             sideBar={true}

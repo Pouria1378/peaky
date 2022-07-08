@@ -155,7 +155,10 @@ const EventType = ({ data, setEventTypes, setEditEventType }) => {
                         </span>
                     </div>
 
-                    <span className="type">
+                    <span
+                        id={type}
+                        className="type"
+                    >
                         {typeOfEvent(type)}
                     </span>
                 </div>

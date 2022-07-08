@@ -72,6 +72,9 @@ button {
     cursor: pointer;
 }
 
+textarea {
+    border-radius: $borderRadius !important;
+}
 
 //////
 .ltr {
@@ -79,6 +82,10 @@ button {
 }
 
 //antd overrides
+.ant-select-selector {
+    border-radius: $borderRadius !important;
+}
+
 .ant-modal-content {
     border-radius: $borderRadius !important;
     overflow: hidden !important;

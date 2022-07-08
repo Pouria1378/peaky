@@ -16,4 +16,8 @@
     .mobileHeader {
         display: block !important;
     }
+
+    .createEventTypeWrapper {
+        width: calc(100% - 1rem) !important;
+    }
 }

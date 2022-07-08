@@ -421,8 +421,16 @@ button {
   cursor: pointer;
 }
 
+textarea {
+  border-radius: 10px !important;
+}
+
 .ltr {
   direction: ltr !important;
+}
+
+.ant-select-selector {
+  border-radius: 10px !important;
 }
 
 .ant-modal-content {
@@ -480,6 +488,10 @@ button {
 
   .mobileHeader {
     display: block !important;
+  }
+
+  .createEventTypeWrapper {
+    width: calc(100% - 1rem) !important;
   }
 }
 #RegisterPage, #LoginPage {
@@ -546,9 +558,15 @@ button {
 #CreateEventType .createEventTypeWrapper .createEventTypeForm {
   padding: 1rem;
 }
+#CreateEventType .createEventTypeWrapper .newRadious input {
+  border-radius: 0 10px 10px 0 !important;
+}
+#CreateEventType .createEventTypeWrapper .newRadious .ant-input-group-addon {
+  border-radius: 10px 0 0 10px !important;
+}
 #CreateEventType .createEventTypeWrapper .eventColors {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
 }
 #CreateEventType .createEventTypeWrapper .eventColors .colorPicker input {
   height: 100% !important;
@@ -558,6 +576,7 @@ button {
 }
 #CreateEventType .createEventTypeWrapper .eventColors .eventColor {
   width: 35px;
+  min-width: 35px;
   height: 35px;
   margin: 0.5rem;
   border-radius: 10px;
@@ -620,8 +639,11 @@ button {
 #CreateEventType .createEventTypeWrapper .freeTime .days {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 1rem 0;
   border-bottom: 1px solid #C8CADB;
+}
+#CreateEventType .createEventTypeWrapper .freeTime .days:first-child {
+  padding-top: 0;
 }
 #CreateEventType .createEventTypeWrapper .freeTime .days label {
   min-width: 65px;

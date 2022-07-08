@@ -204,6 +204,7 @@ const CreateEditEventType = ({ title, backButton, EditEventType }) => {
                     layout="vertical"
                     className="createEventTypeForm"
                     initialValues={EditEventType}
+                    scrollToFirstError={true}
                 >
 
                     <Form.Item
@@ -217,6 +218,7 @@ const CreateEditEventType = ({ title, backButton, EditEventType }) => {
                     <Form.Item
                         label="مدت زمان"
                         name="hour"
+                        className="newRadious"
                         rules={[
                             { required: true, message: 'این فیلد الزامی است' },
                             { pattern: /\d+/g, message: 'لطفا عدد وارد کنید' },
@@ -289,10 +291,10 @@ const CreateEditEventType = ({ title, backButton, EditEventType }) => {
                             { required: true, message: 'این فیلد الزامی است' },
                             { pattern: /^\S+$/, message: 'فرمت وارد شده اشتباه است' },
                         ]}
-                        className="eventLink"
+                        className="eventLink newRadious"
                     >
                         <Input
-                            addonBefore="Peaky/username/"
+                            addonBefore="reserve/username/"
                             className="ltr"
                         />
                     </Form.Item>

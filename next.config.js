@@ -1,6 +1,5 @@
 module.exports = {
     env: {
-        // API_URL: 'http://127.0.0.1:8000',
-        API_URL: 'https://test-heroku-peaky.herokuapp.com/',
+        API_URL: process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000' : 'https://test-heroku-peaky.herokuapp.com/',
     },
 }

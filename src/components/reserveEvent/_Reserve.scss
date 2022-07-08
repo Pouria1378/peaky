@@ -13,6 +13,8 @@
 
         h3 {
             color: $red;
+            font-size: 1.2rem;
+            text-align: right;
         }
     }
 
@@ -239,16 +241,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 50vh;
 
     .wrapper {
         padding: 1rem;
         border: 1px solid $green;
         background-color: $lightGreen;
         border-radius: $borderRadius;
+        max-width: 90%;
 
         h3 {
             color: $green;
+            text-align: right;
         }
     }
 }

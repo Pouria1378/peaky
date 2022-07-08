@@ -504,6 +504,27 @@ textarea {
   #ReservedEvents .reservedEventsMobile {
     display: block !important;
   }
+
+  #Reserve {
+    padding: 1rem !important;
+  }
+  #Reserve .wrapper .body {
+    width: unset !important;
+  }
+  #Reserve .wrapper .calendar {
+    width: 100%;
+  }
+  #Reserve .wrapper .calendar .Calendar {
+    width: 100% !important;
+  }
+  #Reserve .wrapper .calendar .userInformationForm {
+    margin: 1rem 0 0 0;
+    width: 100%;
+  }
+
+  #succesfullyReservedEvent h3, #succesfullyReservedEvent .h3 {
+    font-size: 1.2rem;
+  }
 }
 #RegisterPage, #LoginPage {
   display: flex;
@@ -965,6 +986,8 @@ textarea {
 }
 #Reserve .unactiveEvent h3 {
   color: #FF7070;
+  font-size: 1.2rem;
+  text-align: right;
 }
 #Reserve .wrapper {
   background-color: #FFFFFF;
@@ -1158,16 +1181,18 @@ textarea {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 50vh;
 }
 #succesfullyReservedEvent .wrapper {
   padding: 1rem;
   border: 1px solid #11CE8C;
   background-color: #F3FCF9;
   border-radius: 10px;
+  max-width: 90%;
 }
 #succesfullyReservedEvent .wrapper h3 {
   color: #11CE8C;
+  text-align: right;
 }
 
 #ReservedEvents {

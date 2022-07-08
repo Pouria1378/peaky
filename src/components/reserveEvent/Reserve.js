@@ -67,7 +67,7 @@ const Reserve = ({ eventData = {} }) => {
                                     {description}
                                 </div>
                             </div>
-                            <div>
+                            <div className="calendar">
                                 {
                                     showCalendar ?
                                         <Calendar

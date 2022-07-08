@@ -33,5 +33,34 @@
             display: block !important;
         }
     }
+
+    #Reserve {
+        padding: 1rem !important;
+
+        .wrapper {
+            .body {
+                width: unset !important;
+            }
+
+            .calendar {
+                width: 100%;
+
+                .Calendar {
+                    width: 100% !important;
+                }
+
+                .userInformationForm {
+                    margin: 1rem 0 0 0;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    #succesfullyReservedEvent {
+        h3, .h3 {
+            font-size: 1.2rem;
+        }
+    }
     
 }

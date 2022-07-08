@@ -1221,7 +1221,7 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 3rem;
+  padding: 2rem 0;
 }
 #ReservedEvents .reservedEventsTable {
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;

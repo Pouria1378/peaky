@@ -1,6 +1,6 @@
 #ReservedEvents {
     @include flexCenter();
-    margin-top: 3rem;
+    padding: 2rem 0;
 
     .reservedEventsTable {
         @include boxShadow();

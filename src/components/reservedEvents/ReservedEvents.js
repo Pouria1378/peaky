@@ -67,11 +67,11 @@ const ReservedEvents = () => {
             dataIndex: 'date',
         },
         {
-            title: 'اسم مهمان',
+            title: 'مهمان',
             dataIndex: 'username',
         },
         {
-            title: 'شماره تلفن/ایمیل مهمان',
+            title: 'تلفن/ایمیل',
             dataIndex: 'userEmail',
         },
         {
@@ -106,12 +106,12 @@ const ReservedEvents = () => {
                             </div>
 
                             <div>
-                                <span className='key'>اسم مهمان</span>
+                                <span className='key'>مهمان</span>
                                 <span className='value'>{username}</span>
                             </div>
 
                             <div>
-                                <span className='key'>شماره تلفن/ایمیل مهمان</span>
+                                <span className='key'>تلفن/ایمیل</span>
                                 <span className='value'>{userEmail}</span>
                             </div>
 

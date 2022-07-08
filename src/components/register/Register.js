@@ -31,6 +31,7 @@ const Register = () => {
                 if (success) {
                     statusCodeMessage(statusCode)
                     router.push("/")
+                    return
                 }
                 statusCodeMessage(600)
             })

@@ -23,7 +23,7 @@ const ReservedEvents = () => {
                 if (success || statusCode === 200) {
                     const tableData = data.map(({ _id, title, date, username, userEmail, type, hour }) => {
                         return {
-                            _id,
+                            key: _id,
                             title,
                             "date": hour + " - " + date,
                             username,
@@ -51,7 +51,7 @@ const ReservedEvents = () => {
     const columns = [
         {
             title: 'ردیف',
-            dataIndex: '_id',
+            dataIndex: 'key',
             render: (__, _, index) => (
                 <div size="middle">
                     <p>{index + 1}</p>
@@ -80,6 +80,9 @@ const ReservedEvents = () => {
         },
     ];
 
+    console.log('====================================');
+    console.log(reservedEvents);
+    console.log('====================================');
 
     return (
         <Layout
@@ -89,6 +92,44 @@ const ReservedEvents = () => {
             {
                 loading && <Loading />
             }
+            {
+                reservedEvents.length ?
+                    reservedEvents.map(({ key, date, title, type, userEmail, username }) => (
+                        <div
+                            className='reservedEventsMobile'
+                            key={key}
+                        >
+                            <div>
+                                <span className='key'>رویداد</span>
+                                <span className='value'>{title}</span>
+                            </div>
+
+                            <div>
+                                <span className='key'>تاریخ</span>
+                                <span className='value'>{date}</span>
+                            </div>
+
+                            <div>
+                                <span className='key'>اسم مهمان</span>
+                                <span className='value'>{username}</span>
+                            </div>
+
+                            <div>
+                                <span className='key'>شماره تلفن/ایمیل مهمان</span>
+                                <span className='value'>{userEmail}</span>
+                            </div>
+
+                            <div>
+                                <span className='key'>محل رویداد</span>
+                                <span className='value'>{type}</span>
+                            </div>
+
+                        </div>
+                    ))
+                    :
+                    <span>رویداد هماهنگ شده ای یافت نشد</span>
+            }
+
             <Table
                 columns={columns}
                 dataSource={reservedEvents}

@@ -20,4 +20,18 @@
     .createEventTypeWrapper {
         width: calc(100% - 1rem) !important;
     }
+
+    #ReservedEvents {
+        flex-direction: column;
+        margin-top: 1rem !important;
+
+        .reservedEventsTable {
+            display: none;
+        }
+
+        .reservedEventsMobile {
+            display: block !important;
+        }
+    }
+    
 }

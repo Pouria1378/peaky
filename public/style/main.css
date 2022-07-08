@@ -493,6 +493,17 @@ textarea {
   .createEventTypeWrapper {
     width: calc(100% - 1rem) !important;
   }
+
+  #ReservedEvents {
+    flex-direction: column;
+    margin-top: 1rem !important;
+  }
+  #ReservedEvents .reservedEventsTable {
+    display: none;
+  }
+  #ReservedEvents .reservedEventsMobile {
+    display: block !important;
+  }
 }
 #RegisterPage, #LoginPage {
   display: flex;
@@ -1180,4 +1191,35 @@ textarea {
 }
 #ReservedEvents .reservedEventsTable .ant-table-cell:last-child {
   text-align: left;
+}
+#ReservedEvents .reservedEventsMobile {
+  box-shadow: rgba(180, 187, 193, 0.74) 0px 0px 24px;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  display: none;
+  border-radius: 10px;
+  margin: 0.5rem;
+}
+#ReservedEvents .reservedEventsMobile div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid #C8CADB;
+}
+#ReservedEvents .reservedEventsMobile div .key {
+  color: #6C757D;
+  text-align: right;
+}
+#ReservedEvents .reservedEventsMobile div .value {
+  text-align: left;
+}
+#ReservedEvents .reservedEventsMobile div:last-child {
+  border-bottom: unset;
+  padding-bottom: 0;
+}
+#ReservedEvents .reservedEventsMobile div:first-child {
+  padding-top: 0;
 }/*# sourceMappingURL=main.css.map */

@@ -74,7 +74,10 @@ const EventType = ({ data, setEventTypes, setEditEventType }) => {
         <Menu
             onClick={({ key }) => {
                 const keys = {
-                    "edit": () => setEditEventType(data),
+                    "edit": () => {
+                        setEditEventType(data)
+                        window.scrollTo(0, 0)
+                    },
                     "delete": () => deleteEventType(),
                     "status": () => editEventType("status", !status),
                 }

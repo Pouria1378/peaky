@@ -6,7 +6,7 @@ import useIsMounted from "../useIsMounted";
 import EventType from "./EventType"
 import Loading from "../loading/Loading";
 import Empty from "../empty/Empty";
-import CreateEditEventType from "../createEventType/CreateEventType";
+import CreateEditEventType from "../createEventType/CreateEditEventType";
 
 const EventTypes = () => {
     const isMounted = useIsMounted();

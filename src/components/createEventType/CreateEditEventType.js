@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { apiCreateEventType } from '../../apis/apiEventType';
+import React, { useEffect, useState } from "react";
+import { apiCreateEventType, apiEditEventType } from '../../apis/apiEventType';
 import { Form, Input, Button, Select } from 'antd';
 import { ArrowLeft, Delete, Plus, TickSquare } from "react-iconly";
 import { statusCodeMessage } from "../functions";
@@ -7,7 +7,7 @@ import useIsMounted from "../useIsMounted";
 import { useRouter } from 'next/router'
 import Loading from "../loading/Loading";
 
-const CreateEditEventType = ({ title, backButton, EditEventType }) => {
+const CreateEditEventType = ({ title, backButton, EditEventType = {} }) => {
     const isMounted = useIsMounted();
     const { Option } = Select;
     const { TextArea } = Input;
@@ -51,6 +51,8 @@ const CreateEditEventType = ({ title, backButton, EditEventType }) => {
     const postEventTypeForm = (formData) => {
         setPostEventTypeLoading(true)
         const eventData = {
+            _id: EditEventType._id,
+            status: EditEventType.status,
             title: formData.title,
             duration: formData.hour,
             type: formData.eventType,
@@ -58,6 +60,32 @@ const CreateEditEventType = ({ title, backButton, EditEventType }) => {
             description: formData.description || "",
             link: formData.eventLink,
             freeTimes: JSON.stringify(userFreeTime)
+        }
+
+        if (Object.keys(EditEventType).length) {
+            //edit event type
+
+            apiEditEventType(eventData)
+                .then((result) => {
+                    if (!isMounted()) return;
+                    setPostEventTypeLoading(false)
+                    const { success, statusCode } = result
+
+                    if (success) {
+                        statusCodeMessage(statusCode)
+                        router.reload()
+                        return
+                    }
+                    statusCodeMessage(601)
+                })
+                .catch((err) => {
+                    if (!isMounted()) return;
+                    setPostEventTypeLoading(false)
+                    statusCodeMessage(600)
+                    console.error(err)
+                })
+
+            return
         }
 
         apiCreateEventType(eventData)
@@ -179,6 +207,11 @@ const CreateEditEventType = ({ title, backButton, EditEventType }) => {
         )
     }
 
+    useEffect(() => {
+        if (!EditEventType.className) return
+        setEventColor(EditEventType.className)
+    }, [EditEventType])
+
     return (
         <div id="CreateEventType">
             {
@@ -203,7 +236,12 @@ const CreateEditEventType = ({ title, backButton, EditEventType }) => {
                     autoComplete="off"
                     layout="vertical"
                     className="createEventTypeForm"
-                    initialValues={EditEventType}
+                    initialValues={{
+                        hour: EditEventType.duration || null,
+                        eventType: EditEventType.type || null,
+                        eventLink: EditEventType.link || null,
+                        ...EditEventType
+                    }}
                     scrollToFirstError={true}
                 >
 
@@ -249,13 +287,6 @@ const CreateEditEventType = ({ title, backButton, EditEventType }) => {
                         name="eventColor"
                     >
                         <div className="eventColors">
-                            {/* <div className="eventColor colorPicker">
-                                <Input
-                                    type={"color"}
-                                    onChange={(e) => setEventColor(e.target.value)}
-                                />
-                            </div> */}
-
                             {
                                 eventColors.map((className) =>
                                     <div
@@ -299,37 +330,43 @@ const CreateEditEventType = ({ title, backButton, EditEventType }) => {
                         />
                     </Form.Item>
 
-                    <div>
-                        <label>تعیین زمان های آزاد</label>
-                        <div className="freeTime">
-                            {
-                                weekDays.map(day => (
-                                    <div
-                                        key={day.faLabel}
-                                        className="days"
-                                    >
-                                        <div className="dayLabel">
-                                            <label>{day.faLabel}</label>
-                                            <Plus
-                                                className="cursor-pointer"
-                                                onClick={() => {
-                                                    setUserFreeTime((prevState) => {
-                                                        prevState[day.label].push({ from: "09:00", to: "17:00" })
-                                                        return { ...prevState }
-                                                    })
-                                                }}
-                                            />
-                                        </div>
+                    {
+                        Object.keys(EditEventType).length ?
+                            <React.Fragment />
+                            :
+                            <div>
+                                <label>تعیین زمان های آزاد</label>
+                                <div className="freeTime">
+                                    {
+                                        weekDays.map(day => (
+                                            <div
+                                                key={day.faLabel}
+                                                className="days"
+                                            >
+                                                <div className="dayLabel">
+                                                    <label>{day.faLabel}</label>
+                                                    <Plus
+                                                        className="cursor-pointer"
+                                                        onClick={() => {
+                                                            setUserFreeTime((prevState) => {
+                                                                prevState[day.label].push({ from: "09:00", to: "17:00" })
+                                                                return { ...prevState }
+                                                            })
+                                                        }}
+                                                    />
+                                                </div>
 
-                                        {
-                                            freeTimeSelect(day.label)
-                                        }
-                                    </div>
-                                ))
-                            }
+                                                {
+                                                    freeTimeSelect(day.label)
+                                                }
+                                            </div>
+                                        ))
+                                    }
 
-                        </div>
-                    </div>
+                                </div>
+                            </div>
+                    }
+
 
                     <Form.Item
                         className="saveEventTypeButton"

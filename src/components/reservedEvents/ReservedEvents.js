@@ -90,49 +90,54 @@ const ReservedEvents = () => {
             }
             {
                 reservedEvents.length ?
-                    reservedEvents.map(({ key, date, title, type, userEmail, username }) => (
-                        <div
-                            className='reservedEventsMobile'
-                            key={key}
-                        >
-                            <div>
-                                <span className='key'>رویداد</span>
-                                <span className='value'>{title}</span>
-                            </div>
+                    <React.Fragment>
+                        {
+                            reservedEvents.map(({ key, date, title, type, userEmail, username }) => (
+                                <div
+                                    className='reservedEventsMobile'
+                                    key={key}
+                                >
+                                    <div>
+                                        <span className='key'>رویداد</span>
+                                        <span className='value'>{title}</span>
+                                    </div>
 
-                            <div>
-                                <span className='key'>تاریخ</span>
-                                <span className='value'>{date}</span>
-                            </div>
+                                    <div>
+                                        <span className='key'>تاریخ</span>
+                                        <span className='value'>{date}</span>
+                                    </div>
 
-                            <div>
-                                <span className='key'>مهمان</span>
-                                <span className='value'>{username}</span>
-                            </div>
+                                    <div>
+                                        <span className='key'>مهمان</span>
+                                        <span className='value'>{username}</span>
+                                    </div>
 
-                            <div>
-                                <span className='key'>تلفن/ایمیل</span>
-                                <span className='value'>{userEmail}</span>
-                            </div>
+                                    <div>
+                                        <span className='key'>تلفن/ایمیل</span>
+                                        <span className='value'>{userEmail}</span>
+                                    </div>
 
-                            <div>
-                                <span className='key'>محل رویداد</span>
-                                <span className='value'>{type}</span>
-                            </div>
+                                    <div>
+                                        <span className='key'>محل رویداد</span>
+                                        <span className='value'>{type}</span>
+                                    </div>
 
-                        </div>
-                    ))
+                                </div>
+                            ))
+                        }
+                        <Table
+                            columns={columns}
+                            dataSource={reservedEvents}
+                            pagination={false}
+                            className="reservedEventsTable"
+                            size="middle"
+                        />
+                    </React.Fragment>
                     :
                     <span>رویداد هماهنگ شده ای یافت نشد</span>
             }
 
-            <Table
-                columns={columns}
-                dataSource={reservedEvents}
-                pagination={false}
-                className="reservedEventsTable"
-                size="middle"
-            />
+
         </Layout>
     )
 }

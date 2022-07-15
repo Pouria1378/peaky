@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import useIsMounted from "../useIsMounted"
 import Loading from "../loading/Loading";
 
-const Register = () => {
+const Login = () => {
     const isMounted = useIsMounted();
     const [loginLoading, setLoginLoading] = useState(false)
 
@@ -111,4 +111,4 @@ const Register = () => {
     );
 }
 
-export default Register;
+export default Login;

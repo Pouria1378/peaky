@@ -5,6 +5,7 @@ import { apiPostReserveEventData } from '../../apis/apiReserveEvent';
 import { statusCodeMessage } from '../functions';
 import useIsMounted from '../useIsMounted';
 import moment from "jalali-moment"
+import Loading from '../loading/Loading';
 
 const UserInformation = () => {
     const router = useRouter()
@@ -12,6 +13,7 @@ const UserInformation = () => {
     const [loading, setLoading] = useState(false)
 
     const onFinish = (formData) => {
+        setLoading(true)
         const { selectedHour, selectedDay, link, username } = router.query
 
         const weekDayName = moment.from(
@@ -57,14 +59,12 @@ const UserInformation = () => {
 
     return (
         <section className='userInformationForm'>
+            {
+                loading && <Loading />
+            }
             <Form
                 name="userInformationForm"
-                // labelCol={{ span: 80 }}
-                // wrapperCol={{ span: 60 }}
                 onFinish={onFinish}
-                // onFinishFailed={onFinishFailed}
-                // autoComplete="off"
-
                 layout={"vertical"}
             >
                 <Form.Item

@@ -40,71 +40,78 @@ const Reserve = ({ eventData = {} }) => {
             sideBar={false}
         >
             {
-                status ?
-                    <div className={className}>
-                        <div className="wrapper">
-                            <div>
+                Object.keys(eventData).length ?
+                    status ?
+                        <div className={className}>
+                            <div className="wrapper">
                                 <div>
-                                    <h4>
-                                        {title}
-                                    </h4>
-                                </div>
+                                    <div>
+                                        <h4>
+                                            {title}
+                                        </h4>
+                                    </div>
 
-                                <div className="body">
-                                    <div className="duration">
-                                        <TimeCircle />
-                                        <span>
-                                            {toFarsiNumber(duration || "-")}
+                                    <div className="body">
+                                        <div className="duration">
+                                            <TimeCircle />
+                                            <span>
+                                                {toFarsiNumber(duration || "-")}
+                                            </span>
+                                        </div>
+
+                                        <span className="type">
+                                            {typeOfEvent(type)}
                                         </span>
                                     </div>
 
-                                    <span className="type">
-                                        {typeOfEvent(type)}
-                                    </span>
+                                    <div className="description">
+                                        {description}
+                                    </div>
                                 </div>
-
-                                <div className="description">
-                                    {description}
+                                <div className="calendar">
+                                    {
+                                        showCalendar ?
+                                            <Calendar
+                                                value={selectedDay}
+                                                onChange={e => {
+                                                    router.query.selectedDay = e
+                                                    setSelectedDay(e)
+                                                    setShowReserveHourModal(o => !o)
+                                                }}
+                                                minimumDate={minimumDate}
+                                                locale="fa"
+                                                calendarClassName="custom-calendar"
+                                                shouldHighlightWeekends
+                                            />
+                                            :
+                                            <UserInformation
+                                                selectedDay={selectedDay}
+                                                selectedHour={selectedHour}
+                                            />
+                                    }
                                 </div>
                             </div>
-                            <div className="calendar">
-                                {
-                                    showCalendar ?
-                                        <Calendar
-                                            value={selectedDay}
-                                            onChange={e => {
-                                                router.query.selectedDay = e
-                                                setSelectedDay(e)
-                                                setShowReserveHourModal(o => !o)
-                                            }}
-                                            minimumDate={minimumDate}
-                                            locale="fa"
-                                            calendarClassName="custom-calendar"
-                                            shouldHighlightWeekends
-                                        />
-                                        :
-                                        <UserInformation
-                                            selectedDay={selectedDay}
-                                            selectedHour={selectedHour}
-                                        />
-                                }
-                            </div>
+                            <ReserveHourModal
+                                show={showReserveHourModal}
+                                setShow={setShowReserveHourModal}
+                                freeTimes={freeTimes}
+                                selectedDay={selectedDay}
+                                className={className}
+                                setShowCalendar={setShowCalendar}
+                                selectedHour={selectedHour}
+                                setSelectedHour={setSelectedHour}
+                            />
                         </div>
-                        <ReserveHourModal
-                            show={showReserveHourModal}
-                            setShow={setShowReserveHourModal}
-                            freeTimes={freeTimes}
-                            selectedDay={selectedDay}
-                            className={className}
-                            setShowCalendar={setShowCalendar}
-                            selectedHour={selectedHour}
-                            setSelectedHour={setSelectedHour}
-                        />
-                    </div>
+                        :
+                        <div className="unactiveEvent">
+                            <h3>
+                                رویداد غیر فعال شده است
+                            </h3>
+                        </div>
                     :
                     <div className="unactiveEvent">
                         <h3>
-                            رویداد غیر فعال شده است
+                            رویدادی با این مشخصات یافت نشد!
                         </h3>
                     </div>
             }

@@ -75,6 +75,9 @@ export const toEnglishNumber = (number) => {
 }
 
 export const copyToClipboard = (text, messageText = "متن کپی شد") => {
+    console.log('====================================');
+    console.log("text", text);
+    console.log('====================================');
     navigator.clipboard.writeText(text)
         .then(() => message.success(messageText))
         .catch(() => message.error("کپی متن با مشکل مواجه شد"))

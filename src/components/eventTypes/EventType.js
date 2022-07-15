@@ -174,7 +174,7 @@ const EventType = ({ data, setEventTypes, setEditEventType }) => {
                         status ?
                             <button
                                 onClick={() =>
-                                    copyToClipboard("https://peaky-frontend-pouria-seifi.herokuapp.com/" + "reserve/" + username + "/" + link, "لینک رویداد کپی شد")
+                                    copyToClipboard("https://peaky-pouria-seifi.herokuapp.com/" + "reserve/" + username + "/" + link, "لینک رویداد کپی شد")
                                 }
                                 className="mainColor1Button"
                             >

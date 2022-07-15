@@ -367,6 +367,7 @@ input {
 }
 .ant-input-affix-wrapper input {
   background-color: transparent;
+  border-radius: unset !important;
 }
 
 .ant-form-item-label {

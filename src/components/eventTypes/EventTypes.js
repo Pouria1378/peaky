@@ -48,7 +48,6 @@ const EventTypes = () => {
             {
                 eventTypesLoading && <Loading />
             }
-
             {
                 EditEventType &&
                 <CreateEditEventType

@@ -46,7 +46,7 @@ const EventTypes = () => {
             sideBar={true}
         >
             {
-                eventTypesLoading && <Loading />
+                !eventTypesLoading && <Loading />
             }
 
             {

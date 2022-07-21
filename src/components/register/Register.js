@@ -5,7 +5,6 @@ import { User, Password } from 'react-iconly'
 import { apiRegister } from '../../apis/apiRegister';
 import { message } from 'antd'
 import { Form, Input, Button } from 'antd';
-import { statusCodeMessage } from "../../components/functions";
 import { useRouter } from 'next/router'
 import useIsMounted from "../useIsMounted"
 import Loading from "../loading/Loading";
@@ -23,21 +22,25 @@ const Register = () => {
             setRegisterLoading(false)
             return
         }
-        apiRegister(data)
+        let trimedData = {
+            password: data.password.trim(),
+            username: data.username.trim(),
+        }
+        apiRegister(trimedData)
             .then((result) => {
                 if (!isMounted()) return;
-                const { statusCode, success } = result
+                const { statusCode, success, msg } = result
                 setRegisterLoading(false)
-                if (success) {
-                    statusCodeMessage(statusCode)
+                if (success && statusCode === 200) {
+                    message.success(msg)
                     router.push("/")
                     return
                 }
-                statusCodeMessage(600)
+                message.warning(message)
             })
             .catch((err) => {
                 if (!isMounted()) return;
-                statusCodeMessage(600)
+                message.error("ارتباط با سرور با مشکل مواجه شد")
                 setRegisterLoading(false)
                 console.error(err)
             })
@@ -64,7 +67,10 @@ const Register = () => {
                             <Form.Item
                                 label="نام کاربری"
                                 name="username"
-                                rules={[{ required: true, message: 'این فیلد الزامی است' }]}
+                                rules={[
+                                    { required: true, message: 'این فیلد الزامی است' },
+                                    { pattern: new RegExp(/^[0-9]*$/), message: 'لطفا با کیبورد انگلیسی بنویسید' },
+                                ]}
                             >
                                 <Input
                                     prefix={<User />}
@@ -74,7 +80,10 @@ const Register = () => {
                             <Form.Item
                                 label="رمز عبور"
                                 name="password"
-                                rules={[{ required: true, message: 'این فیلد الزامی است' }]}
+                                rules={[
+                                    { required: true, message: 'این فیلد الزامی است' },
+                                    { pattern: new RegExp(/^[0-9]*$/), message: 'لطفا با کیبورد انگلیسی بنویسید' },
+                                ]}
                             >
                                 <Input.Password
                                     prefix={<Password />}
@@ -84,7 +93,10 @@ const Register = () => {
                             <Form.Item
                                 label="تکرار رمز عبور"
                                 name="repeatPassword"
-                                rules={[{ required: true, message: 'این فیلد الزامی است' }]}
+                                rules={[
+                                    { required: true, message: 'این فیلد الزامی است' },
+                                    { pattern: new RegExp(/^[0-9]*$/), message: 'لطفا با کیبورد انگلیسی بنویسید' },
+                                ]}
                             >
                                 <Input.Password
                                     prefix={<Password />}

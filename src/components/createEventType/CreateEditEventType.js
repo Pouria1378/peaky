@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { apiCreateEventType, apiEditEventType } from '../../apis/apiEventType';
-import { Form, Input, Button, Select } from 'antd';
+import { Form, Input, Button, Select, message } from 'antd';
 import { ArrowLeft, Delete, Plus, TickSquare } from "react-iconly";
-import { statusCodeMessage } from "../functions";
 import useIsMounted from "../useIsMounted";
 import { useRouter } from 'next/router'
 import Loading from "../loading/Loading";
@@ -69,19 +68,19 @@ const CreateEditEventType = ({ title, backButton, EditEventType = {} }) => {
                 .then((result) => {
                     if (!isMounted()) return;
                     setPostEventTypeLoading(false)
-                    const { success, statusCode } = result
+                    const { success, statusCode, msg } = result
 
-                    if (success) {
-                        statusCodeMessage(statusCode)
+                    if (success && statusCode === 200) {
+                        message.success(msg)
                         router.reload()
                         return
                     }
-                    statusCodeMessage(601)
+                    message.error(msg)
                 })
                 .catch((err) => {
                     if (!isMounted()) return;
                     setPostEventTypeLoading(false)
-                    statusCodeMessage(600)
+                    message.error("ارتباط با سرور با مشکل مواجه شد")
                     console.error(err)
                 })
 
@@ -92,23 +91,23 @@ const CreateEditEventType = ({ title, backButton, EditEventType = {} }) => {
             .then(result => {
                 if (!isMounted()) return;
                 setPostEventTypeLoading(false)
-                const { statusCode, success } = result
-                if (statusCode === 409) {
-                    statusCodeMessage(602)
+                const { statusCode, success, msg } = result
+                if (statusCode === 415) {
+                    message.error(msg)
                     return
                 }
-                if (success) {
-                    statusCodeMessage(statusCode)
+                if (success && statusCode === 200) {
+                    message.success(msg)
                     router.push("/eventTypes")
                     return
                 }
 
-                statusCodeMessage(601)
+                message.error(msg)
             })
             .catch(err => {
                 if (!isMounted()) return;
                 setPostEventTypeLoading(false)
-                statusCodeMessage(600)
+                message.error("ارتباط با سرور با مشکل مواجه شد")
                 console.error(err)
             });
     }

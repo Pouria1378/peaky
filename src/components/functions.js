@@ -3,37 +3,6 @@ import React from 'react'
 import { Call, User } from 'react-iconly'
 import Image from "next/image"
 
-export const statusCodeMessage = (statusCode) => {
-    const messages = {
-        200: () => {
-            message.success("عملیات با موفقیت انجام شد")
-        },
-        201: () => {
-            message.success("ثبت نام با موفقیت انجام شد لطفا وارد شوید")
-        },
-        // 400: 'Bad Request',
-        401: () => {
-            message.warning("لطفا ابتدا وارد شوید")
-            window.location.href = "/"
-        },
-        409: () => {
-            message.warning("قبلا ثبت نام کرده اید لطفا وارد شوید")
-        },
-        600: () => {
-            message.error("ارتباط با سرور با مشکل مواجه شد")
-        },
-        601: () => {
-            message.error("انجام عملیات با مشکل مواجه شد")
-        },
-        602: () => {
-            message.error("لینک رویداد تکراری است")
-        },
-
-    }
-
-    messages[statusCode]()
-}
-
 export const tokenCheckExists = () => {
     if (localStorage) {
         if (localStorage.getItem('token'))

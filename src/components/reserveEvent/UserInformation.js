@@ -1,8 +1,7 @@
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react'
 import { apiPostReserveEventData } from '../../apis/apiReserveEvent';
-import { statusCodeMessage } from '../functions';
 import useIsMounted from '../useIsMounted';
 import moment from "jalali-moment"
 import Loading from '../loading/Loading';
@@ -40,18 +39,18 @@ const UserInformation = () => {
         apiPostReserveEventData(data)
             .then((result) => {
                 if (!isMounted()) return;
-                const { statusCode, success } = result
+                const { statusCode, success, msg } = result
                 setLoading(false)
-                if (success) {
-                    statusCodeMessage(statusCode)
+                if (success && statusCode === 200) {
+                    message.success(msg)
                     router.push("/succesfullyReservedEvent")
                     return
                 }
-                statusCodeMessage(600)
+                message.warn(msg)
             })
             .catch((err) => {
                 if (!isMounted()) return;
-                statusCodeMessage(600)
+                message.error("ارتباط با سرور با مشکل مواجه شد")
                 setLoading(false)
                 console.error(err)
             })

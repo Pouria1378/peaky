@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Delete, Edit, MoreSquare, PaperPlus, Show, TimeCircle } from "react-iconly";
-import { copyToClipboard, statusCodeMessage, toFarsiNumber, typeOfEvent } from "../functions";
-import { Popover } from 'antd';
+import { copyToClipboard, toFarsiNumber, typeOfEvent } from "../functions";
+import { message, Popover } from 'antd';
 import Link from "next/link";
 import { Menu, Dropdown, Switch } from 'antd';
 import { apiDeleteEventType, apiEditEventType } from "../../apis/apiEventType";
@@ -24,19 +24,19 @@ const EventType = ({ data, setEventTypes, setEditEventType }) => {
             .then((result) => {
                 if (!isMounted()) return;
                 setLoading(false)
-                const { success, statusCode } = result
+                const { success, statusCode, msg } = result
 
-                if (success) {
-                    statusCodeMessage(statusCode)
+                if (success && statusCode === 200) {
+                    message.success(msg)
                     setEventTypes(oldValue => oldValue.filter(eventType => eventType._id !== _id))
                     return
                 }
-                statusCodeMessage(601)
+                message.warn(msg)
             })
             .catch((err) => {
                 if (!isMounted()) return;
                 setLoading(false)
-                statusCodeMessage(600)
+                message.error("ارتباط با سرور با مشکل مواجه شد")
                 console.error(err)
             })
     }
@@ -49,22 +49,22 @@ const EventType = ({ data, setEventTypes, setEditEventType }) => {
             .then((result) => {
                 if (!isMounted()) return;
                 setLoading(false)
-                const { success, statusCode } = result
+                const { success, statusCode, msg } = result
 
-                if (success) {
-                    statusCodeMessage(statusCode)
+                if (success && statusCode === 200) {
+                    message.success(msg)
                     setEventTypes(oldValue => oldValue.filter(eventType => {
                         if (eventType._id !== _id) return eventType
                         return data
                     }))
                     return
                 }
-                statusCodeMessage(601)
+                message.warn(msg)
             })
             .catch((err) => {
                 if (!isMounted()) return;
                 setLoading(false)
-                statusCodeMessage(600)
+                message.error("ارتباط با سرور با مشکل مواجه شد")
                 console.error(err)
             })
     }

@@ -3,8 +3,7 @@ import Layout from "../../layout/Layout";
 import Image from 'next/image'
 import { User, Password } from 'react-iconly'
 import { apiLogin } from '../../apis/apiRegister';
-import { Form, Input, Button } from 'antd';
-import { statusCodeMessage } from "../../components/functions";
+import { Form, Input, Button, message } from 'antd';
 import { useRouter } from 'next/router'
 import useIsMounted from "../useIsMounted"
 import Loading from "../loading/Loading";
@@ -18,22 +17,26 @@ const Login = () => {
 
     const postLoginData = (data) => {
         setLoginLoading(true)
-        apiLogin(data)
+        const trimedData = {
+            password: data.password.trim(),
+            username: data.username.trim(),
+        }
+        apiLogin(trimedData)
             .then((result) => {
                 if (!isMounted()) return;
-                const { statusCode, success, token } = result
+                const { statusCode, success, token, msg } = result
                 setLoginLoading(false)
-                if (success) {
-                    statusCodeMessage(statusCode)
+                if (success && statusCode === 200) {
+                    message.success(msg)
                     localStorage.setItem("token", token)
                     router.push("/eventTypes")
                     return
                 }
-                statusCodeMessage(600)
+                message.warning(msg)
             })
             .catch((err) => {
                 if (!isMounted()) return;
-                statusCodeMessage(600)
+                message.error("ارتباط با سرور با مشکل مواجه شد")
                 setLoginLoading(false)
                 console.error(err)
             })
@@ -60,7 +63,10 @@ const Login = () => {
                             <Form.Item
                                 label="نام کاربری"
                                 name="username"
-                                rules={[{ required: true, message: 'این فیلد الزامی است' }]}
+                                rules={[
+                                    { required: true, message: 'این فیلد الزامی است' },
+                                    { pattern: new RegExp(/^[0-9]*$/), message: 'لطفا با کیبورد انگلیسی بنویسید' },
+                                ]}
                             >
                                 <Input
                                     prefix={<User />}
@@ -70,7 +76,10 @@ const Login = () => {
                             <Form.Item
                                 label="رمز عبور"
                                 name="password"
-                                rules={[{ required: true, message: 'این فیلد الزامی است' }]}
+                                rules={[
+                                    { required: true, message: 'این فیلد الزامی است' },
+                                    { pattern: new RegExp(/^[0-9]*$/), message: 'لطفا با کیبورد انگلیسی بنویسید' },
+                                ]}
                             >
                                 <Input.Password
                                     prefix={<Password />}

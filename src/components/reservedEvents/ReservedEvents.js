@@ -1,8 +1,8 @@
-import { Table } from 'antd';
+import { message, Table } from 'antd';
 import React, { useEffect, useState } from 'react'
 import { apiGetReservedEvents } from '../../apis/apiReserveEvent';
 import Layout from '../../layout/Layout'
-import { statusCodeMessage, typeOfEvent } from '../functions';
+import { typeOfEvent } from '../functions';
 import useIsMounted from '../useIsMounted';
 import Loading from "../loading/Loading";
 
@@ -18,7 +18,7 @@ const ReservedEvents = () => {
         apiGetReservedEvents()
             .then((result) => {
                 if (!isMounted()) return;
-                const { statusCode, success, data } = result
+                const { statusCode, success, data, msg } = result
                 setLoading(false)
                 if (success || statusCode === 200) {
                     const tableData = data.map(({ _id, title, date, username, userEmail, type, hour }) => {
@@ -34,11 +34,13 @@ const ReservedEvents = () => {
                         }
                     })
                     setReservedEvents(tableData.reverse())
+                    return
                 }
+                message.warn(msg)
             })
             .catch((err) => {
                 if (!isMounted()) return;
-                statusCodeMessage(600)
+                message.error("ارتباط با سرور با مشکل مواجه شد")
                 setLoading(false)
                 console.error(err)
             })

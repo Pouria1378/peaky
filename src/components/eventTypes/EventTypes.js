@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../layout/Layout";
 import { apiGetAllEventTypes } from '../../apis/apiEventType';
-import { statusCodeMessage } from "../functions";
 import useIsMounted from "../useIsMounted";
 import EventType from "./EventType"
 import Loading from "../loading/Loading";
 import Empty from "../empty/Empty";
 import CreateEditEventType from "../createEventType/CreateEditEventType";
+import { message } from "antd";
 
 const EventTypes = () => {
     const isMounted = useIsMounted();
@@ -19,18 +19,19 @@ const EventTypes = () => {
         apiGetAllEventTypes()
             .then((result) => {
                 if (!isMounted()) return;
-                const { success, eventTypes, statusCode } = result
                 setEventTypesLoading(false);
-                if (success) {
-                    if (statusCode !== 200) statusCodeMessage(statusCode)
+                const { success, eventTypes, statusCode, msg } = result
+
+                if (success && statusCode === 200) {
                     setEventTypes(eventTypes)
                     return
                 }
-                statusCodeMessage(600)
+
+                message.error(msg)
             })
             .catch((err) => {
                 if (!isMounted()) return;
-                statusCodeMessage(600)
+                message.error("ارتباط با سرور با مشکل مواجه شد")
                 setEventTypesLoading(false);
                 console.error(err)
             })

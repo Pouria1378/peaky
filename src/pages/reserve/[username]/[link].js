@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { apiGetReserveEventData } from "../../../apis/apiReserveEvent";
 import Reserve from "../../../components/reserveEvent/Reserve";
 import { useRouter } from "next/router";
-import { statusCodeMessage } from "../../../components/functions";
+import { message } from "antd";
 
 const ReserveEvent = () => {
     const router = useRouter()
@@ -12,13 +12,13 @@ const ReserveEvent = () => {
         if (!router.query.link || !router.query.username) return
         apiGetReserveEventData(router.query)
             .then(result => {
-                const { statusCode, success, data } = result
-                if (statusCode === 200 || success) setEventData(data)
-                else statusCodeMessage(601)
+                const { statusCode, success, data, msg } = result
+                if (statusCode === 200 && success) setEventData(data)
+                else message.warn(msg)
             })
             .catch(err => {
                 console.error("error", err)
-                statusCodeMessage(600)
+                message.error("ارتباط با سرور با مشکل مواجه شد")
             })
     }, [router])
 

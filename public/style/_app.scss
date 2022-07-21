@@ -83,6 +83,20 @@ textarea {
 }
 
 //antd overrides
+.ant-message {
+    .ant-message-notice-content {
+        border-radius: $borderRadius !important;
+
+        .ant-message-custom-content {
+            @include flexCenter();
+        }
+    }
+    .anticon-check-circle {
+        margin-right: 0 !important;
+        margin-left: 0.5rem !important;
+    }
+}
+
 .ant-select-selector {
     border-radius: $borderRadius !important;
 }

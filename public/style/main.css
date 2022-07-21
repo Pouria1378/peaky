@@ -407,6 +407,19 @@ textarea {
   direction: ltr !important;
 }
 
+.ant-message .ant-message-notice-content {
+  border-radius: 10px !important;
+}
+.ant-message .ant-message-notice-content .ant-message-custom-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ant-message .anticon-check-circle {
+  margin-right: 0 !important;
+  margin-left: 0.5rem !important;
+}
+
 .ant-select-selector {
   border-radius: 10px !important;
 }
@@ -696,6 +709,9 @@ textarea {
   text-align: right;
 }
 
+#Sidebar {
+  z-index: 10;
+}
 #Sidebar #LaptopSidebar {
   width: 190px;
   height: 100%;

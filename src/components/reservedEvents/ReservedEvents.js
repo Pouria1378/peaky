@@ -6,7 +6,6 @@ import { typeOfEvent } from '../functions';
 const ReservedEvents = ({ data }) => {
     const [reservedEvents, setReservedEvents] = useState(data)
 
-
     useEffect(() => {
         const tableData = data.map(({ _id, title, date, username, userEmail, type, hour }) => {
             return {

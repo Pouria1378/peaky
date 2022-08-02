@@ -6,7 +6,7 @@ import { apiGetReservedEvents } from '../apis/apiReserveEvent';
 const ReservedEventsPage = ({ data }) => {
     return (
         <ReservedEvents
-            data={data}
+            data={data.data}
         />
     );
 }
@@ -20,7 +20,7 @@ export async function getServerSideProps({ req = {} }) {
             ...result
         }))
         .catch((err) => ({
-            eventTypes: null
+            data: null
         }))
 
     return {

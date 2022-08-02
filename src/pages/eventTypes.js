@@ -6,7 +6,7 @@ import Cookies from 'universal-cookie';
 const EventTypesPage = ({ data }) => {
     return (
         <EventTypes
-            data={data}
+            data={data.eventTypes}
         />
     );
 }

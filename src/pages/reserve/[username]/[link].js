@@ -1,40 +1,41 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { apiGetReserveEventData } from "../../../apis/apiReserveEvent";
 import Reserve from "../../../components/reserveEvent/Reserve";
-import { useRouter } from "next/router";
-import { message } from "antd";
+import Cookies from 'universal-cookie';
 
-const ReserveEvent = () => {
-    const router = useRouter()
-    const [eventData, setEventData] = useState({})
-    const [loading, setLoading] = useState(true)
-
-    const getReserveEventData = () => {
-        setLoading(true)
-        apiGetReserveEventData(router.query)
-            .then(result => {
-                const { statusCode, success, data, msg } = result
-                if (statusCode === 200 && success) setEventData(data)
-                else message.warn(msg)
-                setLoading(false)
-            })
-            .catch(err => {
-                console.error("error", err)
-                message.error("ارتباط با سرور با مشکل مواجه شد")
-                setLoading(false)
-            })
-    }
-    useEffect(() => {
-        if (!router.query.link || !router.query.username) return
-        getReserveEventData()
-    }, [router])
+const ReserveEvent = ({ data }) => {
 
     return (
         <Reserve
-            eventData={eventData}
-            loading={loading}
+            eventData={data.data}
         />
     );
+}
+
+export async function getServerSideProps({ req = {}, query = {} }) {
+    const cookies = req ? new Cookies(req.headers.cookie) : new Cookies();
+    const token = cookies.get("peakyToken")
+
+    const { username, link } = query;
+    const sendData = {
+        username,
+        link,
+        token,
+    }
+
+    const data = await apiGetReserveEventData(sendData)
+        .then((result) => ({
+            ...result
+        }))
+        .catch((err) => ({
+            data: null
+        }))
+
+    return {
+        props: {
+            data
+        },
+    }
 }
 
 export default ReserveEvent;

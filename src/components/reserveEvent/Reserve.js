@@ -7,9 +7,8 @@ import { toEnglishNumber, toFarsiNumber, typeOfEvent } from "../functions";
 import ReserveHourModal from "./ReserveHourModal";
 import UserInformation from "./UserInformation";
 import { useRouter } from "next/router";
-import Loading from "../loading/Loading";
 
-const Reserve = ({ eventData = {}, loading = false }) => {
+const Reserve = ({ eventData = {} }) => {
     const router = useRouter()
     const [selectedDay, setSelectedDay] = useState(null);
     const [selectedHour, setSelectedHour] = useState(null);
@@ -41,10 +40,7 @@ const Reserve = ({ eventData = {}, loading = false }) => {
             sideBar={false}
         >
             {
-                loading && <Loading />
-            }
-            {
-                Object.keys(eventData).length || !loading ?
+                Object.keys(eventData).length ?
                     status ?
                         <div className={className}>
                             <div className="wrapper">

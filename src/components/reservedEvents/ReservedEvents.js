@@ -4,11 +4,11 @@ import Layout from '../../layout/Layout'
 import { typeOfEvent } from '../functions';
 
 const ReservedEvents = ({ data }) => {
-    const [reservedEvents, setReservedEvents] = useState(data.data)
+    const [reservedEvents, setReservedEvents] = useState(data)
 
 
     useEffect(() => {
-        const tableData = data.data.map(({ _id, title, date, username, userEmail, type, hour }) => {
+        const tableData = data.map(({ _id, title, date, username, userEmail, type, hour }) => {
             return {
                 key: _id,
                 title,
@@ -21,7 +21,7 @@ const ReservedEvents = ({ data }) => {
             }
         })
         setReservedEvents(tableData.reverse())
-    }, [data.data])
+    }, [data])
 
 
 

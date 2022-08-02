@@ -5,7 +5,7 @@ import Empty from "../empty/Empty";
 import CreateEditEventType from "../createEventType/CreateEditEventType";
 
 const EventTypes = ({ data }) => {
-    const [eventTypes, setEventTypes] = useState(data.eventTypes);
+    const [eventTypes, setEventTypes] = useState(data);
     const [EditEventType, setEditEventType] = useState(false)
 
 

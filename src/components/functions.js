@@ -2,14 +2,14 @@ import { message } from 'antd'
 import React from 'react'
 import { Call, User } from 'react-iconly'
 import Image from "next/image"
+import Cookies from 'universal-cookie';
 
 export const tokenCheckExists = () => {
-    if (localStorage) {
-        if (localStorage.getItem('token'))
-            return localStorage.getItem('token')
+    const cookies = new Cookies();
+    const token = cookies.get('peakyToken')
+    if (token) {
+        return token
     }
-
-
     return false
 }
 

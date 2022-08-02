@@ -7,6 +7,7 @@ import { Form, Input, Button, message } from 'antd';
 import { useRouter } from 'next/router'
 import useIsMounted from "../useIsMounted"
 import Loading from "../loading/Loading";
+import Cookies from "universal-cookie";
 
 const Login = () => {
     const isMounted = useIsMounted();
@@ -14,6 +15,7 @@ const Login = () => {
 
 
     const router = useRouter()
+    const cookies = new Cookies();
 
     const postLoginData = (data) => {
         setLoginLoading(true)
@@ -28,7 +30,7 @@ const Login = () => {
                 setLoginLoading(false)
                 if (success && statusCode === 200) {
                     message.success(msg)
-                    localStorage.setItem("token", token)
+                    cookies.set('peakyToken', token)
                     router.push("/eventTypes")
                     return
                 }

@@ -1,54 +1,29 @@
-import { message, Table } from 'antd';
+import { Table } from 'antd';
 import React, { useEffect, useState } from 'react'
-import { apiGetReservedEvents } from '../../apis/apiReserveEvent';
 import Layout from '../../layout/Layout'
 import { typeOfEvent } from '../functions';
-import useIsMounted from '../useIsMounted';
-import Loading from "../loading/Loading";
 
-const ReservedEvents = () => {
-    const isMounted = useIsMounted();
-    const [loading, setLoading] = useState(false)
-    const [reservedEvents, setReservedEvents] = useState([])
+const ReservedEvents = ({ data }) => {
+    const [reservedEvents, setReservedEvents] = useState(data.data)
 
-
-    const getReservedEvents = () => {
-        setLoading(true)
-
-        apiGetReservedEvents()
-            .then((result) => {
-                if (!isMounted()) return;
-                const { statusCode, success, data, msg } = result
-                setLoading(false)
-                if (success || statusCode === 200) {
-                    const tableData = data.map(({ _id, title, date, username, userEmail, type, hour }) => {
-                        return {
-                            key: _id,
-                            title,
-                            "date": hour + " - " + date,
-                            username,
-                            userEmail,
-                            "type": <span id={type} className="type">
-                                {typeOfEvent(type)}
-                            </span>
-                        }
-                    })
-                    setReservedEvents(tableData.reverse())
-                    return
-                }
-                message.warn(msg)
-            })
-            .catch((err) => {
-                if (!isMounted()) return;
-                message.error("ارتباط با سرور با مشکل مواجه شد")
-                setLoading(false)
-                console.error(err)
-            })
-    }
 
     useEffect(() => {
-        getReservedEvents()
-    }, [])
+        const tableData = data.data.map(({ _id, title, date, username, userEmail, type, hour }) => {
+            return {
+                key: _id,
+                title,
+                "date": hour + " - " + date,
+                username,
+                userEmail,
+                "type": <span id={type} className="type">
+                    {typeOfEvent(type)}
+                </span>
+            }
+        })
+        setReservedEvents(tableData.reverse())
+    }, [data.data])
+
+
 
     const columns = [
         {
@@ -87,9 +62,6 @@ const ReservedEvents = () => {
             sideBar={true}
             bodyIdStyle="ReservedEvents"
         >
-            {
-                loading && <Loading />
-            }
             {
                 reservedEvents.length ?
                     <React.Fragment>

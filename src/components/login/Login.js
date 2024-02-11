@@ -114,7 +114,7 @@ const Login = () => {
                             src="/illus/login-bro.svg"
                             alt="Picture of the author"
                             layout='fill'
-                            placeholder="blur"
+                        // placeholder="blur"
                         />
                     </div>
                 </section>

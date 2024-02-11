@@ -24,5 +24,5 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - name: Change Directory
-      run: cd /home/pouria/actions-runner/_work/peaky/peaky
+      run: cd /home/peaky/actions-runner/_work/peaky/peaky
     - run: pm2 restart 0

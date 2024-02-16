@@ -24,7 +24,9 @@ jobs:
     - run: npm run build --if-present
     - name: Stop
       run: |
-        echo "$PASSWORD" | sudo -S docker kill pouria_pouria-blog_1
+        if echo "$PASSWORD" | sudo docker ps -a --format '{{.Names}}' | grep -q "^pouria_peaky-front-end_1$"; then
+          echo "$PASSWORD" | sudo -S docker kill pouria_peaky-front-end_1
+        fi
       env:
         PASSWORD: ${{ secrets.POURIA_USER_PASSWORD }}
     - name: Start

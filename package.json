@@ -20,9 +20,9 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "dev": "next dev -p 4000",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start -p 4000",
+    "start": "next start",
     "test": "react-scripts test"
   },
   "eslintConfig": {

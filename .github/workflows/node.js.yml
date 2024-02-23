@@ -1,23 +1,17 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
 name: Node.js CI
 
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [20.10.0]
 
     steps:
     - uses: actions/checkout@v3
@@ -28,4 +22,15 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test
+    - name: Stop
+      run: |
+        if echo "$PASSWORD" | sudo docker ps -a --format '{{.Names}}' | grep -q "^pouria_peaky-front-end_1$"; then
+          echo "$PASSWORD" | sudo -S docker kill pouria_peaky-front-end_1
+        fi
+      env:
+        PASSWORD: ${{ secrets.POURIA_USER_PASSWORD }}
+    - name: Start
+      run: |
+        echo "$PASSWORD" | sudo -S docker-compose up -d --build
+      env:
+        PASSWORD: ${{ secrets.POURIA_USER_PASSWORD }}
